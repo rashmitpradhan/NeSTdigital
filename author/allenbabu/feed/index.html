@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Allen Babu | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/author/allenbabu/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 05 Aug 2023 10:44:33 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>Allen Babu | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Database Concurrency Anomalies</title>
+		<link>https://nestdigital.com/blogs/database-concurrency-anomalies/</link>
+					<comments>https://nestdigital.com/blogs/database-concurrency-anomalies/#respond</comments>
+		
+		<dc:creator><![CDATA[Allen Babu]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 04:33:50 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4481</guid>
+
+					<description><![CDATA[Applications nowadays handle a tremendous amount of data, with single or multiple instances of the applications, fronting them with load balancers. Sometimes businesses need to run a set of logical operations that have to be performed in a user session as a single piece of work, which is called a Transaction. Database transactions are defined [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="f11e">Applications nowadays handle a tremendous amount of data, with single or multiple instances of the applications, fronting them with load balancers.</p>
+
+
+
+<p id="d088">Sometimes businesses need to run a set of logical operations that have to be performed in a user session as a single piece of work, which is called a Transaction.</p>
+
+
+
+<p id="3737">Database transactions are defined by the four properties known as&nbsp;<a href="https://vladmihalcea.com/a-beginners-guide-to-acid-and-database-transactions/" rel="noreferrer noopener" target="_blank">ACID</a>. This property in totality, provides a mechanism to ensure the correctness and consistency of a database in a way such that each transaction is a group of operations that acts as a single unit, produces consistent results, acts in isolation from other operations, and updates that it makes are durably stored.</p>
+
+
+
+<p id="0ba6">There occurs the requirement of using the database by multiple users for performing different operations, and in that case, concurrent execution of the database is performed. The Isolation Level allows you to trade off data integrity for performance. It introduces a set of problems to which different transaction isolation (level) tend to respond. So the weaker the isolation level, the more anomalies can occur. Following are various phenomenon anomalies can occur.</p>
+
+
+
+<h2 class="wp-block-heading" id="7711">Dirty Read</h2>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1176/1*fLjO2kzDnNagUwfh3Qfd4g.jpeg" alt=""/></figure>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1122/1*WTbh_ft3ctIuiUHvkb0fJg.jpeg" alt=""/></figure>
+
+
+
+<p id="abf5"><em>Ex: Cesar at ATM, needs to withdraw an amount of 2000/-. He enters the amount, and the balance gets updated as 3000/-. At the same time Transaction 2 starts, loan calculation for the account. It reads the balance as 3000 and starts the calculation. But somehow, the withdrawal at the Atm gets roll backed, so the balance is reverted to original balance as 5000. Here the loan calculation which committed was based on the balance 3000 instead of 5000. The calculation amount will be incorrect.</em></p>
+
+
+
+<p id="4213">To prevent dirty reads, the database engine must hide uncommitted changes from all other concurrent transactions. Each transaction is allowed to see its own changes because otherwise the read-your-own-writes consistency guarantee is compromised. If the underlying database uses&nbsp;<a href="https://vladmihalcea.com/2pl-two-phase-locking/" rel="noreferrer noopener" target="_blank">2PL (Two-Phase Locking)</a>, the uncommitted rows are protected by write locks which prevent other concurrent transactions from reading these records until they are committed.</p>
+
+
+
+<p id="c1e3">Normally, the Read Uncommitted isolation level is rarely needed (non-strict reporting queries where dirty reads are acceptable), so&nbsp;<strong>Read Committed</strong>&nbsp;is usually the lowest practical isolation level.</p>
+
+
+
+<h2 class="wp-block-heading" id="cdd6">Lost Update</h2>
+
+
+
+<p id="83da">A<strong>&nbsp;lost</strong>&nbsp;<strong>update</strong>&nbsp;problem occurs in concurrent transactions, when two transactions try to read and update the same column on the same row within a database at the same time making the values of the items incorrect thus making the database inconsistent.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*N-8t-xZvh544lOVzr6KILg.jpeg" alt=""/></figure>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*my2NWv5LRn2dCtmyKXJvSw.jpeg" alt=""/></figure>
+
+
+
+<p id="916a">Ex:&nbsp;<em>In the above scenario, there exists two concurrent transactions trying to debit Alice’s account with 20$ and 50$. Once both the transactions are completed, Alice’s account is supposed to have balance as 30$. But here, the user2 in the second transaction reads only the committed data, its unaware the first concurrent transaction has taken place. As a result the first transaction gets overlooked with the second transaction and thus the final balance gets inaccurate.</em></p>
+
+
+
+<p id="d739">The transactions are run under the<strong>&nbsp;Read committed isolation</strong>&nbsp;level which is default isolation level for SQL Server that’s why it got the&nbsp;<em>Lost Update</em>problem. The transactions should be run under any of the higher isolation levels such as&nbsp;<strong>REPEATABLE_READ</strong>,&nbsp;<strong>Snapshot</strong>, or&nbsp;<strong>Serializable</strong>.</p>
+
+
+
+<h2 class="wp-block-heading" id="8e12">Non-repeatable Read</h2>
+
+
+
+<p id="0037">A&nbsp;<strong>non-repeatable read</strong>&nbsp;occurs, when during the course of a transaction, a row is retrieved twice and the values within the row differ between reads.</p>
+
+
+
+<p id="4c01">Once an object is loaded into memory, there is no need to fetch it from the database each time a member is accessed.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*H9wTIkOJO2w0pVCv7ZBJhQ.jpeg" alt=""/></figure>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*fX_6t7lpDvdiK0AeNrxDOg.jpeg" alt=""/></figure>
+
+
+
+<p id="45d8"><em>Ex: Suppose in Transaction1, User reads the balance in Bob’s account. In the meantime, Transaction2 starts and another user updates Bob’s account with 250$. If the user in transaction 1 again reads the balance for Bob’s account, it retrieves different row values from the first retrieval.</em></p>
+
+
+
+<p id="808f">Non-repeatable Reads are prevented with the&nbsp;<strong>REPEATABLE_READ</strong>transaction isolation level.</p>
+
+
+
+<h2 class="wp-block-heading" id="1313">Phantom Reads</h2>
+
+
+
+<p id="5b66">If the same query is executed twice during a transaction, but the set of rows differ, a phantom read happened. The excluded rows are the phantoms.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*VIi4PY5NgFj3TywYSpX4pA.jpeg" alt=""/></figure>
+
+
+
+<p id="4272">Ex:&nbsp;<em>Transaction T1 reads a set of data items satisfying some search condition. Transaction T2 then creates data items that satisfy T1’s search condition and commits. If T1 then repeats it’s read with the same search condition, it gets a set of data items different from the first read.</em></p>
+
+
+
+<p id="6bc0">Phantom Reads are prevented with the&nbsp;<strong>SERIALIZABLE</strong>&nbsp;isolation level according to the ANSI SQL-92 standard.</p>
+
+
+
+<h2 class="wp-block-heading" id="73ae">Summary</h2>
+
+
+
+<p id="d3a2">Here is an overview of which transaction isolation levels prevent which read phenomena:</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*QgQCG4A_dvxhrdwcQmQlXQ.jpeg" alt=""/></figure>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/database-concurrency-anomalies/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

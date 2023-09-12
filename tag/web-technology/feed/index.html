@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Web Technology | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/tag/web-technology/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 05 Aug 2023 10:46:56 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>Web Technology | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>How to define a top-level folder structure for your Angular project</title>
+		<link>https://nestdigital.com/blogs/how-to-define-a-top-level-folder-structure-for-your-angular-project/</link>
+					<comments>https://nestdigital.com/blogs/how-to-define-a-top-level-folder-structure-for-your-angular-project/#respond</comments>
+		
+		<dc:creator><![CDATA[Venu Thomas]]></dc:creator>
+		<pubDate>Tue, 25 Jul 2023 16:58:59 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Web Technology]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4518</guid>
+
+					<description><![CDATA[So far, I’m working on a new project at Angular. My many fellow project workers asked me for Angular’s help. So I thought of writing an article for them. In this article, let me show you the perfect directory and file structure for any angular project. For this article, I am using Angular CLI in [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="46cf">So far, I’m working on a new project at Angular. My many fellow project workers asked me for Angular’s help. So I thought of writing an article for them. In this article, let me show you the perfect directory and file structure for any angular project.</p>
+
+
+
+<p id="9915">For this article, I am using Angular CLI in version 15.0.4 with Node in version 18.12.0</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*ivauMw4rqYpqTDd1Wui4_Q.jpeg" alt=""/></figure>
+
+
+
+<p id="44ce">Let’s begin by creating an Angular project, for that we use the following command (you can use the CMD or terminal of your choice). In this case, I will use the terminal in the Visual Studio Code</p>
+
+
+
+<pre class="wp-block-code"><code>ng new &lt;project-name&gt;</code></pre>
+
+
+
+<p>For Example<a href="https://medium.com/tech-blogs-by-nest-digital/demystifying-data-mesh-9a34ad69108f?source=author_recirc-----7f677cc6ad74----1---------------------26e9a463_7e86_478c_b25a_ca475df1167f-------"></a></p>
+
+
+
+<pre class="wp-block-code"><code>ng new MyNewProject</code></pre>
+
+
+
+<p id="ff29">While execute this command, Angular CLI will ask you some questions.</p>
+
+
+
+<ol>
+<li><strong>Would you like to add Angular routing? (y/n)</strong>… This step is important as it asks whether you want to add routing to your app. This file is important as it lets us manage routes in our app. My recommendation is to add it.</li>
+
+
+
+<li><strong>Which stylesheet format would you like to use?</strong>&nbsp;… It also asks you which stylesheet format you would like to add. My recommendation is to use SCSS. This type of stylesheet has all the perks of CSS, including the perks of&nbsp;<a href="https://sass-lang.com/" rel="noreferrer noopener" target="_blank">SASS</a>&nbsp;that. As stated on its official website is an CSS with superpowers.</li>
+</ol>
+
+
+
+<blockquote class="wp-block-quote">
+<p><strong>NOTE</strong><em>:&nbsp;</em><em>While using the integrated git terminal. The creation command does NOT ask whether you want the project’s routing or style format. The default is to create them.</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p id="93c3">Once these steps have been completed, your project will continue to create. Now let’s create the project structure (from a new project).</p>
+
+
+
+<h2 class="wp-block-heading" id="5db1">Directory structure sections</h2>
+
+
+
+<p id="1caf">Now describing the 7 most important sections of how the project is structured (each section is optional). it would be the following:</p>
+
+
+
+<ul>
+<li><strong>Core module</strong>&nbsp;— The&nbsp;<em>CoreModule</em>&nbsp;assumes the role of the root&nbsp;<em>AppModule</em>. It is responsible for sustaining global services. In all likelihood, these services are HTTP services for communicating with an API. It is also used for storing guards, models and other global dependencies, such as http interceptor and global error controller. To maintain a well-structured and written codebase, we will group the typescript entities into their own folder within the core module (classes, enums, interfaces).</li>
+
+
+
+<li><strong>Data module</strong>&nbsp;— We will store everything concerning the application data, such as API services, services for platform usage cases.</li>
+
+
+
+<li><strong>Layout directory&nbsp;</strong>— The Layout directory contains the components declared on the&nbsp;<em>AppModule</em>. This directory contains page-level content components like menu, common header and footer. (This is within the Root Module)</li>
+
+
+
+<li><strong>Shared module</strong>&nbsp;— The Shared Module contains code that will be used in all feature modules, it is used solely to maintain common components, pipes and directives throughout the application.</li>
+
+
+
+<li><strong>Modules directory&nbsp;</strong>— In this section, you will find all the modules which will help to structure the application, such as authentication, registration, login and management modules.</li>
+
+
+
+<li><strong>Styles</strong>&nbsp;— The styles directory serves to store SCSS style sheets for the application. It can contain themes, Bootstrap, angular material and any other style.</li>
+
+
+
+<li><strong>Media directory</strong>&nbsp;— The Media directory can store support files for the app, things such as app logo, icons, images, and so on.</li>
+</ul>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:600/1*LNsuYQGJzQMsgaU1dk0rjw.jpeg" alt=""/></figure>
+
+
+
+<h2 class="wp-block-heading" id="2d27">Generation of modules and directories.</h2>
+
+
+
+<p id="3e15">Then we will generate all the abovementioned directories. Remember that all these commands must be executed from the root of your app.</p>
+
+
+
+<h2 class="wp-block-heading" id="a04e"><strong>Main module (core module)</strong></h2>
+
+
+
+<pre class="wp-block-code"><code>ng g m core</code></pre>
+
+
+
+<p>Once the module is created, add it to the import of the main module of the app.module.ts application (remember to do the corresponding import)</p>
+
+
+
+<pre class="wp-block-code"><code>// src\app\app.module.ts
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CoreModule } from '@core/core.module';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
+@NgModule({
+declarations: &#91;
+AppComponent
+],
+
+imports: &#91;
+BrowserModule,
+AppRoutingModule,
+BrowserAnimationsModule,
+CoreModule
+],
+
+providers: &#91;],
+
+bootstrap: &#91;AppComponent]
+})
+export class AppModule { }</code></pre>
+
+
+
+<blockquote class="wp-block-quote">
+<p><strong>NOTE</strong><em>:&nbsp;</em><em>At this stage, I recommend adding the BrowserAnimationsModule this module allows integration of browser animations.</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>I assure you that if you have used angular you have found the typical nesting, something that is quite difficult to sustain. if you have found that when you are importing a module, function or class you need to:</p>
+
+
+
+<pre class="wp-block-code"><code>import {&lt;moduleName&gt; } from '../../../&lt;moduleFileName&gt;'</code></pre>
+
+
+
+<p>That is an utter mistake to use. as well as broadening the lines of code and making it insatiable and illegible. This doesn’t look good. Now we’re correcting that. Well, that’s quite simple. we must edit the&nbsp;<em>tsconfig.json</em>&nbsp;file and you must make sure that in baseUrl is “./src”, this so that when adding the shortness it takes them from src and in paths, we will add @app, @core, @shared, @components, @env, @module, @data and @layout.</p>
+
+
+
+<pre class="wp-block-code"><code>{
+"compilerOptions": {
+"baseUrl": "./src",
+"paths": {
+"@app/*": &#91;"app/*"],
+"@core/*": &#91;"app/core/*"],
+"@shared/*": &#91;"app/shared/*"],
+"@components/*": &#91;"app/shared/components/*"],
+"@env/*": &#91;"environment/*"],
+"@modules/*": &#91;"app/modules/*"],
+"@data/*": &#91;"app/data/*"],
+"@layout/*": &#91;"app/layout/*"]
+   }
+ }
+}</code></pre>
+
+
+
+<p>Now, the difference is that when you import a resource, you can do it like this:</p>
+
+
+
+<pre class="wp-block-code"><code>import { &lt;moduleName&gt; } from '@modules/&lt;moduleFileName&gt;';</code></pre>
+
+
+
+<p>like in&nbsp;<em>AppModule</em></p>
+
+
+
+<pre class="wp-block-code"><code>import { CoreModule } from './core/core.module';</code></pre>
+
+
+
+<p>to</p>
+
+
+
+<pre class="wp-block-code"><code>import { CoreModule } from '@core/core.module';</code></pre>
+
+
+
+<h2 class="wp-block-heading">Data module</h2>
+
+
+
+<pre class="wp-block-code"><code>ng generate module data</code></pre>
+
+
+
+<p>OR</p>
+
+
+
+<pre class="wp-block-code"><code>ng g m data</code></pre>
+
+
+
+<p id="841e">Once you have created this module, you need to create the following directories inside the data module.</p>
+
+
+
+<ul>
+<li><strong>Constants</strong>&nbsp;— Directory for storing application constants such as static data, page paths, APIs paths, and so on. Tactics, page routes, apis routes, etc.</li>
+
+
+
+<li><strong>Interfaces</strong>&nbsp;— These models contain Angular application models defined by entities.</li>
+
+
+
+<li><strong>Mocks</strong>&nbsp;— This is particularly helpful for testing, but you can also use it to retrieve fictitious data until the back-end is installed. The simulation directory contains all the simulated files in our application.</li>
+
+
+
+<li><strong>Services\api</strong>&nbsp;— The services folder is one of the core module’s main folders, since it provides the various call services to the endpoints of one or more Rest APIs.</li>
+</ul>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:700/1*B3THHYpAFCIZLICXcbZ8Zw.jpeg" alt=""/></figure>
+
+
+
+<h2 class="wp-block-heading" id="60b8">Layout directory</h2>
+
+
+
+<pre class="wp-block-code"><code>mkdir src/app/layout</code></pre>
+
+
+
+<p>This directory can be used to define the basic elements of a web application. In that case, we will define the application’s header, footer and main page. Don’t forget that these commands are executed from the root of your application.</p>
+
+
+
+<pre class="wp-block-code"><code>ng g c layout/mainpage
+ng g c layout/header
+ng g c layout/footer</code></pre>
+
+
+
+<blockquote class="wp-block-quote">
+<p><strong>INFO</strong><em>:&nbsp;</em><em>“ng g c” means short of “ng generate component”</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p id="9648">You can use the — skip-tests argument in commands, this argument indicates that these components will be generated without their test files(like&nbsp;<em>&lt;yourfile&gt;.spec.ts</em>). You can remove this argument and create that file if you want.</p>
+
+
+
+<p id="82b5">At this point it is important that you check that your application has imported the generated components into the declarations of the main module file of&nbsp;<em>app.module.ts</em>.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*OZcHVu1YFNBFW0Wx-jqDhw.jpeg" alt=""/><figcaption class="wp-element-caption">src\app\app.module.ts</figcaption></figure>
+
+
+
+<p id="b3b4">If the components have been successfully imported into your&nbsp;<em>app.module.ts.</em>Go to&nbsp;<em>app.component.html</em>&nbsp;and remove all its contents, just make sure that you have the application router:</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!-- src\app\app.component.html --&gt;
+
+&lt;router-outlet&gt;&lt;/router-outlet&gt;</code></pre>
+
+
+
+<p>Now we are going to add our header and footer components to the main page of the application.</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!-- src\app\layout\mainpage\mainpage.component.html --&gt;
+
+&lt;!-- Header --&gt;
+&lt;app-header&gt;&lt;/app-header&gt;
+
+&lt;!-- Page --&gt;
+&lt;router-outlet&gt;&lt;/router-outlet&gt;
+
+&lt;!-- Footer --&gt;
+&lt;app-footer&gt;&lt;/app-footer&gt;</code></pre>
+
+
+
+<blockquote class="wp-block-quote">
+<p><strong>NOTE</strong><em>:&nbsp;</em><em>The header and footer selectors will be named according to the name used to create these components.</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading">Shared module</h2>
+
+
+
+<pre class="wp-block-code"><code>ng g m shared</code></pre>
+
+
+
+<p id="1af1">Once this module is created, you need to add it to the import of the main module of the&nbsp;<em>app.module.ts</em>&nbsp;application.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*pUnRsTPMT5FZ00vxxeR5_Q.jpeg" alt=""/><figcaption class="wp-element-caption">src\app\app.module.ts</figcaption></figure>
+
+
+
+<p id="4058">The shared module is a great place to import and export the&nbsp;<em>FormsModule</em>and&nbsp;<em>ReactiveFormsModule</em>&nbsp;for use with forms in the application. It is also good for the&nbsp;<em>HttpClientModule</em>&nbsp;and RouterModule to do HTTP requests and move between application routes.</p>
+
+
+
+<p id="cb16">This module’s directory may look something like this:</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:700/1*ArILhWProBacZe2r8G9OFA.jpeg" alt=""/></figure>
+
+
+
+<blockquote class="wp-block-quote">
+<p><strong>NOTE</strong><em>:</em><em>&nbsp;The use of barrel files may be very useful for reducing imports.</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<pre class="wp-block-code"><code>// src\app\shared\shared.module.ts
+
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  declarations: &#91;],
+  imports: &#91;
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule
+  ],
+
+  exports: &#91;
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule
+  ]
+})
+export class SharedModule { }</code></pre>
+
+
+
+<h2 class="wp-block-heading" id="01e0">Module directory</h2>
+
+
+
+<p id="cfa7">This directory contains modules which are separate from one another. This allows Angular to load only the module it needs to view the query, saving bandwidth and speeding up the entire app. Since&nbsp;<a href="https://en.wikipedia.org/wiki/Lazy_loading" rel="noreferrer noopener" target="_blank">Lazy Loading</a>&nbsp;is used.</p>
+
+
+
+<p id="cf9a">To do that, each module should have its own routing, which is a&nbsp;<em>loadChildren</em>route resource defined in the&nbsp;<em>AppRoutingModule</em>.</p>
+
+
+
+<p id="bf9d">For our application we are going to generate three modules, a home (dashboard), contact and about.</p>
+
+
+
+<pre class="wp-block-code"><code>ng g m modules/&lt;module-name&gt; - routing</code></pre>
+
+
+
+<p>For example:</p>
+
+
+
+<pre class="wp-block-code"><code>ng g m modules/home - routing
+ng g m modules/about - routing
+ng g m modules/contact - routing</code></pre>
+
+
+
+<p id="6e8f">Whenever we create a module, it is necessary to import our&nbsp;<em>SharedModule</em>model as illustrated below.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*vUUIDd0cAAzI1a6jiXIXig.jpeg" alt=""/><figcaption class="wp-element-caption">src\app\modules\home\home.module.ts</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="802b">Media directory</h2>
+
+
+
+<p id="c5d6">The Media directory can store support files for the app, things such as app logo, icons, images, and so on.</p>
+
+
+
+<pre class="wp-block-code"><code>mkdir media</code></pre>
+
+
+
+<h2 class="wp-block-heading" id="181c">Generate a main page component for each module</h2>
+
+
+
+<p id="7d2a">Now we are going to create the main pages of each module (Home (Dashboard), About, Contact).</p>
+
+
+
+<pre class="wp-block-code"><code>ng g c modules/&lt;module-name&gt;/pages/&lt;page-name&gt;</code></pre>
+
+
+
+<p>For example:</p>
+
+
+
+<pre class="wp-block-code"><code>ng g c modules/home/pages/home
+ng g c modules/about/pages/about
+ng g c modules/contact/pages/contact</code></pre>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:700/1*VWObXHv34upy5gArn98uQQ.jpeg" alt=""/></figure>
+
+
+
+<blockquote class="wp-block-quote">
+<p><strong>NOTE</strong><em>:&nbsp;</em><em>Once we create our main page elements, we need to define the path for the main element of the created module. In the routing of each module</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*INuY0zn-GsiADDRZJlRRuQ.jpeg" alt=""/><figcaption class="wp-element-caption">src\app\modules\home\home-routing.module.ts</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="37b7">Loading modules using LazyLoading</h2>
+
+
+
+<p id="45b0">To inject our modules created by lazy loading:</p>
+
+
+
+<pre class="wp-block-code"><code>//src\app\app-routing.module.ts
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { MainpageComponent } from '@layout/mainpage/mainpage.component';
+import { AboutModule } from '@modules/about/about.module';
+import { ContactModule } from '@modules/contact/contact.module';
+import { HomeModule } from '@modules/home/home.module';
+
+const routes: Routes = &#91;
+
+  {
+    path: '',
+    component: MainpageComponent,
+    children: &#91;
+      {
+        path: 'home',
+        loadChildren: () =&gt; import('@modules/home/home.module').then((m):typeof HomeModule =&gt; m.HomeModule)
+      },
+      {
+        path: 'about',
+        loadChildren: () =&gt; import('@modules/about/about.module').then((m):typeof AboutModule =&gt; m.AboutModule)
+      },
+      {
+        path: 'contact',
+        loadChildren: () =&gt; import('@modules/contact/contact.module').then((m):typeof ContactModule =&gt; m.ContactModule)
+      }
+    ]
+  }
+];
+
+@NgModule({
+
+  imports: &#91;RouterModule.forRoot(routes, {useHash: true})],
+  exports: &#91;RouterModule]
+})
+
+export class AppRoutingModule { }</code></pre>
+
+
+
+<h2 class="wp-block-heading" id="434c">Configuration for recharging our routes</h2>
+
+
+
+<p id="8b65">This setup is important because it will allow us to correctly reload our application’s pages and paths when our project is in production or hosting.</p>
+
+
+
+<p id="acb9">In the main application example module app.module.ts in the provider section, we add the strategy for reloading routes:</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*tgLxi2keJmNM6yqN6Jtecw.jpeg" alt=""/><figcaption class="wp-element-caption">src\app\app.module.ts</figcaption></figure>
+
+
+
+<p id="b942">Also, in the&nbsp;<em>app-routing.module.ts</em>&nbsp;file in the import section, add the following</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*1TaF13_6ibkDK_eg6aikUw.jpeg" alt=""/><figcaption class="wp-element-caption">src\app\app-routing.module.ts</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="0faf">Verification</h2>
+
+
+
+<p id="e37e">At this point we can check if the application is functioning properly. we can execute one of the following commands</p>
+
+
+
+<pre class="wp-block-code"><code>ng serve
+ng serve -o</code></pre>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:900/1*g6k0DSiuCaUNEWuwECwgpw.jpeg" alt=""/><figcaption class="wp-element-caption">Home Page</figcaption></figure>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:900/1*nTuke17FqPNBHaksmXN_eA.jpeg" alt=""/><figcaption class="wp-element-caption">About Page</figcaption></figure>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:900/1*9SQmsETtiaU3iKDkU7MNgg.jpeg" alt=""/><figcaption class="wp-element-caption">Contact Page</figcaption></figure>
+
+
+
+<p id="47a0">Our app is functioning properly, I CONGRATULATE YOU!! 👏</p>
+
+
+
+<h2 class="wp-block-heading" id="5816">Other considerations</h2>
+
+
+
+<p id="48b9">When I generate a new module, it contains two folders, one for pages and the other for components. The page directory contains the components which act as the pages of our module. As the component directory contains components that can be reused on the pages of our module (example: titles, buttons, loaders etc.).</p>
+
+
+
+<p id="22d0">To produce them, you can use this command:</p>
+
+
+
+<pre class="wp-block-code"><code>ng g c modules/&lt;module-name&gt;/components/&lt;component-name&gt;</code></pre>
+
+
+
+<blockquote class="wp-block-quote">
+<p><em>There is no general rule with respect to the creation of a folder structure in Angular, especially in large projects. The structure will change enormously according to the project’s characteristics. The general idea in this article is to maintain an orderly and coherent application that is explained on its own to the extent possible.</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p id="5e25">Thank you for reading this article! ❤️</p>
+
+
+
+<p id="ee26">I uploaded this source to git :&nbsp;<a href="https://github.com/venuthomas/AngularFileStructure" rel="noreferrer noopener" target="_blank">https://github.com/venuthomas/AngularFileStructure</a></p>
+
+
+
+<p id="7fdc">Remember first that you need to have everything set up (Angular and Node installed) in order for it to work properly.</p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/how-to-define-a-top-level-folder-structure-for-your-angular-project/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

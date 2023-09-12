@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>GIS | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/tag/gis/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 05 Aug 2023 10:52:25 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>GIS | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>LiDAR data for Feature Extraction</title>
+		<link>https://nestdigital.com/blogs/lidar-data-for-feature-extraction/</link>
+					<comments>https://nestdigital.com/blogs/lidar-data-for-feature-extraction/#respond</comments>
+		
+		<dc:creator><![CDATA[Prem VijayKumar]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 11:43:04 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[GIS]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4498</guid>
+
+					<description><![CDATA[Introduction Maps are an underlying necessity in many of our daily activities. It is the backbone of numerous applications which use LBS (location-based services) like Google Maps, Waze, Uber, Swiggy, Pokemon etc. The intent varies from navigation to make-ready engineering, planning, design, getting real-time information for weather forecasting, national security, defense, town planning, disaster management, [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<h1 class="wp-block-heading" id="6124">Introduction</h1>
+
+
+
+<p id="2aa5">Maps are an underlying necessity in many of our daily activities. It is the backbone of numerous applications which use LBS (location-based services) like Google Maps, Waze, Uber, Swiggy, Pokemon etc. The intent varies from navigation to make-ready engineering, planning, design, getting real-time information for weather forecasting, national security, defense, town planning, disaster management, and even gaming. The highlight is the information embedded in these layers of map, the ease of use, and the visual appeal one gets just by looking at the customized interface with a map in the backdrop, rather than going through tons of data in any other form. Have you ever wanted to create a custom map of any features in a large area like a city? If so, the primary step should be to collect the required information by surveying the area. No, we’re not talking about the traditional survey that demands huge manpower, hours and hours of manual inspection of the intended features in that particular location. It will be a tremendous task involving a huge budget to carry out such a survey. With the introduction of Lidar technology in surveys, it’s altogether a different story.</p>
+
+
+
+<h1 class="wp-block-heading" id="80d8">LiDAR</h1>
+
+
+
+<p id="fea5">LiDAR stands for&nbsp;<strong>Li</strong>ght&nbsp;<strong>D</strong>etection&nbsp;<strong>A</strong>nd&nbsp;<strong>R</strong>anging, commonly known as Laser Radar or Laser altimetry. Similar to sonar and radar which uses sound and radio waves respectively, LiDAR uses the IR portion of the electromagnetic spectrum to measure distances by sending laser pulses at any object and measuring the reflected pulses. The precise time for emission and reflection is recorded and using the constant speed of light, the time difference between the emission and reflection can be converted into a distance. With the very accurate position &amp; orientation of the sensor provided by the GPS and IMU data, the XYZ coordinate of the reflective surface is calculated. The laser pulse emitted from the sensors is used to generate point cloud data as output with millions of elevation data points of the AoI (Area of Interest), which is a highly accurate representation of the true world and the precision is in the range of 3 to 5 cm vertical accuracy/elevation, which is achieved using the GPS technology.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*AyL56Z8QvolsySmQAkFS6g.png" alt=""/></figure>
+
+
+
+<p id="54fd"><em>Image: Point cloud data viewed in a 3D viewing application</em></p>
+
+
+
+<h1 class="wp-block-heading" id="81b1">Global Positioning System (GPS)</h1>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:650/1*FXvu3RxppHCM_CTINCUyTw.png" alt=""/></figure>
+
+
+
+<p id="ee1a">The Global Positioning System (GPS), is a&nbsp;<a rel="noreferrer noopener" href="https://en.wikipedia.org/wiki/Radionavigation-satellite_service" target="_blank">satellite-based radio navigation</a> system owned by the&nbsp;<a rel="noreferrer noopener" href="https://en.wikipedia.org/wiki/United_States_government" target="_blank">United States government</a>&nbsp;and operated by the&nbsp;<a rel="noreferrer noopener" href="https://en.wikipedia.org/wiki/United_States_Space_Force" target="_blank">United States Space Force</a>. It is one of the&nbsp;<a rel="noreferrer noopener" href="https://en.wikipedia.org/wiki/Satellite_navigation" target="_blank">global navigation satellite systems</a>&nbsp;(GNSS) that provides&nbsp;<a rel="noreferrer noopener" href="https://en.wikipedia.org/wiki/Geolocation" target="_blank">geolocation</a>&nbsp;and&nbsp;<a rel="noreferrer noopener" href="https://en.wikipedia.org/wiki/Time_transfer" target="_blank">time information</a>&nbsp;to a&nbsp;<a rel="noreferrer noopener" href="https://en.wikipedia.org/wiki/Satellite_navigation_device" target="_blank">GPS receiver</a>&nbsp;anywhere on or near the Earth where there is an unobstructed line of sight to four or more GPS satellites. It provides critical positioning capabilities to military, civil, and commercial users around the world. Although the United States government created, controls and maintains the GPS system, it is freely accessible to anyone with a GPS receiver.</p>
+
+
+
+<p id="d616">·Inertial Measurement Unit (IMU) which records the roll, pitch, and yaw of the platform (vehicle/aircraft on to which the LiDAR sensors are mounted) is instrumental in making the exact positioning of the laser platform possible. They are, however, not perfect and lose precision after a short time.</p>
+
+
+
+<p id="f7e2">· A very high-level GPS, which records several types of signals from the GPS satellites, is used to update or reset the INS or IMU every half a second or so.</p>
+
+
+
+<p id="70b5">· The GPS positions are recorded by the vehicle/aircraft and also at ground station with known position. The ground station provides a correction factor to the GPS position recorded by the platform.</p>
+
+
+
+<h1 class="wp-block-heading" id="7a77">Mobile and Aerial LiDAR survey</h1>
+
+
+
+<p id="fe7b">By mounting the LiDAR sensors and equipment onto any mobile platform like an SUV, an accurate 3D model of the intended area can be generated in relatively short time by driving the vehicle at an optimal speed. Also, we can mount them on a helicopter or drone to do an aerial survey and obtain a 3D point cloud model of the landscape. It depends on the requirement to decide whether to use a mobile survey or an aerial survey. Mobile surveys are mainly used to collect details about features like sign posts, utility poles, and road features like curbs, pavements, etc., which are accessible from drivable roads whereas the intent of aerial surveys is mostly focused on landscape modeling, vegetation patterns, flood mapping etc. wherein the geographic features are not generally accessible by road.</p>
+
+
+
+<p id="8c0c">This cutting-edge remote sensing technology provides an alternative to the traditional survey methods, which is a herculean task involving lots of manual labour and effort. The key benefit of using this type of survey is the savings in cost and time which is otherwise spent on the manual labour for traditional survey. Also, the accuracy of the end product that can be verified at any point of time is yet another factor that favours LiDAR survey. Traditional survey is being replaced with LiDAR survey in most sectors and it is growing in popularity as this the fast and effective way to capture 3D data. Aerial LiDAR survey was used by Kerala Railway Development Corporation Limited (KRDCL) for finalizing the alignment of the proposed 531.45 km semi-high-speed railway (SHSR) corridor from Kochuveli to Kasaragod. Through LiDAR technology, the survey of the entire section was carried out wherein the LiDAR eye picked up buildings, people-inhabited areas, forests, bridges, stone benches, and bushes along the proposed north-south corridor to prepare the complete digital elevation model, digital terrain model, digital surface model, L-sections, C-sections, contour, topographical mapping, vegetation mapping and the processed geographical data was submitted for engineering design of the entire length and lateral construction.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*IruvmTfZpkwk2FzbAaqoDQ.png" alt=""/></figure>
+
+
+
+<p class="has-text-align-center" id="f712"><em>Image: Mobile LiDAR survey</em></p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*tOvfObDS_5ewEN9UuSBSmA.png" alt=""/></figure>
+
+
+
+<p class="has-text-align-center" id="6311"><em>Image: Aerial LiDAR survey</em></p>
+
+
+
+<h1 class="wp-block-heading" id="af7e">Point cloud data</h1>
+
+
+
+<p id="bbbc">The point cloud dataset generated using LiDAR technology is a typical representation of the real world and each individual point has geographical details like latitude, longitude &amp; elevation (x, y &amp; z coordinates respectively). Once the anomalies in the 3 directions that may have crept in the Lidar data during collection caused by the pitch, roll and yaw of the collection platform (vehicle) are removed by calibrating the data, we can locate and represent any object in the point cloud data with high level of accuracy. The common file formats of Lidar data which are widely used for feature extraction purpose are .LAS, .LAZ and .POD. These files have significant file size owing to the number of points and the information embedded in their header files. The collected data is then segmented into smaller files for ease of loading and file handling using applications like Geo Queue, Terra Scan or TopoDoT. The calibrated LiDAR data is then loaded into any application like NCloud or Bentley’s Microstation and used as a backdrop/reference for feature extraction. What exactly is feature extraction has been detailed under the next session.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*vGfuAW21OYZapZw-gwN2fw.png" alt=""/></figure>
+
+
+
+<p class="has-text-align-center" id="74da"><em>Image: 2 views of the Point cloud data viewed in NCloud</em></p>
+
+
+
+<h1 class="wp-block-heading" id="0160">Feature Extraction with reference to Point cloud data</h1>
+
+
+
+<p id="a4b7">Feature extraction in GIS refers to the representation of the real world features in a digital map environment using basic geometries like point, line and polygon. For instance, a school can be represented using a point feature and related information like primary, secondary, public, private, address etc. can be attached to the point feature as attributes. It will also have the basic location details like latitude and longitude. For two dimensional data capture, ArcGIS, an ESRI’s product is the commonly used application wherein satellite imagery and scanned maps are used as reference for data capture. However for 3D data capture, Bentley’s Microstation or NCloud is used as it requires a powerful spatial engine that can effectively manage the rendering of such a huge data with millions of data points during operations like pan, rotate etc. After loading the point cloud data in the application, feature geometries are captured at intended locations by snapping on to the point cloud data using specific tools available to create geometry. The high resolution photos collected along with the LiDAR collection is stitched to have a 360° view, similar to the Google map street view which serves as an additional reference to arrive at a better decision.</p>
+
+
+
+<p id="f8db">The extent of extraction in terms of feature geometries or information to be embedded on to these features obviously depends on the requirement of the end customer. It could be an inventory of the existing assets for engineering design/construction or some other detailed analysis like loading analysis of utility poles. Whatever be the case, manual intervention/feature extraction is needed to make the point cloud data more useful. The end result is a custom digital map with the required information that can be converted to different data formats. The common formats used for the end deliverables are .GDB and .DWG which are combatable with applications like ArcGIS and AutoCAD respectively.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*CU2JtAER5rAxDwAoJdOoLA.png" alt=""/></figure>
+
+
+
+<p class="has-text-align-center" id="df48"><em>Image: Geodatabase, the end deliverable of a utility extraction project</em></p>
+
+
+
+<h1 class="wp-block-heading" id="0deb">NCloud: A platform for 3D feature extraction</h1>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*RBd7RWcVC2R63url_cQOHw.png" alt=""/></figure>
+
+
+
+<p id="d207">NCloud is a unique solution customized by NeST Digital for 3D feature extraction using point cloud data. It’s built over CloudCompare, an open source platform, which was primarily developed in C++ for viewing LiDAR data. By developing a host of custom tools in C#.Net for feature extraction and using an SQL/PostgreSQL database in the back-end to store the spatial data of the geometries captured and the corresponding attributes, the GIS application team built-in a perfect solution for 3D extraction. Combined with the numerous quality check tools developed over a period of time, NCloud provides a solid platform to do 3D extraction on a large scale production environment. It serves as an alternate solution for proprietary software like Bentley’s Microstation, thus invalidating the operational cost in terms of the licensing cost involved and higher probability of winning new project bids.</p>
+
+
+
+<p id="076f">Some of the major functionalities that were built in, specifically for utility pole extraction module are listed below.</p>
+
+
+
+<p id="948d">· A tree structure hierarchy that will maintain parent child relation with a pole as the parent feature and all it’s attachments like crossarm, streetlight, insulators etc. as the child features by assigning pole_id as the primary key.</p>
+
+
+
+<p id="c1b2">· Capturing HoA (Height of Attachment) of all the feature geometries based on where exactly the geometry is snapped on to the point cloud.</p>
+
+
+
+<p id="b28e">· Workflows for data capture complying with complex data model requirements, data validation and translation in a single environment.</p>
+
+
+
+<p id="407d">· Support centralized database with seamless multi-user editing capabilities.</p>
+
+
+
+<p id="4b33">· Faster rendering and display of large, colorized point cloud files viz. LAS, compressed LAZ and other industry standard formats.</p>
+
+
+
+<p id="766a">· Implementation of admin and job manager tools for profile management, splitting, job allocation and status tracking.</p>
+
+
+
+<p id="d648">· Point cloud data editing tools viz. clipping along AoI, change display settings, change view perspectives etc.</p>
+
+
+
+<p id="d927">· Multi-user editing by engineers/QA analysts/delivery team.</p>
+
+
+
+<p id="674a">· Customized tools for feature extraction, editing and attribute update based on each project-specific schema.</p>
+
+
+
+<p id="e066">· Auto extraction and update of 3D feature coordinates, calculation of feature dimensions viz. length, height, angles and bearings and all relative measurements.</p>
+
+
+
+<p id="0d6c">· QA validation checks to flag issues w.r.t feature geometries, relationships, attributes and relative offsets.</p>
+
+
+
+<p id="9469">· Data export facility to geodatabase/JSON or any other client specific format.</p>
+
+
+
+<p id="27ca">· RANSAC algorithms developed for auto extraction of tapering and lean of features, shapes and other measurements.</p>
+
+
+
+<p id="3309">· ANSI specifications for auto update and validation of pole class, material type and other characteristics.</p>
+
+
+
+<p id="0780">· Scalable architecture to suit varied data collection requirements from one company to another</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*C4C_lLDGdVdUOxOGbMnBTA.png" alt=""/></figure>
+
+
+
+<p class="has-text-align-center" id="aefe"><em>Image: NCloud interface with a utility pole features</em></p>
+
+
+
+<h1 class="wp-block-heading" id="98e7">Case Study</h1>
+
+
+
+<p id="0314">A major telecom company and an ISP giant was planning to rollout a 1 GBPS high speed fiber network across major cities in US, back in 2016. Scope of the project involved developing seamless 3D GIS database of utility pole network from high accuracy digital LiDAR data, which can support in the pole loading and clearance analysis for FTTH (Fiber To The Home) licensing requirements. The loading and clearance analysis of utility poles necessitate more than hundreds of measurements and attributes per each pole, including locational details and other quantitative and qualitative information w.r.t. poles and their attachments. Conventional field level investigations or digital photogrammetric workflow approaches do not provide feasible solutions in time-bound projects. NeST along with their partner in US proposed the lidar based solution and were responsible for the 3D lidar collection along the entire fiber network routes.</p>
+
+
+
+<p id="0d57">The projects consisted of multipronged operations ranging from collection of remote sensing data through mobile lidar systems, data capture of pole and attachment details (spans, crossarm, insulators, power equipments, streetlights, guys/anchor, midspan/service drops etc) from point cloud, auto updates of different clearance parameters, pole loading analysis and MR design as well as the final submission for approval.</p>
+
+
+
+<p id="ed16">The solution developed by NeST involved schema design and development of custom data models for each client based on their specific requirements, application development for the workflow management and data capture from lidar point cloud, tools for auto update and validation of quantitative parameters, tools for pole framing based on electric transmission standards, QA/QC tools, and the final database migration to GIS/Oracle/SQL Server DBs in the client repository. Multi-tier QC mechanisms with help of validation tools adopted at each stage of production to meet the rigorous accuracy specs necessitated by the pole clearance and loading standards. The final outputs are delivered on a fiber-hut basis (fiber hut is a distinct geographic area identified for providing the FTTH services) for each city/district. A total of around 50K utility poles and their associated attachments have been captured as part of this project.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*ZT-5jkrJyfr4xrxHmyOHfw.png" alt=""/></figure>
+
+
+
+<p class="has-text-align-center" id="92a8"><em>Image: Utility pole features extracted using NCloud</em></p>
+
+
+
+<h1 class="wp-block-heading" id="121a">Credits</h1>
+
+
+
+<p id="732b">Haridas D, from GIS team, has contributed to preparing the storyline and structure of this blog, which I had used as a base structure.</p>
+
+
+
+<h1 class="wp-block-heading" id="1217">References</h1>
+
+
+
+<p id="9902">1.&nbsp;<a href="https://www.propelleraero.com/blog/drone-surveying-misconceptions-lidar-vs-photogrammetry/#:~:text=3D%20point%20cloud.)-,How%20photogrammetry%20differs%20from%20lidar,overlap%20and%20sufficient%20ground%20control." rel="noreferrer noopener" target="_blank">https://www.propelleraero.com/blog/drone-surveying-misconceptions-lidar-vs-photogrammetry/#:~:text=3D%20point%20cloud.)-,How%20photogrammetry%20differs%20from%20lidar,overlap%20and%20sufficient%20ground%20control.</a></p>
+
+
+
+<p id="a021">2.&nbsp;<a href="https://www.thehindu.com/news/national/kerala/processing-of-lidar-survey-data-begins/article30795623.ece" rel="noreferrer noopener" target="_blank">https://www.thehindu.com/news/national/kerala/processing-of-lidar-survey-data-begins/article30795623.ece</a></p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/lidar-data-for-feature-extraction/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Saji Kumarvk | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/author/sajikumarvk/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 05 Aug 2023 10:53:05 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>Saji Kumarvk | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>MySQL Analytics with HeatWave</title>
+		<link>https://nestdigital.com/blogs/mysql-analytics-with-heatwave/</link>
+					<comments>https://nestdigital.com/blogs/mysql-analytics-with-heatwave/#respond</comments>
+		
+		<dc:creator><![CDATA[Saji Kumarvk]]></dc:creator>
+		<pubDate>Tue, 25 Jul 2023 17:18:47 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4535</guid>
+
+					<description><![CDATA[Introduction to HeatWave Organizations invest in data technology and tooling to leverage their data for a variety of reasons, such as: · Gaining a clear picture of performance · Creating a single source of truth for business metrics · Maintaining a sustainable e-commerce business · Supporting stock and inventory management · Understanding customer behaviour and [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<h2 class="wp-block-heading" id="96f9"><strong>Introduction to HeatWave</strong></h2>
+
+
+
+<p id="8a44">Organizations invest in data technology and tooling to leverage their data for a variety of reasons, such as:</p>
+
+
+
+<p id="c11a">· Gaining a clear picture of performance</p>
+
+
+
+<p id="e1f0">· Creating a single source of truth for business metrics</p>
+
+
+
+<p id="2ab5">· Maintaining a sustainable e-commerce business</p>
+
+
+
+<p id="f6f4">· Supporting stock and inventory management</p>
+
+
+
+<p id="908d">· Understanding customer behaviour and preferences</p>
+
+
+
+<p id="de78">· And optimizing advertising and marketing budgets</p>
+
+
+
+<p id="abe0">However, many businesses struggle to make their models viable due to the high cost and complexity of modern data stacks. One of the main challenges in managing existing data and analytics solutions is identifying suitable databases for online transaction processing (OLTP), online analytical processing (OLAP), and machine learning (ML) volumes and transporting extracted data between them while also maintaining multiple databases.</p>
+
+
+
+<p id="ee46">MySQL HeatWave addresses these challenges by combining transactional, analytic, and ML services into a single, fully managed service with the added power of an in-memory query accelerator. This results in a highly performant solution for SQL analytics at a fraction of the cost compared to other industry solutions.</p>
+
+
+
+<h2 class="wp-block-heading" id="044f"><strong>Massive Parallel Architecture</strong></h2>
+
+
+
+<p id="3156">The architecture of HeatWave allows for each node in a cluster and each core within a node to process partitioned data simultaneously. This includes parallel scanning, joining, grouping, aggregating, and top-k processing, which results in high cache hits for analytic operations and excellent scalability between nodes. HeatWave uses a compressed and optimized in-memory representation for both numeric and string data, which leads to significant performance improvements and reduced memory usage for customers. The in-memory representation also uses a columnar format, which facilitates vectorized processing and further enhances query performance.</p>
+
+
+
+<p id="d0e9">HeatWave is a storage engine for MySQL that can be easily integrated with existing MySQL tools. It offers fast data reload operations such as error recovery and maintenance through a data management layer that is scalable and can work with OCI object storage or Amazon S3. The engine has a query optimizer that automatically decides if it can handle the query and if the estimated processing time is faster than the existing HeatWave cluster, the cluster can be scaled up or down without interrupting client connections. During the scaling operation, the cluster remains functional, and there is little to no effect on query performance.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*byl0SLubPpL4xPePTOjsFw.png" alt=""/></figure>
+
+
+
+<h2 class="wp-block-heading" id="9adc"><strong>MySQL Autopilot</strong></h2>
+
+
+
+<p id="fb90">Autopilot is a feature of HeatWave that improves the query optimizer’s intelligence by utilizing advanced techniques. It collects statistics on data and queries, samples data, and builds machine-learning models that can model memory usage, network load, and execution time. Autopilot focuses on four primary areas, which are system setup, data load, query execution, and failure handling.</p>
+
+
+
+<p id="489a">Within the system setup, Autopilot has two main features, auto-provisioning, and auto-shape predictions. Auto-provisioning uses data sampling from tables to predict the number of nodes required to run a specific workload. Auto-shape predictions use machine-learning models to predict the optimal cluster shape for the workload.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*UxJ5CThzW3XOIWHk6A9zIA.png" alt=""/></figure>
+
+
+
+<p id="2dd3">Auto shape prediction is a feature of HeatWave that enables customers to optimize their price and performance by analyzing OLTP workload, throughput, and buffer pool hit rate. It recommends the appropriate compute shape for the workload at any given time.</p>
+
+
+
+<p id="acae">The Data Load feature is enriched with four auto-features. Auto parallel loading predicts the optimal degree of parallelism for each table to enable faster data loading. Auto encoding determines the optimal representation of columns being loaded to minimize the cost and maximize query performance. Auto data placement uses an in-memory partition to achieve the best query performance and provides expected gain percentage and new column recommendations. Auto unload unloads unused table volumes, freeing up resources for other tasks.</p>
+
+
+
+<p id="a695">Query Execution includes several features such as Auto thread pooling, which enables the database service to process more transactions for a given hardware configuration. Auto scheduling determines which queries in the queue are short-running and prioritizes them over long-running queries intelligently. Auto change propagation determines the optimal time to propagate changes from the MySQL database to the HeatWave storage layer. Auto query time estimation estimates the execution time of a query before executing it, allowing quick testing of different queries. Auto query plan improvement learns from execution data and improves the execution plan of future queries.</p>
+
+
+
+<p id="5785">Failure Handling is addressed by the Auto error recovery feature, which reloads necessary data if one or more HeatWave nodes become unresponsive. This improves the system’s performance as more queries are run. Auto scheduling, auto query time estimation, and auto thread pooling also contribute to failure handling by reducing overall wait time and preventing OLTP workload drops at high levels of transactions and concurrency.</p>
+
+
+
+<h2 class="wp-block-heading" id="55e5"><strong>HeatWave AutoML</strong></h2>
+
+
+
+<p id="dc29">HeatWave AutoML is a technology that automates the creation of machine learning models by leveraging MySQL interfaces and explanations. This eliminates the need for the user to have deep knowledge of machine learning. The models created using HeatWave Atoms can be explained, which is important for building trust, ensuring fairness, and meeting regulatory requirements.</p>
+
+
+
+<p id="94c9">HeatWave AutoML is designed with security in mind. There are no security loopholes that allow unauthorized access to data or models within the database by clients or other services. HeatWave AutoML scales with the size of the cluster and can be easily upgraded. Compared to other competing services, HeatWave AutoML provides high performance at a lower cost.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*gZI0Zy9Xw1CHwUGGR3Y0wg.png" alt=""/></figure>
+
+
+
+<h2 class="wp-block-heading" id="c357"><strong>Technology Advantages</strong></h2>
+
+
+
+<p id="2286">Data Scientists often face laborious and time-consuming tasks such as tuning hyperparameters, selecting a suitable sample of data, fine-tuning pipelines, processing data, and generalizing models. HeatWave AutoML automates these tasks, minimizing the number of trials by extensively using meta-learning and providing an optimal model within a given time budget. It leverages Oracle AutoML, which has a scalable design and has been proven effective in various Oracle products, including the OCI Data Science Service and the Oracle Database. With HeatWave AutoML, data scientists can use the familiar MySQL interface to automate ML-tuned model creation, including interfaces and explanations, without the need for ML expertise. All models created by HeatWave AutoML can be explained, which is essential for building trust, demonstrating fairness, and complying with regulatory requirements. HeatWave AutoML is highly secure and easy to upgrade and scales with the size of the cluster. Compared to other competing services, it is much less expensive while delivering high performance.</p>
+
+
+
+<p id="5856"><strong>Comparison Matrix for HeatWave with the competing analytics services</strong></p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*9QHOdZMpubIRe2MeTYrfGg.png" alt=""/></figure>
+
+
+
+<h2 class="wp-block-heading" id="72ef"><strong>Conclusion</strong></h2>
+
+
+
+<p id="311c">MySQL HeatWave is a solution that allows organizations to manage OLTP, OLAP, and ML databases with a single service. This means that businesses can leverage HeatWave for better analytic query performance and lower costs without the need for ETL. HeatWave is designed with a massively parallel architecture that enables high cache hits and provides excellent inter-node scalability, resulting in a highly performant solution for SQL analytics at a fraction of the cost compared to other industry solutions.</p>
+
+
+
+<p id="ed0a">The HeatWave platform includes native machine learning capabilities called Autopilot and AutoML, which automate many of the tasks previously performed by data scientists, such as tuning hyperparameters, selecting data samples, and pipeline fine-tuning. Autopilot builds machine learning models to model memory usage, network load, and execution time by using advanced techniques to sample data, collect statistics on data and queries, and build machine learning models. Autopilot leverages Oracle AutoML to automate the task of generating models and is scalable, minimizing the number of trials by using meta-learning, and providing an optimal model given a time budget.</p>
+
+
+
+<p id="3f1e">The HeatWave platform is fully managed, making it easy to use and accessible to businesses of all sizes. HeatWave’s automation features improve performance, scalability, and ease of use, allowing businesses to leverage their data to optimize outcomes while reducing the complexity and cost of managing data and analytics solutions. Overall, MySQL HeatWave provides a cost-effective, high-performance solution for businesses looking to leverage their data to gain insights and drive better business outcomes.</p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/mysql-analytics-with-heatwave/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

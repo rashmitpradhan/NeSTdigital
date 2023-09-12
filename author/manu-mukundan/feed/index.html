@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Manu Mukundan | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/author/manu-mukundan/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 05 Aug 2023 10:52:35 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>Manu Mukundan | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>A brief overview of Apache Hadoop</title>
+		<link>https://nestdigital.com/blogs/a-brief-overview-of-apache-hadoop/</link>
+					<comments>https://nestdigital.com/blogs/a-brief-overview-of-apache-hadoop/#respond</comments>
+		
+		<dc:creator><![CDATA[Manu Mukundan]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 04:16:02 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4019</guid>
+
+					<description><![CDATA[Unlike the relational database era, recent times have revolutionized the end-to-end data pipeline from data generation, data collection, data ingestion, data storage, data processing, data analytics and the cherry on top, machine learning and data science. The first platform for handling large volumes of data with respect to distributed storage and parallel processing was Apache [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="501b">Unlike the relational database era, recent times have revolutionized the end-to-end data pipeline from data generation, data collection, data ingestion, data storage, data processing, data analytics and the cherry on top, machine learning and data science. The first platform for handling large volumes of data with respect to distributed storage and parallel processing was Apache Hadoop (It is very popular now as well). In this short blog, I will try to paint a high-level picture of Apache Hadoop and the most popular integrations.</p>
+
+
+
+<h2 class="wp-block-heading" id="e388">Let’s look at some history</h2>
+
+
+
+<p id="aa32">Hadoop was created by&nbsp;<a href="https://www.linkedin.com/in/cutting/" rel="noreferrer noopener" target="_blank">Doug Cutting</a>&nbsp;and&nbsp;<a href="https://www.linkedin.com/in/michaelcafarella" rel="noreferrer noopener" target="_blank">Mike Cafarella</a>&nbsp;in 2005 based on Google File System paper that was published in October 2003. It was originally developed to support Apache Nutch (an open-source web crawler product) and later moved to a separate sub-project. Doug, who was working at Yahoo! at the time named the project after his son’s toy elephant 🙂 Later in 2008, Hadoop was open sourced and The Apache Software Foundation (ASF) made Hadoop available to the public in November 2012</p>
+
+
+
+<h2 class="wp-block-heading" id="c5d2">What makes Hadoop special</h2>
+
+
+
+<p id="851f">The core idea behind Hadoop was to process large volumes of data in a distributed way using&nbsp;<strong>commodity hardware</strong>. It was also an assumption that hardware failures can occur frequently and the software should be capable of handling these and providing fault tolerance. Commodity does not mean cheap, non-usable hardware. It just means that it is relatively inexpensive, widely available and basically interchangeable with other hardware of its type. Unlike purpose-built hardware designed for a specific IT function, commodity hardware can perform many different functions (same hardware can be used to run a web-server, a Linux server, an FTP server, etc.)</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:826/1*3yZYTyuiZ4lRikxl3Zj0sg.jpeg" alt=""/><figcaption class="wp-element-caption">Image 1 : Core modules of Apache Hadoop</figcaption></figure>
+
+
+
+<p id="460e">Hadoop can be configured to run on a single server (for development and testing purposes) and on full scale multi node setup (production scenarios). In any case, the core components for Hadoop are</p>
+
+
+
+<p id="ea18"><strong>Hadoop Distributed File System (HDFS)<br></strong>HDFS is a highly fault-tolerant distributed file system and is designed to be deployed on low-cost hardware. HDFS provides high throughput access to application data and is suitable for applications that have large data sets<br>HDFS has a master slave architecture with a NameNode (master) and number of DataNodes (slaves). HDFS exposes a file system namespace and allows user data to be stored in files. Internally, a file is split into one or more blocks (128MB sized) and these blocks are stored in DataNodes. NameNode manages the metadata which is the mapping of blocks to the DataNodes. For fault tolerance, a single file block will have multiple copies (default 3) and they will be stored in multiple DataNodes. Let’s look how a read and write happens in HDFS at high-level</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*As-CqGdNktpsoF1r5nM9XA.jpeg" alt=""/><figcaption class="wp-element-caption">Image 2 : Read and Write flow in HDFS</figcaption></figure>
+
+
+
+<p id="9815"><strong>Hadoop MapReduce<br></strong>It is a framework for easily writing applications which process vast amounts of data (multi-terabyte data-sets) in parallel on large clusters (thousands of nodes) of commodity hardware in a reliable, fault-tolerant manner.&nbsp;<br>MapReduce application consists of three different tasks. A&nbsp;<em>mapper</em>&nbsp;task, a&nbsp;<em>reducer</em>&nbsp;task and an optional&nbsp;<em>combiner&nbsp;</em>task. The mapper task processes the input file by splitting it into independent chunks and processes them in parallel. The number of mappers depends on the number of&nbsp;<em>InputSplits.&nbsp;</em>InputSplit is the smallest data chunk that can be processed independently, which will be a multiplier of HDFS data block (128MB). The reducer takes the outputs of all mapper tasks, sorts the results and then generates the final output. The combiner task is known as a semi-reducer which does a small combine operation in the mapper side itself. This is done to reduce the data volume before the reducer picks it up.</p>
+
+
+
+<p id="6d96"><strong>Hadoop YARN (Yet Another Resource Negotiator)<br></strong>Interesting name, isn’t it? YARN takes care of the resource management in Hadoop cluster. Any application that tries to run on Hadoop cluster can get the required resources (CPU cores and memory) from YARN.&nbsp;<br>The smallest unit of resource that YARN can allocate is known as a&nbsp;<em>container.&nbsp;</em>Container is similar to an actual server. Both have a number of CPU cores, and a finite memory. But the server is physical and container is logical, meaning there can be many containers allocated in a single server. The memory and CPU allocated to a single container is based on YARN configuration properties.&nbsp;<br>Lastly, let’s look quickly at the core services in YARN</p>
+
+
+
+<p id="6a75"><em>Resource Manager (RM):&nbsp;</em>Central authority who allocates containers for all applications<em><br>Node Manager (NM):&nbsp;</em>Service running on each server on the cluster and responsible for containers, monitoring their resource usage and reporting the same to Resource Manager<br><em>Application Master (AM):&nbsp;</em>A per application service which negotiates containers from RM for that specific application. AM itself runs as a container</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*zxolfwu0s1WS1CnTpokPbw.jpeg" alt=""/><figcaption class="wp-element-caption">Image 3 : Overview of application resource allocation by YARN</figcaption></figure>
+
+
+
+<p id="7f25"><strong>Hadoop Commons and Hadoop Ozone<br></strong>Hadoop Common provides a set of services across libraries and utilities to support the other Hadoop modules.<br>Ozone is a scalable, redundant, and distributed object store (Such as AWS S3 or Azure Blob storage) for Hadoop which can scale to billions of objects of varying sizes.</p>
+
+
+
+<h2 class="wp-block-heading" id="fe20">The ecosystem of rich integrations</h2>
+
+
+
+<p id="c3f1">So far, the focus has been on the core components. Let’s shift the focus a little bit to look at some of the very popular integrations runs on top of Hadoop which elevates Hadoop to an enterprise data platform</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*pqHX4r5vmhjaKkV3R5nxpQ.jpeg" alt=""/><figcaption class="wp-element-caption">Image 4 : Hadoop and popular integrations</figcaption></figure>
+
+
+
+<p id="0e1f"><strong>Data movement</strong><br><em>Apache Flume:</em>&nbsp;A distributed, reliable, and available service for efficiently collecting, aggregating, and moving large amounts of log data from a variety of sources to HDFS<br><em>Apache Sqoop:&nbsp;</em>Data<em>&nbsp;</em>importing and exporting service for structured data to and from HDFS. Typically, the input and output sources will be RDBMS systems<br><em>Apache Storm:</em>&nbsp;A distributed real-time computation system. Apache Storm makes it easy to reliably process unbounded streams of data, a.k.a real-time processing</p>
+
+
+
+<p id="4455"><strong>Data processing</strong><br><em>Hive:</em>&nbsp;Hive is data warehouse software that facilitates reading, writing, and managing large datasets residing in distributed storage (such as HDFS) using SQL programming<br><em>Pig:</em>&nbsp;Pig is data data processing framework which is powered by a proprietary scripting language (Pig Latin) for reading, writing and processing data stored in HDFS<br><em>Tez:&nbsp;</em>Apache Tez is a framework comparable to MapReduce. It provides better performance than MR as intermediate results will not be stored on disk, rather in memory. In addition to this vectorization is also used (processing bulk of rows rather than single row at a time)</p>
+
+
+
+<p id="34e5">Hive and Pig make use of either MR or Tez for running data processing jobs</p>
+
+
+
+<p id="4d1e"><strong>Security<br></strong><em>Kerberos:&nbsp;</em>In on-premise Hadoop cluster setup, Kerberos is used as the authentication mechanism within the cluster components and between external services and Hadoop<br><em>Ranger:&nbsp;</em>Ranger the service for authorization across all Hadoop components. Ranger enables security policies varying from directory, file, database and table access as well as fine grained access on tables</p>
+
+
+
+<p id="0fa2"><strong>Oozie&nbsp;</strong>It is a workflow scheduler running on Hadoop platform. Oozie is integrated with the rest of the Hadoop stack supporting several types of Hadoop jobs out of the box</p>
+
+
+
+<p id="defb"><strong>Spark&nbsp;</strong>An in-memory computation framework which provides batch and real-time data processing capabilities along with machine learning and graph data processing capabilities</p>
+
+
+
+<p id="d849"><strong>Data stores &amp; Query engines&nbsp;<br></strong><em>Impala:</em><strong>&nbsp;</strong>A massively parallel processing, highly performant SQL query engine with in-memory processing capabilities to provide very low latency results on large data volumes<br><em>Druid:</em>&nbsp;A column oriented, distributed data store whose core design combines ideas from&nbsp;<a href="https://en.wikipedia.org/wiki/Data_warehouse" rel="noreferrer noopener" target="_blank">data warehouses</a>,&nbsp;<a href="https://en.wikipedia.org/wiki/Time_series_database" rel="noreferrer noopener" target="_blank">timeseries databases</a>, and&nbsp;<a href="https://en.wikipedia.org/wiki/Full-text_search" rel="noreferrer noopener" target="_blank">search systems</a>&nbsp;to create a high-performance real-time analytics database<br><em>HBase &amp; Phoenix:</em><strong>&nbsp;</strong>HBase is a NoSQL, distributed column-oriented data store which provides random read/write access capabilities on bigdata.&nbsp;<strong><br></strong>Phoenix is an SQL query engine that runs on-top of HBase which provides OLTP capabilities to perform various types of querying patterns</p>
+
+
+
+<p id="8e1d"><strong>File formats<br></strong><em>Avro:&nbsp;</em>It is a row-oriented data serialization format which uses JSON to define the schema and creates compact binary data when serialized. It supports full schema evolution<em><br>ORC (Optimized Row Columnar):&nbsp;</em>It is an optimized column-oriented data storage format mainly used in Hive. It also enables Hive to have transactional capabilities similar to OLTP database<em><br>Parquet:&nbsp;</em>Similar to ORC, it is another column-oriented data storage format which is widely used with various data processing platforms such as Apache Spark</p>
+
+
+
+<p id="4241"><strong>Zeppelin</strong>&nbsp;A web-based notebook which brings data exploration, visualization, sharing and collaboration feature to Hadoop used by data analysts, data scientists, etc. for data exploration</p>
+
+
+
+<p id="17fb"><strong>Superset</strong>&nbsp;A powerful web-based data visualization platform which provides rich visualization and dashboarding capabilities with connectivity to Hive, Druid, HBase and Impala and other data stores</p>
+
+
+
+<p id="9c0f"><strong>Ambari</strong>&nbsp;Central management service for Hadoop which enables provisioning, managing, and monitoring Apache Hadoop clusters</p>
+
+
+
+<p id="a26c"><strong>Atlas</strong>&nbsp;An open-source metadata management and governance system designed to help enterprises to easily find, organize, and manage data assets in Hadoop platform</p>
+
+
+
+<p id="10d8"><strong>Zookeeper</strong>&nbsp;It is a distributed coordination service that helps to manage a large number of hosts such as Hadoop cluster</p>
+
+
+
+<h2 class="wp-block-heading" id="b8df">Hadoop enterprise</h2>
+
+
+
+<p id="0201">CDP (Cloudera Data Platform)<br>AWS EMR (Elastic MapReduce)<br>Azure HDInsight<br>Google Cloud Dataproc</p>
+
+
+
+<h2 class="wp-block-heading" id="96ef">References</h2>
+
+
+
+<p id="bc93"><a href="https://hadoop.apache.org/docs/stable/" rel="noreferrer noopener" target="_blank">Hadoop — Apache Hadoop 3.3.3</a></p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="8b63">Manu Mukundan, Data Architect, TE, Nest Digital</p>
+</blockquote>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/a-brief-overview-of-apache-hadoop/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Lakehouse — New kid in data town</title>
+		<link>https://nestdigital.com/blogs/lakehouse-new-kid-in-data-town/</link>
+					<comments>https://nestdigital.com/blogs/lakehouse-new-kid-in-data-town/#respond</comments>
+		
+		<dc:creator><![CDATA[Manu Mukundan]]></dc:creator>
+		<pubDate>Sat, 13 May 2023 11:10:27 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=2640</guid>
+
+					<description><![CDATA[A brief look at one of the latest architecture paradigms in the data analytics space]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p>As the data volume generated by the new digital era platforms are continuously and exponentially increasing and the insights generated from the data is becoming more and more valuable and critical, there are a bunch of architecture innovations and reforms happening. In this article we will have a close look at one of the most disrupting architecture in data analytics space.</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>Let’s have a look at a traditional data analytics platform</strong></p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" fetchpriority="high" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/05/image1.png" alt="" class="wp-image-2641" width="670" height="681" srcset="https://nestdigital.com/wp-content/uploads/2023/05/image1.png 741w, https://nestdigital.com/wp-content/uploads/2023/05/image1-295x300.png 295w" sizes="(max-width: 670px) 100vw, 670px" /></figure>
+
+
+
+<p class="has-text-color has-small-font-size" style="color:#808080">Image 1 : Data analytics platform powered by data lake and data warehouse</p>
+
+
+
+<p>The core components in the above architecture data ingestion, data lake, ETL and a data warehouse. <strong>Data lake</strong> and <strong>data warehouse</strong> are similar and different at the same time. The similarity is basically they are storage platforms for keeping the data. Now let’s look at the differences.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="889" height="357" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/05/Image2.png" alt="" class="wp-image-2642" srcset="https://nestdigital.com/wp-content/uploads/2023/05/Image2.png 889w, https://nestdigital.com/wp-content/uploads/2023/05/Image2-300x120.png 300w, https://nestdigital.com/wp-content/uploads/2023/05/Image2-768x308.png 768w" sizes="(max-width: 889px) 100vw, 889px" /></figure>
+
+
+
+<p class="has-text-color has-small-font-size" style="color:#808080">Table 1 : Data lake vs Data warehouse</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>The million-dollar question — Is there a way to combine data lake and data warehouse?</strong></p>
+
+
+
+<p>Obviously, someone would ask. “Can we have a platform which can serve both as data lake and data warehouse” ? <strong>The answer is “Data lakehouse”</strong></p>
+
+
+
+<p>Data lakehouse is a new architecture that emerged recently which combines the best of both data lake and data warehouse. In a nutshell, data lakehouse enables</p>
+
+
+
+<ol>
+<li>ACID compliance and full transactional update capabilities on data lake</li>
+
+
+
+<li>High performance query execution</li>
+
+
+
+<li>Data science and data engineering workloads</li>
+
+
+
+<li>Unified real-time and batch data processing</li>
+
+
+
+<li>Schema enforcement and data governance</li>
+</ol>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="814" height="604" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/05/Image3.png" alt="" class="wp-image-2643" srcset="https://nestdigital.com/wp-content/uploads/2023/05/Image3.png 814w, https://nestdigital.com/wp-content/uploads/2023/05/Image3-300x223.png 300w, https://nestdigital.com/wp-content/uploads/2023/05/Image3-768x570.png 768w" sizes="(max-width: 814px) 100vw, 814px" /></figure>
+
+
+
+<p class="has-text-color has-small-font-size" style="color:#808080">Image 2 : Simplified view of data lakehouse</p>
+
+
+
+<p>As you can see in the diagram, lake house storage acts as both data lake and data warehouse. This is a very simplified version of the architecture. We will now look at a few of the innovations and software products that made this architecture possible. They are quite interesting.</p>
+
+
+
+<p>As you can see in the diagram, lake house storage acts as both data lake and data warehouse. This is a very simplified version of the architecture. We will now look at a few of the innovations and software products that made this architecture possible. They are quite interesting.</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>Some popular early players (they are still very popular)</strong></p>
+
+
+
+<p><strong>Apache Presto:</strong> An open-source, distributed SQL querying platform that runs on a cluster of machines. Originated at Facebook, Presto is now one of the popular query engines out there. It enables analytics using ANSI SQL on large amounts of data stored in a variety of systems such as HDFS, cloud storage, NoSQL stores etc. Presto enables data warehouse like query performance for BI and reporting tools.</p>
+
+
+
+<p><strong>Apache Drill:</strong> Similar to Apache Presto, Drill is another open-source SQL query engine for Big Data exploration. Drill is designed from the ground up to support high-performance analysis on the semi-structured and rapidly evolving data coming from modern Big Data applications, using ANSI SQL. Drill originated at MapR (now acquired by HP Enterprise) and is based on Google’s Dremel.</p>
+
+
+
+<p>Both Presto and Drill are Apache top level projects</p>
+
+
+
+<p><strong>Amazon Athena:</strong> This is an AWS native version of Presto. It provides all functionalities of Presto but there is no need to install or manage the infrastructure. You will only have to pay for the queries fired and the data scanned. Even though Athena is meant to query data stored in AWS S3 data lake, federated queries along with source connectors can be used to query a large variety of data sources.</p>
+
+
+
+<p><strong>Amazon Redshift Spectrum:</strong> Another AWS product based on Amazon Redshift, popular data warehouse product offering from Amazon. Redshift spectrum leverages the parallel processing capabilities available in an already provisioned Redshift cluster to connect and query data available in Amazon S3 storage.</p>
+
+
+
+<p><strong>Google BigQuery:</strong> Based on Google’s Dremel, it is a data warehouse offering from Google cloud. Unlike a typical data warehouse solution, BigQuery supports machine learning workloads using BigQuery ML. It can also connect to external big data storage systems to query data using Federated queries.</p>
+
+
+
+<p>As you can see, there are a variety of products available. But none of them truly possess all the capabilities of a data lake house.</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p class="has-black-color has-text-color"><em>The capabilities of ACID transactions are limited to none. Most of these work on immutable storage and updating records is impossible. Also, it is difficult to achieve a unified real-time and batch data layer. Moreover, we require different storage solutions for meeting all our requirements and that deviates from the concept of single data storage for both data lake and data warehouse. players (they are still very popular)</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>Delta Lake, Apache Iceberg and Apache Hudi</strong></p>
+
+
+
+<p>These platforms implement data lakehouse using a metadata layer based on open table formats on top of the data lake storage solutions such as HDFS, AWS S3, Azure Blob, Google Cloud Storage etc.</p>
+
+
+
+<p><strong>Delta Lake:</strong> Delta lake was created by Databricks and then open sourced. It is based on the popular file format Apache Parquet and uses transaction logs created as JSON files to support ACID transactions on the data lake. Delta format is supported by many data processing frameworks which can now leverage this framework to enable data warehouse capabilities on the existing data lake storage systems. Other key features include</p>
+
+
+
+<p>Scalable metadata on billions of partitions and files with ease</p>
+
+
+
+<p>Time travel to old data for audit or rollback</p>
+
+
+
+<p>Unified batch/streaming with transaction capabilities</p>
+
+
+
+<p>Schema evolution/Enforcement — Prevent bad data</p>
+
+
+
+<p>Audit history using transaction logs for full audit trial</p>
+
+
+
+<p>DML operations — SQL, Scala/Java and Python APIs to merge, update and delete datasets</p>
+
+
+
+<p><strong>Apache Iceberg:</strong> Another open-source project which was initially developed at Netflix and currently an Apache top level project. Apache Iceberg is an open table format designed for huge, petabyte-scale tables. The function of a table format is to determine how you manage, organize and track all of the files that make up a table. It supports multiple file formats such as Apache Parquet, Apache Avro and Apache ORC. Using a combination of metadata, manifest and data files, ACID transactions are supported on data lake storage. Other capabilities include</p>
+
+
+
+<p>Full schema evolution to track changes to a table over time</p>
+
+
+
+<p>Time travel to query historical data and verify changes between updates</p>
+
+
+
+<p>Partition layout and evolution enabling updates to partition schemes as queries and data volumes change without relying on hidden partitions or physical directories</p>
+
+
+
+<p>Rollback to prior versions to quickly correct issues and return tables to a known good state</p>
+
+
+
+<p>Advanced planning and filtering capabilities for high performance on large data volumes</p>
+
+
+
+<p><strong>Apache Hudi:</strong> Open-source product initially developed at Uber. Hudi (Hadoop Upsert Delete and Incremental) initially started as a streaming data lake platform on top of Apache Hadoop. It has evolved a lot now to support incremental batch jobs on any cloud storage platform. Hudi uses Apache Parquet and Apache Avro and enables ACID transaction capabilities. Other features include</p>
+
+
+
+<p>Upserts, Deletes with fast, pluggable indexing</p>
+
+
+
+<p>Transactions, Rollbacks, Concurrency Control</p>
+
+
+
+<p>Automatic file sizing, data clustering, compactions, cleaning</p>
+
+
+
+<p>Built-in metadata tracking for scalable storage access</p>
+
+
+
+<p>Incremental queries, Record level change streams</p>
+
+
+
+<p>Backwards compatible schema evolution and enforcement</p>
+
+
+
+<p>SQL Read/Writes from data processing frameworks such as Spark, Presto, Trino, Hive &amp; more</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>Products for Enterprise</strong></p>
+
+
+
+<p>Now let’s look at some enterprise offerings:</p>
+
+
+
+<p><strong>Delta lakehouse by Databricks:</strong> Based on the delta lake and developed by Databricks which can run on popular cloud providers. The entire platform is powered by Apache Spark, the most popular data processing platform in the market now. By combining the capabilities of Delta lake and Apache Spark, delta lakehouse provides capabilities such as</p>
+
+
+
+<p>Lightning-fast performance for data processing with auto scaling and indexing</p>
+
+
+
+<p>Data science and machine learning workloads at scale using MLflow</p>
+
+
+
+<p>Databricks SQL, which is server less SQL query execution engine exclusively for ultra-fast BI and dashboarding requirements</p>
+
+
+
+<p>Unity catalog — A unified data catalog for all data in the delta lakehouse which also provides data governance and security capabilitiesBuilt-in dashboarding platform to create reports and visualizations</p>
+
+
+
+<p>Built-in dashboarding platform to create reports and visualizations</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="721" height="801" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/05/Image4.png" alt="" class="wp-image-2644" srcset="https://nestdigital.com/wp-content/uploads/2023/05/Image4.png 721w, https://nestdigital.com/wp-content/uploads/2023/05/Image4-270x300.png 270w" sizes="(max-width: 721px) 100vw, 721px" /></figure>
+
+
+
+<p class="has-text-color has-small-font-size" style="color:#808080">Image 3 : Delta lakehouse by Databriks</p>
+
+
+
+<p><strong>Dremio:</strong> Product offering based on Apache Iceberg. Unlike Databricks, Dremio can work both on cloud as well as on-premise. Unlike Databrick platform, Dremio does not provide bult-in machine learning or data science capabilities as the focus is mainly on data engineering, data warehousing and fast query performance. With high performance SQL query engine and data transfer capabilities, Dremio solves the problem of combining data lake and data warehouse. The two services that are powering Dremio platform are</p>
+
+
+
+<p>Dremio Sonar — A lakehouse engine built for SQLDremio Arctic — A metadata and data management service for Apache Iceberg that provides a unique Git-like experience for the lakehouse</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>Final thoughts</strong></p>
+
+
+
+<p>I have done my best to capture relevant details on each of these platforms. The ecosystem is always growing powered by more and more contributions to the open-source community. The beauty of these open-source platforms is that you can get all details on the internals and even more, you can check out the source code and start contributing. There is no limit for learning</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>References</strong></p>
+
+
+
+<p><a href="https://database.guide/what-is-acid-in-databases/" target="_blank" rel="noreferrer noopener">ACID transactions</a><br><a href="https://prestodb.io" target="_blank" rel="noreferrer noopener">Apache Presto</a> <br><a href="https://drill.apache.org" target="_blank" rel="noreferrer noopener">Apache Druid</a><br><a href="https://aws.amazon.com/athena/" target="_blank" rel="noreferrer noopener">Amazon Athena</a><br><a href="https://docs.aws.amazon.com/redshift/latest/dg/c-using-spectrum.html" target="_blank" rel="noreferrer noopener">Amazon Reshift Spectrum</a> <br><a href="https://cloud.google.com/bigquery/" target="_blank" rel="noreferrer noopener">Google BigQuery </a><br><a href="https://delta.io" target="_blank" rel="noreferrer noopener">Delta lake</a> <br><a href="https://iceberg.apache.org" target="_blank" rel="noreferrer noopener">Apache Iceberg</a><br><a href="https://hudi.apache.org" target="_blank" rel="noreferrer noopener">Apache Hudi </a><br><a href="https://medium.com/tech-blogs-by-nest-digital/lakehouse-new-kid-in-data-town-acb3b3a944e0" target="_blank" rel="noreferrer noopener">Databricks lakehouse</a> <br><a href="https://www.dremio.com" target="_blank" rel="noreferrer noopener">Dremio</a></p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/lakehouse-new-kid-in-data-town/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

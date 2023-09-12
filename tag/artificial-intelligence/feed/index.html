@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Artificial Intelligence | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/tag/artificial-intelligence/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 05 Aug 2023 11:09:37 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>Artificial Intelligence | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Understanding Diffusion And Stable Diffusion in AI</title>
+		<link>https://nestdigital.com/blogs/understanding-diffusion-stable-diffusion-in-ai/</link>
+					<comments>https://nestdigital.com/blogs/understanding-diffusion-stable-diffusion-in-ai/#respond</comments>
+		
+		<dc:creator><![CDATA[Atri Saxena]]></dc:creator>
+		<pubDate>Tue, 25 Jul 2023 17:13:39 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Artificial Intelligence]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4531</guid>
+
+					<description><![CDATA[After the Generative Adversal Networks (GANs), Variational Auto Encoders (VAE), and Flow-based models, Diffusion Models are the latest research in generative models that can generate diverse high-resolution images. These models also attracted a lot of attention after OpenAI, Google, and Nvidia trained large-scale models. Some examples of pre-trained architecture on Diffusion are DALLE-2, GLIDE, Imagen, [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="a86e">After the Generative Adversal Networks (GANs), Variational Auto Encoders (VAE), and Flow-based models, Diffusion Models are the latest research in generative models that can generate diverse high-resolution images. These models also attracted a lot of attention after OpenAI, Google, and Nvidia trained large-scale models. Some examples of pre-trained architecture on Diffusion are DALLE-2, GLIDE, Imagen, etc.</p>
+
+
+
+<h1 class="wp-block-heading" id="9f7c">Main Principle behind Diffusion</h1>
+
+
+
+<p id="07d3">Diffusion model logic is inspired by non-equilibrium thermodynamics. They define a Markov chain process to add a Gaussian noise slowly to the data and then learn to reverse the diffusion steps to construct the desired data from the noise.</p>
+
+
+
+<p id="a657">For e.g.,&nbsp;<strong>A fixes noising process gradually noises the data x₀ to noise xₜ. We learn to reverse it from noise xₜ to data x₀.</strong></p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*ncZsbhWTW_BpHRaEAH2dlQ.png" alt=""/><figcaption class="wp-element-caption">Originally created by Author</figcaption></figure>
+
+
+
+<p id="759b">You can see the code for adding gaussian noise to the image at this&nbsp;<a href="https://gist.github.com/AtriSaxena/06aef7904f4aca9f5a6056c3a8fdd484" rel="noreferrer noopener" target="_blank">gist</a>.</p>
+
+
+
+<p id="73b7">The idea behind is we add a fixed gaussian noise in a very small amount for series of T steps this is called the&nbsp;<strong>Forward pass</strong>. Notably, this is unrelated to the forward pass of the neural network.</p>
+
+
+
+<p id="090b">After the neural network is trained to learn the reverse process, i.e., denoise the image to recover the original data. This is so-called the&nbsp;<strong>reverse diffusion process</strong>&nbsp;or sampling process of generative models.</p>
+
+
+
+<h2 class="wp-block-heading" id="3832">Forward process</h2>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:924/1*GpJs3IdvVAFMFCg7t4_HQg.png" alt=""/><figcaption class="wp-element-caption">Originally created by Author</figcaption></figure>
+
+
+
+<p id="b8e0">Now, a fixed Markov Chain is used to add a Gaussian noise with variance βₜ and q is the posterior probability of xₜ given xₜ₋₁. This process can be formulated as below:</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:900/1*MFpGkW8ZhXfLy2jiKqQcmA.png" alt=""/></figure>
+
+
+
+<p id="57cc">Since we are in the multi-dimensional scenario here&nbsp;<strong>I</strong>&nbsp;is the identity matrix, and it indicates that each dimension has the same standard deviation βₜ. Note that, q(xₜ | xₜ₋₁) is still a normal distribution with mean μₜ</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:434/1*2-6wKNNIckr8HJsJoj7f4g.png" alt=""/></figure>
+
+
+
+<p id="daff">and variance Σₜ = βₜI. Thus, we can now go from x₀, …, xₜ₋₁, xₜ, … x(T) in a tractable way. Mathematically this posterior probability will be defined as</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:748/1*PTmpyrzfreGTX6QCOWDJVQ.png" alt=""/></figure>
+
+
+
+<h2 class="wp-block-heading" id="06b8"><strong>Reverse Diffusion</strong></h2>
+
+
+
+<p id="fed8">Now, we need to learn the reverse process i.e, given xₜ learn to predict xₜ₋₁, there posterior probability of q(xₜ | xₜ₋₁). For that, we need to take a parameterized model such as a neural network. Since, we know q(xₜ | xₜ₋₁) will be Gaussian, for small βₜ, we can choose p₀ to be Gaussian and choose mean and variance as parameters.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:998/1*Lf0VPl2N3BZCVCy2f6dGog.png" alt=""/></figure>
+
+
+
+<p id="fca4">If we apply reverse diffusion to all the time steps T then the formula will become:</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:816/1*MCCzPA9qWDkr5JW2TkDbUw.png" alt=""/></figure>
+
+
+
+<p id="cdc6">Now, since we need model to learn the mean μₜ and Co-variance Σₜ to predict the Gaussian parameters for each time step.</p>
+
+
+
+<h1 class="wp-block-heading" id="af99">Model Architecture of Stable Diffusion Model</h1>
+
+
+
+<p id="e5bd">Since we are talking about the Stable Diffusion model which will be taking text or paragraph of text and trying to create image.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*0t4a3MoJPCUcFVmfeT5CkQ.png" alt=""/><figcaption class="wp-element-caption">Originally created by Author</figcaption></figure>
+
+
+
+<p id="55e7">Here, Convolutional UNet architecture is used which is having same output shape as input. UNet uses downsampling and Upsampling layers and various other components such as Residual connections, batch or group normalization layers. Now as we need to pass the description text also, this text is converted into tokens and run Transformer on them. Then attend these transformers into UNet.</p>
+
+
+
+<p id="4c99">Here the model will take noised image xₜ at time step t and try to predict the noise in the image because the variance is set fixed we will output only one value per pixel that means model learns the Mean of the Gaussian distribution of the images this is also called&nbsp;<strong>Denoising Score Matching.</strong></p>
+
+
+
+<h1 class="wp-block-heading" id="627b">Conditional Image Generation: Guided Diffusion</h1>
+
+
+
+<p id="4416">An important step of image generation is to add conditions in the sampling process to manipulate the generated samples. This is also referred to as Guided Diffusion.</p>
+
+
+
+<p id="82fd">There have been methods to guide the distribution using Image/Text embeddings into the diffusion in order to guide the generation. Mathematically we can say, the guidance refers to conditioning a prior distribution p(x) with a condition y as a class label or text embeddings resulting in p(x/y).</p>
+
+
+
+<p id="c1b3">For converting a diffusion model to a conditional diffusion model we can add conditioning information y at each diffusion step.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:922/1*4Z5Y4dFhEBlZ1Fqmk3PIYw.png" alt=""/></figure>
+
+
+
+<p id="4e2b">Adding conditioning at each time step may result in excellent samples generation from a text prompt.</p>
+
+
+
+<p id="d4b1">In general diffusion models aims to learn ∇logp₀(xₜ|y). Now adding the guidance scalar term ‘s’ we have</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1156/1*6Pzn-JP6iLHZPU48kh_zLw.png" alt=""/></figure>
+
+
+
+<p id="94ba">Using this guidance, let’s understand the distinction between classifier and classifier-free guidance.</p>
+
+
+
+<h2 class="wp-block-heading" id="536c">Classifier guidance</h2>
+
+
+
+<p id="f7b4"><a href="https://arxiv.org/abs/1503.03585" rel="noreferrer noopener" target="_blank">Sohl-Dickstein et al</a>. and later&nbsp;<a href="https://arxiv.org/abs/2105.05233" rel="noreferrer noopener" target="_blank">Dhariwal and Nichol</a>&nbsp;explained in their paper to use a second model, a classifier&nbsp;<em>fϕ</em>​(<em>y</em>∣xₜ​,<em>t</em>), to guide the diffusion towards target class y. For achieving that we can train a classifier&nbsp;<em>fϕ</em>​(<em>y</em>∣xₜ​,<em>t</em>) on the noise image xₜ to predict its class y. Then we can use gradient ∇logp₀(xₜ|y) to guide for diffusion.</p>
+
+
+
+<h2 class="wp-block-heading" id="eb4b">Class-free guidance</h2>
+
+
+
+<p id="6dbf">Here&nbsp;<a href="https://openreview.net/forum?id=qw8AKxfYbI" rel="noreferrer noopener" target="_blank">Ho &amp; Salimans</a>&nbsp;proposed a model without a second classifier model. Here author used a single neural network and train a conditional diffusion model together with the unconditional diffusion model. During training, they set y to class 0 randomly, so that model is exposed to both conditional and unconditional setups.</p>
+
+
+
+<h1 class="wp-block-heading" id="7c33">Scaling Up Diffusion Models</h1>
+
+
+
+<p id="3eab">The problem with the models we discussed is that these are computationally expensive. And for producing high-quality images, U-Net architecture will be very much expensive. Therefore for producing high-resolution images using diffusion there are two methods: cascade diffusion models and latent diffusion models.</p>
+
+
+
+<h2 class="wp-block-heading" id="cbe9">Cascade Diffusion Models</h2>
+
+
+
+<p id="4a5b"><a href="https://arxiv.org/abs/2106.15282" rel="noreferrer noopener" target="_blank">Ho et al. 2021</a>&nbsp;introduced cascaded models which consist of a pipeline of many sequential diffusion models that generates high-fidelity images. Each model generates a sample with a superior resolution than the previous model. Upsampling layers are used to increase the resolution with the diffusion layer.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*UwneEqNcyn1OslBYg5AxFg.png" alt=""/><figcaption class="wp-element-caption"><em>Cascade diffusion model pipeline. Source: Ho &amp; Saharia et al.</em></figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="7714">Stable Diffusion: Latent Diffusion Models</h2>
+
+
+
+<p id="198e">In Latent Diffusion Models instead of applying diffusion on high-dimensional data, we project the input to a smaller latent space and then apply diffusion</p>
+
+
+
+<p id="cd62"><a href="https://arxiv.org/abs/2112.10752" rel="noreferrer noopener" target="_blank">Rombach et al</a>. proposed the idea to use an encoder network to encode the input to a smaller latent representation i.e., zₜ = g(xₜ). The main purpose behind using an encoder is to reduce the computation requirement of the diffusion network by reducing the image to a small latent space. Later, diffusion model (U-Net) is applied to generate new data, and decoder network is used to upsample the image to the original resolution.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/0*TjpXniuya0R8BdOH.png" alt=""/><figcaption class="wp-element-caption"><em>Latent diffusion models. Source:&nbsp;</em><a href="https://arxiv.org/abs/2112.10752" rel="noreferrer noopener" target="_blank"><em>Rombach et al</em></a></figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="18e0">Results</h2>
+
+
+
+<p id="3aaa">Some results of the diffusion model generated from&nbsp;<a href="https://stablediffusionweb.com/#demo" rel="noreferrer noopener" target="_blank">here</a>:</p>
+
+
+
+<p id="cf44"><strong>Sample Input 1:</strong>&nbsp;“A small cabin on top of a snowy mountain in the style of Disney, artstation.”</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1398/1*bkH84HjDWOMBlqB5eTwwyg.png" alt=""/><figcaption class="wp-element-caption">Generated from&nbsp;<a href="https://stablediffusionweb.com/#demo" rel="noreferrer noopener" target="_blank">https://stablediffusionweb.com/#demo</a></figcaption></figure>
+
+
+
+<p id="c80b"><strong>Sample Input 2: “</strong>Mechanical robot on Indian road”</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1390/1*22TvJ3D1yKHYTHKlAir71Q.png" alt=""/><figcaption class="wp-element-caption">Generated from&nbsp;<a href="https://stablediffusionweb.com/#demo" rel="noreferrer noopener" target="_blank">https://stablediffusionweb.com/#demo</a></figcaption></figure>
+
+
+
+<p id="6ba4">You can try your own sentences also at&nbsp;<a href="https://stablediffusionweb.com/#demo" rel="noreferrer noopener" target="_blank">https://stablediffusionweb.com/#demo</a></p>
+
+
+
+<h2 class="wp-block-heading" id="a834">Summary</h2>
+
+
+
+<p id="9c61">Let’s summarize the points, we have learned from diffusion models:</p>
+
+
+
+<ul>
+<li>Diffusion models work on applying fixed Gaussian noise to the original image for T time steps this process is known as diffusion.</li>
+
+
+
+<li>It has two processes Forward and Reverse diffusion. In reverse diffusion, a model or neural network learns to denoise the image.</li>
+
+
+
+<li>We can use an image or text embedding to “guide” the diffusion process.</li>
+
+
+
+<li>Cascade and Latent diffusion are two approaches to scale-up models to high resolution.</li>
+
+
+
+<li>Cascaded diffusion is a sequential diffusion model that uses upscaling layers to create high-resolution images.</li>
+
+
+
+<li>Latent diffusion models apply diffusion in a latent space and are less computationally expensive by using variational autoencoders for upsampling and downsampling.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="a98f"><strong>References</strong></h2>
+
+
+
+<p id="5376">[1] Sohl-Dickstein, Jascha, et al.<a href="https://arxiv.org/abs/1503.03585" rel="noreferrer noopener" target="_blank">&nbsp;Deep Unsupervised Learning Using Nonequilibrium Thermodynamics</a>. arXiv:1503.03585, arXiv, 18 Nov. 2015</p>
+
+
+
+<p id="59fd">[2] Ho, Jonathan, et al.&nbsp;<a href="https://arxiv.org/abs/2006.11239" rel="noreferrer noopener" target="_blank">Denoising Diffusion Probabilistic Models</a>. arXiv:2006.11239, arXiv, 16 Dec. 2020</p>
+
+
+
+<p id="0f94">[3] Ho, Jonathan, and Tim Salimans.<a href="https://openreview.net/forum?id=qw8AKxfYbI" rel="noreferrer noopener" target="_blank">&nbsp;Classifier-Free Diffusion Guidance</a>. 2021. openreview.net</p>
+
+
+
+<p id="8009">[4] Nichol, Alex, et al.&nbsp;<a href="https://arxiv.org/abs/2112.10741" rel="noreferrer noopener" target="_blank">GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models</a>. arXiv:2112.10741, arXiv, 8 Mar. 2022</p>
+
+
+
+<p id="1536">[5] Rombach, Robin, et al.&nbsp;<a href="https://arxiv.org/abs/2112.10752" rel="noreferrer noopener" target="_blank">High-Resolution Image Synthesis with Latent Diffusion Models</a>. arXiv:2112.10752, arXiv, 13 Apr. 2022</p>
+
+
+
+<p id="6403">[6] Ho, Jonathan, et al.&nbsp;<a href="https://arxiv.org/abs/2106.15282" rel="noreferrer noopener" target="_blank">Cascaded Diffusion Models for High Fidelity Image Generation</a>. arXiv:2106.15282, arXiv, 17 Dec. 2021</p>
+
+
+
+<p id="7fb8">[7] Weng, Lilian.&nbsp;<a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/" rel="noreferrer noopener" target="_blank">What Are Diffusion Models?</a>&nbsp;11 July 2021</p>
+
+
+
+<p id="a5fc">[8] Das, Ayan. “<a href="https://ayandas.me/blog-tut/2021/12/04/diffusion-prob-models.html" rel="noreferrer noopener" target="_blank">An Introduction to Diffusion Probabilistic Models.</a>” Ayan Das, 4 Dec. 2021</p>
+
+
+
+<p id="13ed">[9] Prafulla Dhariwal. “<a href="https://www.youtube.com/watch?v=xYJEvihz3OI" rel="noreferrer noopener" target="_blank">Generative art using diffusion</a>.”</p>
+
+
+
+<p id="b7b5">[10] Saharia, Chitwan, et al.&nbsp;<a href="https://arxiv.org/abs/2205.11487" rel="noreferrer noopener" target="_blank">Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding</a>. arXiv:2205.11487, arXiv, 23 May 2022</p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/understanding-diffusion-stable-diffusion-in-ai/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

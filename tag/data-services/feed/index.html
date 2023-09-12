@@ -1,0 +1,1495 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Data Services | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/tag/data-services/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 05 Aug 2023 10:54:22 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>Data Services | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>MySQL Analytics with HeatWave</title>
+		<link>https://nestdigital.com/blogs/mysql-analytics-with-heatwave/</link>
+					<comments>https://nestdigital.com/blogs/mysql-analytics-with-heatwave/#respond</comments>
+		
+		<dc:creator><![CDATA[Saji Kumarvk]]></dc:creator>
+		<pubDate>Tue, 25 Jul 2023 17:18:47 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4535</guid>
+
+					<description><![CDATA[Introduction to HeatWave Organizations invest in data technology and tooling to leverage their data for a variety of reasons, such as: · Gaining a clear picture of performance · Creating a single source of truth for business metrics · Maintaining a sustainable e-commerce business · Supporting stock and inventory management · Understanding customer behaviour and [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<h2 class="wp-block-heading" id="96f9"><strong>Introduction to HeatWave</strong></h2>
+
+
+
+<p id="8a44">Organizations invest in data technology and tooling to leverage their data for a variety of reasons, such as:</p>
+
+
+
+<p id="c11a">· Gaining a clear picture of performance</p>
+
+
+
+<p id="e1f0">· Creating a single source of truth for business metrics</p>
+
+
+
+<p id="2ab5">· Maintaining a sustainable e-commerce business</p>
+
+
+
+<p id="f6f4">· Supporting stock and inventory management</p>
+
+
+
+<p id="908d">· Understanding customer behaviour and preferences</p>
+
+
+
+<p id="de78">· And optimizing advertising and marketing budgets</p>
+
+
+
+<p id="abe0">However, many businesses struggle to make their models viable due to the high cost and complexity of modern data stacks. One of the main challenges in managing existing data and analytics solutions is identifying suitable databases for online transaction processing (OLTP), online analytical processing (OLAP), and machine learning (ML) volumes and transporting extracted data between them while also maintaining multiple databases.</p>
+
+
+
+<p id="ee46">MySQL HeatWave addresses these challenges by combining transactional, analytic, and ML services into a single, fully managed service with the added power of an in-memory query accelerator. This results in a highly performant solution for SQL analytics at a fraction of the cost compared to other industry solutions.</p>
+
+
+
+<h2 class="wp-block-heading" id="044f"><strong>Massive Parallel Architecture</strong></h2>
+
+
+
+<p id="3156">The architecture of HeatWave allows for each node in a cluster and each core within a node to process partitioned data simultaneously. This includes parallel scanning, joining, grouping, aggregating, and top-k processing, which results in high cache hits for analytic operations and excellent scalability between nodes. HeatWave uses a compressed and optimized in-memory representation for both numeric and string data, which leads to significant performance improvements and reduced memory usage for customers. The in-memory representation also uses a columnar format, which facilitates vectorized processing and further enhances query performance.</p>
+
+
+
+<p id="d0e9">HeatWave is a storage engine for MySQL that can be easily integrated with existing MySQL tools. It offers fast data reload operations such as error recovery and maintenance through a data management layer that is scalable and can work with OCI object storage or Amazon S3. The engine has a query optimizer that automatically decides if it can handle the query and if the estimated processing time is faster than the existing HeatWave cluster, the cluster can be scaled up or down without interrupting client connections. During the scaling operation, the cluster remains functional, and there is little to no effect on query performance.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*byl0SLubPpL4xPePTOjsFw.png" alt=""/></figure>
+
+
+
+<h2 class="wp-block-heading" id="9adc"><strong>MySQL Autopilot</strong></h2>
+
+
+
+<p id="fb90">Autopilot is a feature of HeatWave that improves the query optimizer’s intelligence by utilizing advanced techniques. It collects statistics on data and queries, samples data, and builds machine-learning models that can model memory usage, network load, and execution time. Autopilot focuses on four primary areas, which are system setup, data load, query execution, and failure handling.</p>
+
+
+
+<p id="489a">Within the system setup, Autopilot has two main features, auto-provisioning, and auto-shape predictions. Auto-provisioning uses data sampling from tables to predict the number of nodes required to run a specific workload. Auto-shape predictions use machine-learning models to predict the optimal cluster shape for the workload.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*UxJ5CThzW3XOIWHk6A9zIA.png" alt=""/></figure>
+
+
+
+<p id="2dd3">Auto shape prediction is a feature of HeatWave that enables customers to optimize their price and performance by analyzing OLTP workload, throughput, and buffer pool hit rate. It recommends the appropriate compute shape for the workload at any given time.</p>
+
+
+
+<p id="acae">The Data Load feature is enriched with four auto-features. Auto parallel loading predicts the optimal degree of parallelism for each table to enable faster data loading. Auto encoding determines the optimal representation of columns being loaded to minimize the cost and maximize query performance. Auto data placement uses an in-memory partition to achieve the best query performance and provides expected gain percentage and new column recommendations. Auto unload unloads unused table volumes, freeing up resources for other tasks.</p>
+
+
+
+<p id="a695">Query Execution includes several features such as Auto thread pooling, which enables the database service to process more transactions for a given hardware configuration. Auto scheduling determines which queries in the queue are short-running and prioritizes them over long-running queries intelligently. Auto change propagation determines the optimal time to propagate changes from the MySQL database to the HeatWave storage layer. Auto query time estimation estimates the execution time of a query before executing it, allowing quick testing of different queries. Auto query plan improvement learns from execution data and improves the execution plan of future queries.</p>
+
+
+
+<p id="5785">Failure Handling is addressed by the Auto error recovery feature, which reloads necessary data if one or more HeatWave nodes become unresponsive. This improves the system’s performance as more queries are run. Auto scheduling, auto query time estimation, and auto thread pooling also contribute to failure handling by reducing overall wait time and preventing OLTP workload drops at high levels of transactions and concurrency.</p>
+
+
+
+<h2 class="wp-block-heading" id="55e5"><strong>HeatWave AutoML</strong></h2>
+
+
+
+<p id="dc29">HeatWave AutoML is a technology that automates the creation of machine learning models by leveraging MySQL interfaces and explanations. This eliminates the need for the user to have deep knowledge of machine learning. The models created using HeatWave Atoms can be explained, which is important for building trust, ensuring fairness, and meeting regulatory requirements.</p>
+
+
+
+<p id="94c9">HeatWave AutoML is designed with security in mind. There are no security loopholes that allow unauthorized access to data or models within the database by clients or other services. HeatWave AutoML scales with the size of the cluster and can be easily upgraded. Compared to other competing services, HeatWave AutoML provides high performance at a lower cost.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*gZI0Zy9Xw1CHwUGGR3Y0wg.png" alt=""/></figure>
+
+
+
+<h2 class="wp-block-heading" id="c357"><strong>Technology Advantages</strong></h2>
+
+
+
+<p id="2286">Data Scientists often face laborious and time-consuming tasks such as tuning hyperparameters, selecting a suitable sample of data, fine-tuning pipelines, processing data, and generalizing models. HeatWave AutoML automates these tasks, minimizing the number of trials by extensively using meta-learning and providing an optimal model within a given time budget. It leverages Oracle AutoML, which has a scalable design and has been proven effective in various Oracle products, including the OCI Data Science Service and the Oracle Database. With HeatWave AutoML, data scientists can use the familiar MySQL interface to automate ML-tuned model creation, including interfaces and explanations, without the need for ML expertise. All models created by HeatWave AutoML can be explained, which is essential for building trust, demonstrating fairness, and complying with regulatory requirements. HeatWave AutoML is highly secure and easy to upgrade and scales with the size of the cluster. Compared to other competing services, it is much less expensive while delivering high performance.</p>
+
+
+
+<p id="5856"><strong>Comparison Matrix for HeatWave with the competing analytics services</strong></p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*9QHOdZMpubIRe2MeTYrfGg.png" alt=""/></figure>
+
+
+
+<h2 class="wp-block-heading" id="72ef"><strong>Conclusion</strong></h2>
+
+
+
+<p id="311c">MySQL HeatWave is a solution that allows organizations to manage OLTP, OLAP, and ML databases with a single service. This means that businesses can leverage HeatWave for better analytic query performance and lower costs without the need for ETL. HeatWave is designed with a massively parallel architecture that enables high cache hits and provides excellent inter-node scalability, resulting in a highly performant solution for SQL analytics at a fraction of the cost compared to other industry solutions.</p>
+
+
+
+<p id="ed0a">The HeatWave platform includes native machine learning capabilities called Autopilot and AutoML, which automate many of the tasks previously performed by data scientists, such as tuning hyperparameters, selecting data samples, and pipeline fine-tuning. Autopilot builds machine learning models to model memory usage, network load, and execution time by using advanced techniques to sample data, collect statistics on data and queries, and build machine learning models. Autopilot leverages Oracle AutoML to automate the task of generating models and is scalable, minimizing the number of trials by using meta-learning, and providing an optimal model given a time budget.</p>
+
+
+
+<p id="3f1e">The HeatWave platform is fully managed, making it easy to use and accessible to businesses of all sizes. HeatWave’s automation features improve performance, scalability, and ease of use, allowing businesses to leverage their data to optimize outcomes while reducing the complexity and cost of managing data and analytics solutions. Overall, MySQL HeatWave provides a cost-effective, high-performance solution for businesses looking to leverage their data to gain insights and drive better business outcomes.</p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/mysql-analytics-with-heatwave/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Database Concurrency Anomalies</title>
+		<link>https://nestdigital.com/blogs/database-concurrency-anomalies/</link>
+					<comments>https://nestdigital.com/blogs/database-concurrency-anomalies/#respond</comments>
+		
+		<dc:creator><![CDATA[Allen Babu]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 04:33:50 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4481</guid>
+
+					<description><![CDATA[Applications nowadays handle a tremendous amount of data, with single or multiple instances of the applications, fronting them with load balancers. Sometimes businesses need to run a set of logical operations that have to be performed in a user session as a single piece of work, which is called a Transaction. Database transactions are defined [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="f11e">Applications nowadays handle a tremendous amount of data, with single or multiple instances of the applications, fronting them with load balancers.</p>
+
+
+
+<p id="d088">Sometimes businesses need to run a set of logical operations that have to be performed in a user session as a single piece of work, which is called a Transaction.</p>
+
+
+
+<p id="3737">Database transactions are defined by the four properties known as&nbsp;<a href="https://vladmihalcea.com/a-beginners-guide-to-acid-and-database-transactions/" rel="noreferrer noopener" target="_blank">ACID</a>. This property in totality, provides a mechanism to ensure the correctness and consistency of a database in a way such that each transaction is a group of operations that acts as a single unit, produces consistent results, acts in isolation from other operations, and updates that it makes are durably stored.</p>
+
+
+
+<p id="0ba6">There occurs the requirement of using the database by multiple users for performing different operations, and in that case, concurrent execution of the database is performed. The Isolation Level allows you to trade off data integrity for performance. It introduces a set of problems to which different transaction isolation (level) tend to respond. So the weaker the isolation level, the more anomalies can occur. Following are various phenomenon anomalies can occur.</p>
+
+
+
+<h2 class="wp-block-heading" id="7711">Dirty Read</h2>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1176/1*fLjO2kzDnNagUwfh3Qfd4g.jpeg" alt=""/></figure>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1122/1*WTbh_ft3ctIuiUHvkb0fJg.jpeg" alt=""/></figure>
+
+
+
+<p id="abf5"><em>Ex: Cesar at ATM, needs to withdraw an amount of 2000/-. He enters the amount, and the balance gets updated as 3000/-. At the same time Transaction 2 starts, loan calculation for the account. It reads the balance as 3000 and starts the calculation. But somehow, the withdrawal at the Atm gets roll backed, so the balance is reverted to original balance as 5000. Here the loan calculation which committed was based on the balance 3000 instead of 5000. The calculation amount will be incorrect.</em></p>
+
+
+
+<p id="4213">To prevent dirty reads, the database engine must hide uncommitted changes from all other concurrent transactions. Each transaction is allowed to see its own changes because otherwise the read-your-own-writes consistency guarantee is compromised. If the underlying database uses&nbsp;<a href="https://vladmihalcea.com/2pl-two-phase-locking/" rel="noreferrer noopener" target="_blank">2PL (Two-Phase Locking)</a>, the uncommitted rows are protected by write locks which prevent other concurrent transactions from reading these records until they are committed.</p>
+
+
+
+<p id="c1e3">Normally, the Read Uncommitted isolation level is rarely needed (non-strict reporting queries where dirty reads are acceptable), so&nbsp;<strong>Read Committed</strong>&nbsp;is usually the lowest practical isolation level.</p>
+
+
+
+<h2 class="wp-block-heading" id="cdd6">Lost Update</h2>
+
+
+
+<p id="83da">A<strong>&nbsp;lost</strong>&nbsp;<strong>update</strong>&nbsp;problem occurs in concurrent transactions, when two transactions try to read and update the same column on the same row within a database at the same time making the values of the items incorrect thus making the database inconsistent.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*N-8t-xZvh544lOVzr6KILg.jpeg" alt=""/></figure>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*my2NWv5LRn2dCtmyKXJvSw.jpeg" alt=""/></figure>
+
+
+
+<p id="916a">Ex:&nbsp;<em>In the above scenario, there exists two concurrent transactions trying to debit Alice’s account with 20$ and 50$. Once both the transactions are completed, Alice’s account is supposed to have balance as 30$. But here, the user2 in the second transaction reads only the committed data, its unaware the first concurrent transaction has taken place. As a result the first transaction gets overlooked with the second transaction and thus the final balance gets inaccurate.</em></p>
+
+
+
+<p id="d739">The transactions are run under the<strong>&nbsp;Read committed isolation</strong>&nbsp;level which is default isolation level for SQL Server that’s why it got the&nbsp;<em>Lost Update</em>problem. The transactions should be run under any of the higher isolation levels such as&nbsp;<strong>REPEATABLE_READ</strong>,&nbsp;<strong>Snapshot</strong>, or&nbsp;<strong>Serializable</strong>.</p>
+
+
+
+<h2 class="wp-block-heading" id="8e12">Non-repeatable Read</h2>
+
+
+
+<p id="0037">A&nbsp;<strong>non-repeatable read</strong>&nbsp;occurs, when during the course of a transaction, a row is retrieved twice and the values within the row differ between reads.</p>
+
+
+
+<p id="4c01">Once an object is loaded into memory, there is no need to fetch it from the database each time a member is accessed.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*H9wTIkOJO2w0pVCv7ZBJhQ.jpeg" alt=""/></figure>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*fX_6t7lpDvdiK0AeNrxDOg.jpeg" alt=""/></figure>
+
+
+
+<p id="45d8"><em>Ex: Suppose in Transaction1, User reads the balance in Bob’s account. In the meantime, Transaction2 starts and another user updates Bob’s account with 250$. If the user in transaction 1 again reads the balance for Bob’s account, it retrieves different row values from the first retrieval.</em></p>
+
+
+
+<p id="808f">Non-repeatable Reads are prevented with the&nbsp;<strong>REPEATABLE_READ</strong>transaction isolation level.</p>
+
+
+
+<h2 class="wp-block-heading" id="1313">Phantom Reads</h2>
+
+
+
+<p id="5b66">If the same query is executed twice during a transaction, but the set of rows differ, a phantom read happened. The excluded rows are the phantoms.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*VIi4PY5NgFj3TywYSpX4pA.jpeg" alt=""/></figure>
+
+
+
+<p id="4272">Ex:&nbsp;<em>Transaction T1 reads a set of data items satisfying some search condition. Transaction T2 then creates data items that satisfy T1’s search condition and commits. If T1 then repeats it’s read with the same search condition, it gets a set of data items different from the first read.</em></p>
+
+
+
+<p id="6bc0">Phantom Reads are prevented with the&nbsp;<strong>SERIALIZABLE</strong>&nbsp;isolation level according to the ANSI SQL-92 standard.</p>
+
+
+
+<h2 class="wp-block-heading" id="73ae">Summary</h2>
+
+
+
+<p id="d3a2">Here is an overview of which transaction isolation levels prevent which read phenomena:</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*QgQCG4A_dvxhrdwcQmQlXQ.jpeg" alt=""/></figure>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/database-concurrency-anomalies/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Realtime Temperature Analytics using Kafka Streams</title>
+		<link>https://nestdigital.com/blogs/realtime-temperature-analytics-using-kafka-streams/</link>
+					<comments>https://nestdigital.com/blogs/realtime-temperature-analytics-using-kafka-streams/#respond</comments>
+		
+		<dc:creator><![CDATA[Appu V]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 04:28:12 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=3992</guid>
+
+					<description><![CDATA[Life is a series of natural and spontaneous changes. Don’t resist them -that only creates sorrow. Let reality be reality. Let things flow naturally forward. — Lao-Tzu, 6th–5th century BCE Was playing around with&#160;Kafka&#160;and an interesting use case for tracking and storing temperature readings from electronic sensor devices at real time came through. After evaluating [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<blockquote class="wp-block-quote">
+<p><em>Life is a series of natural and spontaneous changes. Don’t resist them -that only creates sorrow. Let reality be reality. Let things flow naturally forward.</em></p>
+<cite><em>— Lao-Tzu, 6th–5th century BCE</em></cite></blockquote>
+
+
+
+<p></p>
+
+
+
+<p>Was playing around with&nbsp;<a rel="noreferrer noopener" href="https://kafka.apache.org/" target="_blank">Kafka</a>&nbsp;and an interesting use case for tracking and storing temperature readings from electronic sensor devices at real time came through. After evaluating a couple of different approaches and directions,&nbsp;<a rel="noreferrer noopener" href="https://kafka.apache.org/21/javadoc/org/apache/kafka/streams/kstream/KStream.html" target="_blank"><strong>Kafka Streams</strong></a><strong>&nbsp;</strong>emerged as the most suitable framework.</p>
+
+
+
+<p>Even with Kafka, leveraging Apache Kafka, deploying zookeeper, maintaining&nbsp;<a rel="noreferrer noopener" href="https://docs.confluent.io/platform/current/schema-registry/index.html" target="_blank"><strong>schema registry</strong></a>&nbsp;etc. proved to be a hazzle. The better alternative was&nbsp;<a rel="noreferrer noopener" href="https://www.confluent.io/" target="_blank">Confluent Kafka</a>, as they had a subscription based model in all the major cloud providers. With&nbsp;<a rel="noreferrer noopener" href="https://www.confluent.io/blog/enabling-exactly-once-kafka-streams/" target="_blank"><em>Exactly-once semantics</em></a><em>&nbsp;</em>provided by Kstremas, it turned out to be the defacto choice in server side, while&nbsp;<a rel="noreferrer noopener" href="https://spring.io/projects/spring-boot" target="_blank"><strong>Spring boot</strong></a>&nbsp;was leveraged to support the user interface.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" fetchpriority="high" width="927" height="694" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1WOzXcITKVVF7G-m2tjsHxA.webp" alt="" class="wp-image-3993" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1WOzXcITKVVF7G-m2tjsHxA.webp 927w, https://nestdigital.com/wp-content/uploads/2023/07/1WOzXcITKVVF7G-m2tjsHxA-300x225.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1WOzXcITKVVF7G-m2tjsHxA-768x575.webp 768w" sizes="(max-width: 927px) 100vw, 927px" /></figure>
+
+
+
+<p class="has-text-align-center">Architecture Diagram</p>
+
+
+
+<p>Sensors deployed in the devices will be generating temeperature reading in&nbsp;<a rel="noreferrer noopener" href="https://avro.apache.org/docs/1.2.0/" target="_blank">avro</a>&nbsp;format and will be pushed to kafka topic. Multiple sensors will be sending these readings. We wanted to maintain metadata for these. Schema registry is an excellent tool for solving this challenge. It wil act as a service layer for metadata, which would act as a centralized repository for schemas. Leveraging schema registry, we have more flexibility to interact and exchange data without the challenge of managing and sharing schemas between them.In future, the sensors would be changed and the corresponding schemas would be evolved(<a rel="noreferrer noopener" href="https://docs.confluent.io/platform/current/schema-registry/avro.html" target="_blank"><strong>Schema evolution</strong></a><strong>).&nbsp;</strong>This could be easily carried out using schema reigistry.</p>
+
+
+
+<pre class="wp-block-code"><code>{
+  "namespace": "com.appu",
+  "type": "record",
+  "name": "equipmentvalue",
+  "fields": &#91;
+    {
+      "name": "serial",
+      "type": "string",
+      "doc": "Serial Number of the equipment"
+
+    },
+    {
+      "name": "owner",
+      "type": "string",
+      "doc": "Owner name of the equipment"
+
+    },
+    {
+      "name": "temp",
+      "type": "string",
+      "doc": "Temperature in degree celsius of the equipment"
+
+    }
+  ]
+}</code></pre>
+
+
+
+<p id="80be">These streams of data will be saved as a&nbsp;<a href="https://kafka.apache.org/24/javadoc/org/apache/kafka/streams/kstream/KTable.html" rel="noreferrer noopener" target="_blank">Ktable</a>. It represents the latest state of the data at a particular point in time. This data will be tracked in the Web UI.</p>
+
+
+
+<p id="1826">There are static datas such as name, phone number etc., that are not real time values. These datas usually reside in databases or file systems. We need implement a&nbsp;<strong>Change Data Capture (CDC)</strong>&nbsp;to capture changes in these fields.&nbsp;<a href="https://docs.confluent.io/platform/current/connect/index.html" rel="noreferrer noopener" target="_blank"><strong>Kafka connect</strong></a>&nbsp;helps us to tackle this. Kafka source connector could pull the data from file/table to a topic. It reduces the overhead of writing a producer/consumer duo to do the same. A Ktable join based on the key will capture this static change.</p>
+
+
+
+<p id="b2a9">One of the challenges was to write&nbsp;<strong>unit test case</strong>&nbsp;for the application. We did not want to touch the existing cluster and wanted a solution that could run the tests without the need of kafka installation.&nbsp;<a rel="noreferrer noopener" href="https://kafka.apache.org/documentation/streams/developer-guide/testing.html" target="_blank">kafka-streams-test-utils</a>&nbsp;helps us to achieve that.</p>
+
+
+
+<pre class="wp-block-code"><code> public void setup ()
+    {
+        Properties props = new Properties();
+        EquipmentAnalytics.runAnalytics(builder);
+
+        Topology topology = builder.build();
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "device-temperature-analytics-test-001");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "dummy:1234");
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+        topologyTestDriver = new TopologyTestDriver(topology,props);
+       }</code></pre>
+
+
+
+<p>As we were only dealing with the server side for now, we have developed a python based framework for producing mock data from both sensor and connect. The framework can be configured to simulate various scenarios such as metadata update, schema evolution etc.</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;kafka]=
+bootstrap.servers = localhost:9092
+schema.registry.url = http://localhost:8081
+topic = equipment
+equipment_topic_json = equipmentJson
+equipment_meta_json = equipmentMeta
+mock_data = resources/data/equipment/equipment-mock
+equipment_json_mock_data = resources/data/equipment/equipment-json-mock
+equipment_meta_mock_data = resources/data/equipment/equipment-meta-mock
+
+
+&#91;avro]=
+equipment-key-schema = resources/schemas/avro/equipment/equipment-key.avsc
+equipment-value-schema = resources/schemas/avro/equipment/equipment-value.avsc</code></pre>
+
+
+
+<p>The latest flow of temeperature readings is displayed in the web ui using websocket and springboot using a line graph. It also displays the latest temperature readings.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1r5Gt0LWj3xz0_ZhfH2i_2g-1.gif" alt="" class="wp-image-3995"/></figure>
+
+
+
+<p class="has-text-align-center">Live Web Ui</p>
+
+
+
+<p id="8996">In future this framework could be expanded to do various use cases such as finding the average temeperature in a window period, to store reading in a database or to send alerts when temeprate is above/below a threshold and much much more.</p>
+
+
+
+<p id="d1ff"><strong>Links :</strong></p>
+
+
+
+<p id="a613"><strong>Data Generation :</strong>&nbsp;<a rel="noreferrer noopener" href="https://github.com/appuv/KafkaDataGen" target="_blank">https://github.com/appuv/KafkaDataGen</a></p>
+
+
+
+<p id="8961"><strong>Temperature Analytics :</strong>&nbsp;<a rel="noreferrer noopener" href="https://github.com/appuv/KafkaTemperatureAnalytics" target="_blank">https://github.com/appuv/KafkaTemperatureAnalytics</a></p>
+
+
+
+<p id="b360"><strong>Web UI :</strong>&nbsp;<a rel="noreferrer noopener" href="https://github.com/appuv/Live-Dashboard-using-Kafka-and-Spring-Websocket" target="_blank">https://github.com/appuv/Live-Dashboard-using-Kafka-and-Spring-Websocket</a></p>
+
+
+
+<p id="7aca">There is a recording of the working in my&nbsp;<a href="https://www.youtube.com/channel/UCSMeGTVvGIFpBP9BhT_89Aw" rel="noreferrer noopener" target="_blank">YouTube channel</a>&nbsp;:&nbsp;<a href="https://youtu.be/Cj3BeA4bV1c" rel="noreferrer noopener" target="_blank">https://youtu.be/Cj3BeA4bV1c</a></p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/realtime-temperature-analytics-using-kafka-streams/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Data Transfer in Edge</title>
+		<link>https://nestdigital.com/blogs/data-transfer-in-edge/</link>
+					<comments>https://nestdigital.com/blogs/data-transfer-in-edge/#respond</comments>
+		
+		<dc:creator><![CDATA[Appu V]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 04:22:53 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4002</guid>
+
+					<description><![CDATA[Problem Statement:&#160;To transfer data from a device log in real time for analytics. Approach: There are multiple streaming/batch platforms for real-time analytics and batch analytics. One of the challenges that most industry face is the data transfer from their edge devices to the streaming platform. Fluentd [1] helps us solve this challenge. Fluentd is a [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="39fb"><strong><em>Problem Statement:</em></strong>&nbsp;To transfer data from a device log in real time for analytics.</p>
+
+
+
+<p id="067f"><strong>Approach:</strong></p>
+
+
+
+<p id="5209">There are multiple streaming/batch platforms for real-time analytics and batch analytics. One of the challenges that most industry face is the data transfer from their edge devices to the streaming platform. Fluentd [1] helps us solve this challenge. Fluentd is a cross platform open-source data collection software project originally developed at Treasure Data. It is written primarily in the Ruby programming language. There are multiple architecture patterns in fluentd to solve this challenge [2]. As edge devices are resource constraint, we would like to look at a lightweight forwarder aggregator architecture pattern in fluent.</p>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="937" height="341" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1wMMV-NnNQzgLTU7gTfLB4w.webp" alt="" class="wp-image-4005" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1wMMV-NnNQzgLTU7gTfLB4w.webp 937w, https://nestdigital.com/wp-content/uploads/2023/07/1wMMV-NnNQzgLTU7gTfLB4w-300x109.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1wMMV-NnNQzgLTU7gTfLB4w-768x279.webp 768w" sizes="(max-width: 937px) 100vw, 937px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluent forwarder aggregator architecture</p>
+
+
+
+<p id="5a18">Before we dive deep into this architecture, we can start trying by installing a fluentd locally and tailing [3] log file. Fluentd can be installed as docker containers. As a prerequisite, the docker must be installed in the system [4].</p>
+
+
+
+<p id="58ae">To run fluentd in docker, you need to create a docker compose file named&nbsp;<em>docker-compose.yaml&nbsp;</em>and copy the following lines.</p>
+
+
+
+<pre class="wp-block-code"><code>version: "3"
+services:
+  data-forwarder:
+    container_name: data-forwarder
+    user: root
+    build:
+      context: .
+    image: fluent/fluentd:latest
+    ports:
+      - 24224:24224
+    volumes:
+    - ./Configuration:/fluentd/etc/
+    - ./input/:/fluentd/log/files/</code></pre>
+
+
+
+<p class="has-text-align-center">forwarder docker-compose.yaml</p>
+
+
+
+<p id="296b">Here you can see that two volume mappings are being done. The configuration folder which we have created should be mapped to&nbsp;<em>/fluentd/etc/</em>and our log file could be mapped to any location, but the location in fluent should be the one which we give in the configuration file.</p>
+
+
+
+<p id="2187">Now we need to create a configuration file for tailing a log file. For better maintainability we will create separate configuration files. We need to create a folder named as Configuration. This could be anywhere, for convenience we will create in the same folder where docker file is existing. Then we need two configuration files. The first one is&nbsp;<em>fluent.conf</em>&nbsp;and the second one is&nbsp;<em>fluent_tail.conf</em>. We will do all our configurations in the&nbsp;<em>fluent_tail.conf&nbsp;</em>file.</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;source&gt;
+  @type tail
+  path /fluentd/log/files/device.log
+  pos_file /fluentd/log/files/device.pos
+  tag device.log
+  &lt;parse&gt;
+    @type none
+  &lt;/parse&gt;
+  &lt;/source&gt;
+  
+&lt;match device.log&gt;
+  @type stdout 
+&lt;/match&gt;</code></pre>
+
+
+
+<p class="has-text-align-center">Sample Configuration</p>
+
+
+
+<p>The above configuration is to tail a file named device.log present at&nbsp;<em>fluentd/log/files/device.log.</em>&nbsp;There is also a position file. The position file is used by fluentd to know about last tailed location. We then tag the data as device.log. We have a match tag where the corresponding tag is provided, and it will be printed to the system. Now we need to include this configuration in our&nbsp;<em>fluent.conf</em>.</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p><em>Sample Configuration:</em></p>
+
+
+
+<p><em>@include fluent_tail_.conf</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>Now we are all set to tail the log files. We can now start the container by the following command</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p><em>docker-compose up</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>Once you start the container, you would be seeing the configuration which we have given above.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="940" height="345" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/108pYVcpp38__fTdDtuzpWg.webp" alt="" class="wp-image-4007" srcset="https://nestdigital.com/wp-content/uploads/2023/07/108pYVcpp38__fTdDtuzpWg.webp 940w, https://nestdigital.com/wp-content/uploads/2023/07/108pYVcpp38__fTdDtuzpWg-300x110.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/108pYVcpp38__fTdDtuzpWg-768x282.webp 768w" sizes="(max-width: 940px) 100vw, 940px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluentd Forwarder Docker Log</p>
+
+
+
+<p>As the forwarder is eagerly waiting to tail the log files, we need to have a mechanism to write log files. The following python [5] code helps us to write a sample json record as log files to the location.</p>
+
+
+
+<pre class="wp-block-code"><code>import json
+logfile= open("&lt;device.log location&gt;","a")
+for x in range(100):
+  data {"temperature_sensor1": x,"temperature_sensor1": x*x,"serial":"033_appu"}  logfile.write(json.dumps(data))
+  logfile.write('\n')
+  logfile.flush()</code></pre>
+
+
+
+<p class="has-text-align-center">Python script for data generation</p>
+
+
+
+<p><strong>Sample Data in File:</strong></p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="f910">{“temperature_sensor1”: 0, “temperature_sensor2”: 0, “serial”: “033_appu”}</p>
+
+
+
+<p id="a091">{“temperature_sensor1”: 1, “temperature_sensor2”: 1, “serial”: “033_appu”}</p>
+
+
+
+<p id="ad46">{“temperature_sensor1”: 2, “temperature_sensor2”: 4, “serial”: “033_appu”}</p>
+
+
+
+<p id="7734">{“temperature_sensor1”: 3, “temperature_sensor2”: 9, “serial”: “033_appu”}</p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>Now you should be able to see the same data in the terminal where fluentd forwarder is running.</p>
+
+
+
+<p><strong>Sample Data in terminal:</strong></p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" loading="lazy" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1uugITyyeV648-WvmBDEHkg.webp" alt="" class="wp-image-4008" width="670" height="166" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1uugITyyeV648-WvmBDEHkg.webp 940w, https://nestdigital.com/wp-content/uploads/2023/07/1uugITyyeV648-WvmBDEHkg-300x75.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1uugITyyeV648-WvmBDEHkg-768x191.webp 768w" sizes="(max-width: 670px) 100vw, 670px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluentd Forwarder docker log tail stdout</p>
+
+
+
+<p>We will stop the container by</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p><em>docker-compose down</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>We will now try to calculate the sum of both sensors. A filter needs to be added before the match tag for doing the same. The&nbsp;<em>fluent_tail_.conf&nbsp;</em>needs to be modified as follows :</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;filter device.log&gt;
+  @type parser
+  format json
+  key_name message
+&lt;/filter&gt;
+&lt;filter device.log&gt;
+ @type record_transformer
+  enable_ruby true
+  &lt;record&gt;
+ total_temperature  ${record&#91;"temperature_sensor1"]+record&#91;"temperature_sensor2"]}  &lt;/record&gt;
+&lt;/filter&gt;</code></pre>
+
+
+
+<p class="has-text-align-center">Fluentd data transoformation filters</p>
+
+
+
+<p id="5030">Here the data is passed to two filters. The first one will parse the incoming string as a json, and the record_transformer [6] filter plugin calculate the total temperature based on existing fields. enable_ruby is to enable ruby functions when we transform the data. There are various plugins [7][8] in fluentd which include input, output, filter etc. We can also write our own custom plugins in ruby</p>
+
+
+
+<p id="ca8d">We can start both our forwarder and data generator. The data which we see in terminal will have an additional json field</p>
+
+
+
+<p><strong>Sample Data:</strong></p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="5182">{“temperature_sensor1”:0,”temperature_sensor2&#8243;:0,”serial”:”033_appu”,”total_temperature”:0}</p>
+
+
+
+<p id="7592">{“temperature_sensor1”:1,”temperature_sensor2&#8243;:1,”serial”:”033_appu”,”total_temperature”:2}</p>
+
+
+
+<p id="8eac">{“temperature_sensor1”:2,”temperature_sensor2&#8243;:4,”serial”:”033_appu”,”total_temperature”:6}</p>
+
+
+
+<p id="c008">{“temperature_sensor1”:3,”temperature_sensor2&#8243;:9,”serial”:”033_appu”,”total_temperature”:12}</p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="940" height="234" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1cSyyquLEJXZXmN3h4qM2Og.webp" alt="" class="wp-image-4009" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1cSyyquLEJXZXmN3h4qM2Og.webp 940w, https://nestdigital.com/wp-content/uploads/2023/07/1cSyyquLEJXZXmN3h4qM2Og-300x75.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1cSyyquLEJXZXmN3h4qM2Og-768x191.webp 768w" sizes="(max-width: 940px) 100vw, 940px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluentd Forwarder docker log transformation</p>
+
+
+
+<p>We have successfully tailed a log file and a small transformation. Now we need to send this data to another fluentd instance, which we call as an aggregator. Like forwarder, we can create a docker container for the same.</p>
+
+
+
+<pre class="wp-block-code"><code>version: "3"
+services:
+  data-aggregator:
+    container_name: data-aggregator
+    user: root
+    build:
+      context: .
+    image: fluent/fluentd:latest
+    ports:
+      - 24225:24225
+    volumes:
+    - ./Configuration:/fluentd/etc/
+    - ./output/:/tmp/output/</code></pre>
+
+
+
+<p class="has-text-align-center">aggregator docker-compose.yaml</p>
+
+
+
+<p id="9307">Like forwarder we have volume mapped the configuration folder. We need to create configuration files for the aggregator. We can name it as&nbsp;<em>fluent.conf</em>and&nbsp;<em>fluent_agg.conf</em></p>
+
+
+
+<p id="d7c8">Sample Configuration of&nbsp;<em>fluent_agg.conf</em>&nbsp;is as follows:</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;source&gt;
+ @type forward
+  port 24225
+  bind 0.0.0.0
+&lt;/source&gt;
+&lt;match device.log&gt;
+  @type stdout 
+&lt;/match&gt;</code></pre>
+
+
+
+<p class="has-text-align-center">Sample Configutation</p>
+
+
+
+<p id="f3ea">Like forwarder, we will include the same in fluent.conf</p>
+
+
+
+<p id="4217">Here we can see that the source is forward [9] and we have used the same tag for stdout. We can start the aggregator container by the following command:</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p><em>docker compose up</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="940" height="284" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1v0qfDw-mN-6g_CABFq6JHg.webp" alt="" class="wp-image-4014" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1v0qfDw-mN-6g_CABFq6JHg.webp 940w, https://nestdigital.com/wp-content/uploads/2023/07/1v0qfDw-mN-6g_CABFq6JHg-300x91.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1v0qfDw-mN-6g_CABFq6JHg-768x232.webp 768w" sizes="(max-width: 940px) 100vw, 940px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluentd Aggregator docker log</p>
+
+
+
+<p>Now we need to configure our forwarder to send the data to aggregator. The match pattern must be modified as follows:</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;match device.log&gt;
+@type forward
+    send_timeout 60s
+    recover_wait 10s
+    hard_timeout 60s
+    require_ack_response true
+  &lt;server&gt;
+    host &lt;your_ip&gt;
+    port 24225
+  &lt;/server&gt;
+&lt;/match&gt;</code></pre>
+
+
+
+<p class="has-text-align-center">Sample forward configuration</p>
+
+
+
+<p>With this configuration, fluentd will send data from forwarder to aggregator. Here the type used is forward [10]. Once the setup is complete, the data forwarder and python scripts must be started as mentioned earlier. The output which we saw in the data forwarder will be now seen in the data aggregator.</p>
+
+
+
+<p><strong>Sample Data:</strong></p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="975b">{“temperature_sensor1”:0,”temperature_sensor2&#8243;:0,”serial”:”033_appu”,”total_temperature”:0}</p>
+
+
+
+<p id="89b4">{“temperature_sensor1”:1,”temperature_sensor2&#8243;:1,”serial”:”033_appu”,”total_temperature”:2}</p>
+
+
+
+<p id="d8cc">{“temperature_sensor1”:2,”temperature_sensor2&#8243;:4,”serial”:”033_appu”,”total_temperature”:6}</p>
+
+
+
+<p id="c7ab">{“temperature_sensor1”:3,”temperature_sensor2&#8243;:9,”serial”:”033_appu”,”total_temperature”:12}</p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="940" height="201" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1sgKniWn6C1V98Vv9cuQrMw.webp" alt="" class="wp-image-4015" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1sgKniWn6C1V98Vv9cuQrMw.webp 940w, https://nestdigital.com/wp-content/uploads/2023/07/1sgKniWn6C1V98Vv9cuQrMw-300x64.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1sgKniWn6C1V98Vv9cuQrMw-768x164.webp 768w" sizes="(max-width: 940px) 100vw, 940px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluentd Aggregator docker log stdout</p>
+
+
+
+<p>Now we will send the output of the aggregator to a file. The match pattern must be modified as follows:</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="b663">&lt;match device.log&gt;</p>
+
+
+
+<p id="f102">@type file</p>
+
+
+
+<p id="c5f5">path /tmp/output/</p>
+
+
+
+<p id="2b6b">&lt;/match&gt;</p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>The data will be present inside the output folder inside the aggregator folder once the data generator and data forwarder are started. The file name of the output will be in the following pattern buffer.&lt;hashstring&gt;.log</p>
+
+
+
+<p><strong>Sample data :</strong></p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="65f1">2022–05–30T10:19:56+00:00 device.log {“temperature_sensor1”:0,”temperature_sensor2&#8243;:0,”serial”:”033_appu”,”total_temperature”:0}</p>
+
+
+
+<p id="5e2f">2022–05–30T10:19:56+00:00 device.log {“temperature_sensor1”:1,”temperature_sensor2&#8243;:1,”serial”:”033_appu”,”total_temperature”:2}</p>
+
+
+
+<p id="9b36">2022–05–30T10:19:56+00:00 device.log {“temperature_sensor1”:2,”temperature_sensor2&#8243;:4,”serial”:”033_appu”,”total_temperature”:6}</p>
+
+
+
+<p id="7fde">2022–05–30T10:19:56+00:00 device.log {“temperature_sensor1”:3,”temperature_sensor2&#8243;:9,”serial”:”033_appu”,”total_temperature”:12}</p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p id="0c4a">The data is successfully transferred from device log to aggregator. The data transfer can be secured via mlts. Also, fluentd forward supports high availability [11] and we can configure buffers [12].</p>
+
+
+
+<p id="af93">Here in this example, we have configured the output of aggregator to a stdout and file. This can be configured to various outputs like Kafka, S3, Azure blob, elastic etc…</p>
+
+
+
+<p id="6835"><strong>Advantages</strong></p>
+
+
+
+<ul>
+<li>Less resource utilization on the edge devices (maximize throughput)</li>
+
+
+
+<li>Allow processing to scale independently on the aggregator tier.</li>
+
+
+
+<li>Easy to add more backends (configuration change in aggregator vs. all forwarders)</li>
+</ul>
+
+
+
+<p id="f685"><strong>Disadvantages</strong></p>
+
+
+
+<ul>
+<li>Dedicated resources required for an aggregation instance</li>
+</ul>
+
+
+
+<p id="e7d2">Complete Code is available in&nbsp;<a href="https://github.com/appuv/fluent_example" rel="noreferrer noopener" target="_blank">Git</a>.</p>
+
+
+
+<p id="3474"><strong>References</strong></p>
+
+
+
+<p id="c0f9">1.&nbsp;<a href="https://www.fluentd.org/" rel="noreferrer noopener" target="_blank">https://www.fluentd.org/</a></p>
+
+
+
+<p id="a021">2.&nbsp;<a href="https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/" rel="noreferrer noopener" target="_blank">https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/</a></p>
+
+
+
+<p id="95f0">3.&nbsp;<a href="https://docs.docker.com/engine/install/ubuntu/" rel="noreferrer noopener" target="_blank">https://docs.docker.com/engine/install/ubuntu/</a></p>
+
+
+
+<p id="abc8">4.&nbsp;<a href="https://docs.fluentd.org/input/tail" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/input/tail</a></p>
+
+
+
+<p id="830e">5.&nbsp;<a href="https://www.python.org/" rel="noreferrer noopener" target="_blank">https://www.python.org/</a></p>
+
+
+
+<p id="1f06">6.&nbsp;<a href="https://docs.fluentd.org/filter/record_transformer" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/filter/record_transformer</a></p>
+
+
+
+<p id="ed05">7.&nbsp;<a href="https://docs.fluentd.org/plugin-development" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/plugin-development</a></p>
+
+
+
+<p id="f5ed">8.&nbsp;<a href="https://www.fluentd.org/plugins" rel="noreferrer noopener" target="_blank">https://www.fluentd.org/plugins</a></p>
+
+
+
+<p id="c1b6">9.&nbsp;<a href="https://docs.fluentd.org/input/forward" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/input/forward</a></p>
+
+
+
+<p id="ff3c">10.&nbsp;<a href="https://docs.fluentd.org/output/forward" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/output/forward</a></p>
+
+
+
+<p id="dcd1">11.&nbsp;<a href="https://docs.fluentd.org/deployment/high-availability" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/deployment/high-availability</a></p>
+
+
+
+<p id="f644">12.&nbsp;<a href="https://docs.fluentd.org/configuration/buffer-section" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/configuration/buffer-section</a></p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/data-transfer-in-edge/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>A brief overview of Apache Hadoop</title>
+		<link>https://nestdigital.com/blogs/a-brief-overview-of-apache-hadoop/</link>
+					<comments>https://nestdigital.com/blogs/a-brief-overview-of-apache-hadoop/#respond</comments>
+		
+		<dc:creator><![CDATA[Manu Mukundan]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 04:16:02 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4019</guid>
+
+					<description><![CDATA[Unlike the relational database era, recent times have revolutionized the end-to-end data pipeline from data generation, data collection, data ingestion, data storage, data processing, data analytics and the cherry on top, machine learning and data science. The first platform for handling large volumes of data with respect to distributed storage and parallel processing was Apache [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="501b">Unlike the relational database era, recent times have revolutionized the end-to-end data pipeline from data generation, data collection, data ingestion, data storage, data processing, data analytics and the cherry on top, machine learning and data science. The first platform for handling large volumes of data with respect to distributed storage and parallel processing was Apache Hadoop (It is very popular now as well). In this short blog, I will try to paint a high-level picture of Apache Hadoop and the most popular integrations.</p>
+
+
+
+<h2 class="wp-block-heading" id="e388">Let’s look at some history</h2>
+
+
+
+<p id="aa32">Hadoop was created by&nbsp;<a href="https://www.linkedin.com/in/cutting/" rel="noreferrer noopener" target="_blank">Doug Cutting</a>&nbsp;and&nbsp;<a href="https://www.linkedin.com/in/michaelcafarella" rel="noreferrer noopener" target="_blank">Mike Cafarella</a>&nbsp;in 2005 based on Google File System paper that was published in October 2003. It was originally developed to support Apache Nutch (an open-source web crawler product) and later moved to a separate sub-project. Doug, who was working at Yahoo! at the time named the project after his son’s toy elephant 🙂 Later in 2008, Hadoop was open sourced and The Apache Software Foundation (ASF) made Hadoop available to the public in November 2012</p>
+
+
+
+<h2 class="wp-block-heading" id="c5d2">What makes Hadoop special</h2>
+
+
+
+<p id="851f">The core idea behind Hadoop was to process large volumes of data in a distributed way using&nbsp;<strong>commodity hardware</strong>. It was also an assumption that hardware failures can occur frequently and the software should be capable of handling these and providing fault tolerance. Commodity does not mean cheap, non-usable hardware. It just means that it is relatively inexpensive, widely available and basically interchangeable with other hardware of its type. Unlike purpose-built hardware designed for a specific IT function, commodity hardware can perform many different functions (same hardware can be used to run a web-server, a Linux server, an FTP server, etc.)</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:826/1*3yZYTyuiZ4lRikxl3Zj0sg.jpeg" alt=""/><figcaption class="wp-element-caption">Image 1 : Core modules of Apache Hadoop</figcaption></figure>
+
+
+
+<p id="460e">Hadoop can be configured to run on a single server (for development and testing purposes) and on full scale multi node setup (production scenarios). In any case, the core components for Hadoop are</p>
+
+
+
+<p id="ea18"><strong>Hadoop Distributed File System (HDFS)<br></strong>HDFS is a highly fault-tolerant distributed file system and is designed to be deployed on low-cost hardware. HDFS provides high throughput access to application data and is suitable for applications that have large data sets<br>HDFS has a master slave architecture with a NameNode (master) and number of DataNodes (slaves). HDFS exposes a file system namespace and allows user data to be stored in files. Internally, a file is split into one or more blocks (128MB sized) and these blocks are stored in DataNodes. NameNode manages the metadata which is the mapping of blocks to the DataNodes. For fault tolerance, a single file block will have multiple copies (default 3) and they will be stored in multiple DataNodes. Let’s look how a read and write happens in HDFS at high-level</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*As-CqGdNktpsoF1r5nM9XA.jpeg" alt=""/><figcaption class="wp-element-caption">Image 2 : Read and Write flow in HDFS</figcaption></figure>
+
+
+
+<p id="9815"><strong>Hadoop MapReduce<br></strong>It is a framework for easily writing applications which process vast amounts of data (multi-terabyte data-sets) in parallel on large clusters (thousands of nodes) of commodity hardware in a reliable, fault-tolerant manner.&nbsp;<br>MapReduce application consists of three different tasks. A&nbsp;<em>mapper</em>&nbsp;task, a&nbsp;<em>reducer</em>&nbsp;task and an optional&nbsp;<em>combiner&nbsp;</em>task. The mapper task processes the input file by splitting it into independent chunks and processes them in parallel. The number of mappers depends on the number of&nbsp;<em>InputSplits.&nbsp;</em>InputSplit is the smallest data chunk that can be processed independently, which will be a multiplier of HDFS data block (128MB). The reducer takes the outputs of all mapper tasks, sorts the results and then generates the final output. The combiner task is known as a semi-reducer which does a small combine operation in the mapper side itself. This is done to reduce the data volume before the reducer picks it up.</p>
+
+
+
+<p id="6d96"><strong>Hadoop YARN (Yet Another Resource Negotiator)<br></strong>Interesting name, isn’t it? YARN takes care of the resource management in Hadoop cluster. Any application that tries to run on Hadoop cluster can get the required resources (CPU cores and memory) from YARN.&nbsp;<br>The smallest unit of resource that YARN can allocate is known as a&nbsp;<em>container.&nbsp;</em>Container is similar to an actual server. Both have a number of CPU cores, and a finite memory. But the server is physical and container is logical, meaning there can be many containers allocated in a single server. The memory and CPU allocated to a single container is based on YARN configuration properties.&nbsp;<br>Lastly, let’s look quickly at the core services in YARN</p>
+
+
+
+<p id="6a75"><em>Resource Manager (RM):&nbsp;</em>Central authority who allocates containers for all applications<em><br>Node Manager (NM):&nbsp;</em>Service running on each server on the cluster and responsible for containers, monitoring their resource usage and reporting the same to Resource Manager<br><em>Application Master (AM):&nbsp;</em>A per application service which negotiates containers from RM for that specific application. AM itself runs as a container</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*zxolfwu0s1WS1CnTpokPbw.jpeg" alt=""/><figcaption class="wp-element-caption">Image 3 : Overview of application resource allocation by YARN</figcaption></figure>
+
+
+
+<p id="7f25"><strong>Hadoop Commons and Hadoop Ozone<br></strong>Hadoop Common provides a set of services across libraries and utilities to support the other Hadoop modules.<br>Ozone is a scalable, redundant, and distributed object store (Such as AWS S3 or Azure Blob storage) for Hadoop which can scale to billions of objects of varying sizes.</p>
+
+
+
+<h2 class="wp-block-heading" id="fe20">The ecosystem of rich integrations</h2>
+
+
+
+<p id="c3f1">So far, the focus has been on the core components. Let’s shift the focus a little bit to look at some of the very popular integrations runs on top of Hadoop which elevates Hadoop to an enterprise data platform</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*pqHX4r5vmhjaKkV3R5nxpQ.jpeg" alt=""/><figcaption class="wp-element-caption">Image 4 : Hadoop and popular integrations</figcaption></figure>
+
+
+
+<p id="0e1f"><strong>Data movement</strong><br><em>Apache Flume:</em>&nbsp;A distributed, reliable, and available service for efficiently collecting, aggregating, and moving large amounts of log data from a variety of sources to HDFS<br><em>Apache Sqoop:&nbsp;</em>Data<em>&nbsp;</em>importing and exporting service for structured data to and from HDFS. Typically, the input and output sources will be RDBMS systems<br><em>Apache Storm:</em>&nbsp;A distributed real-time computation system. Apache Storm makes it easy to reliably process unbounded streams of data, a.k.a real-time processing</p>
+
+
+
+<p id="4455"><strong>Data processing</strong><br><em>Hive:</em>&nbsp;Hive is data warehouse software that facilitates reading, writing, and managing large datasets residing in distributed storage (such as HDFS) using SQL programming<br><em>Pig:</em>&nbsp;Pig is data data processing framework which is powered by a proprietary scripting language (Pig Latin) for reading, writing and processing data stored in HDFS<br><em>Tez:&nbsp;</em>Apache Tez is a framework comparable to MapReduce. It provides better performance than MR as intermediate results will not be stored on disk, rather in memory. In addition to this vectorization is also used (processing bulk of rows rather than single row at a time)</p>
+
+
+
+<p id="34e5">Hive and Pig make use of either MR or Tez for running data processing jobs</p>
+
+
+
+<p id="4d1e"><strong>Security<br></strong><em>Kerberos:&nbsp;</em>In on-premise Hadoop cluster setup, Kerberos is used as the authentication mechanism within the cluster components and between external services and Hadoop<br><em>Ranger:&nbsp;</em>Ranger the service for authorization across all Hadoop components. Ranger enables security policies varying from directory, file, database and table access as well as fine grained access on tables</p>
+
+
+
+<p id="0fa2"><strong>Oozie&nbsp;</strong>It is a workflow scheduler running on Hadoop platform. Oozie is integrated with the rest of the Hadoop stack supporting several types of Hadoop jobs out of the box</p>
+
+
+
+<p id="defb"><strong>Spark&nbsp;</strong>An in-memory computation framework which provides batch and real-time data processing capabilities along with machine learning and graph data processing capabilities</p>
+
+
+
+<p id="d849"><strong>Data stores &amp; Query engines&nbsp;<br></strong><em>Impala:</em><strong>&nbsp;</strong>A massively parallel processing, highly performant SQL query engine with in-memory processing capabilities to provide very low latency results on large data volumes<br><em>Druid:</em>&nbsp;A column oriented, distributed data store whose core design combines ideas from&nbsp;<a href="https://en.wikipedia.org/wiki/Data_warehouse" rel="noreferrer noopener" target="_blank">data warehouses</a>,&nbsp;<a href="https://en.wikipedia.org/wiki/Time_series_database" rel="noreferrer noopener" target="_blank">timeseries databases</a>, and&nbsp;<a href="https://en.wikipedia.org/wiki/Full-text_search" rel="noreferrer noopener" target="_blank">search systems</a>&nbsp;to create a high-performance real-time analytics database<br><em>HBase &amp; Phoenix:</em><strong>&nbsp;</strong>HBase is a NoSQL, distributed column-oriented data store which provides random read/write access capabilities on bigdata.&nbsp;<strong><br></strong>Phoenix is an SQL query engine that runs on-top of HBase which provides OLTP capabilities to perform various types of querying patterns</p>
+
+
+
+<p id="8e1d"><strong>File formats<br></strong><em>Avro:&nbsp;</em>It is a row-oriented data serialization format which uses JSON to define the schema and creates compact binary data when serialized. It supports full schema evolution<em><br>ORC (Optimized Row Columnar):&nbsp;</em>It is an optimized column-oriented data storage format mainly used in Hive. It also enables Hive to have transactional capabilities similar to OLTP database<em><br>Parquet:&nbsp;</em>Similar to ORC, it is another column-oriented data storage format which is widely used with various data processing platforms such as Apache Spark</p>
+
+
+
+<p id="4241"><strong>Zeppelin</strong>&nbsp;A web-based notebook which brings data exploration, visualization, sharing and collaboration feature to Hadoop used by data analysts, data scientists, etc. for data exploration</p>
+
+
+
+<p id="17fb"><strong>Superset</strong>&nbsp;A powerful web-based data visualization platform which provides rich visualization and dashboarding capabilities with connectivity to Hive, Druid, HBase and Impala and other data stores</p>
+
+
+
+<p id="9c0f"><strong>Ambari</strong>&nbsp;Central management service for Hadoop which enables provisioning, managing, and monitoring Apache Hadoop clusters</p>
+
+
+
+<p id="a26c"><strong>Atlas</strong>&nbsp;An open-source metadata management and governance system designed to help enterprises to easily find, organize, and manage data assets in Hadoop platform</p>
+
+
+
+<p id="10d8"><strong>Zookeeper</strong>&nbsp;It is a distributed coordination service that helps to manage a large number of hosts such as Hadoop cluster</p>
+
+
+
+<h2 class="wp-block-heading" id="b8df">Hadoop enterprise</h2>
+
+
+
+<p id="0201">CDP (Cloudera Data Platform)<br>AWS EMR (Elastic MapReduce)<br>Azure HDInsight<br>Google Cloud Dataproc</p>
+
+
+
+<h2 class="wp-block-heading" id="96ef">References</h2>
+
+
+
+<p id="bc93"><a href="https://hadoop.apache.org/docs/stable/" rel="noreferrer noopener" target="_blank">Hadoop — Apache Hadoop 3.3.3</a></p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="8b63">Manu Mukundan, Data Architect, TE, Nest Digital</p>
+</blockquote>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/a-brief-overview-of-apache-hadoop/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Lakehouse — New kid in data town</title>
+		<link>https://nestdigital.com/blogs/lakehouse-new-kid-in-data-town/</link>
+					<comments>https://nestdigital.com/blogs/lakehouse-new-kid-in-data-town/#respond</comments>
+		
+		<dc:creator><![CDATA[Manu Mukundan]]></dc:creator>
+		<pubDate>Sat, 13 May 2023 11:10:27 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=2640</guid>
+
+					<description><![CDATA[A brief look at one of the latest architecture paradigms in the data analytics space]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p>As the data volume generated by the new digital era platforms are continuously and exponentially increasing and the insights generated from the data is becoming more and more valuable and critical, there are a bunch of architecture innovations and reforms happening. In this article we will have a close look at one of the most disrupting architecture in data analytics space.</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>Let’s have a look at a traditional data analytics platform</strong></p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" loading="lazy" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/05/image1.png" alt="" class="wp-image-2641" width="670" height="681" srcset="https://nestdigital.com/wp-content/uploads/2023/05/image1.png 741w, https://nestdigital.com/wp-content/uploads/2023/05/image1-295x300.png 295w" sizes="(max-width: 670px) 100vw, 670px" /></figure>
+
+
+
+<p class="has-text-color has-small-font-size" style="color:#808080">Image 1 : Data analytics platform powered by data lake and data warehouse</p>
+
+
+
+<p>The core components in the above architecture data ingestion, data lake, ETL and a data warehouse. <strong>Data lake</strong> and <strong>data warehouse</strong> are similar and different at the same time. The similarity is basically they are storage platforms for keeping the data. Now let’s look at the differences.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="889" height="357" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/05/Image2.png" alt="" class="wp-image-2642" srcset="https://nestdigital.com/wp-content/uploads/2023/05/Image2.png 889w, https://nestdigital.com/wp-content/uploads/2023/05/Image2-300x120.png 300w, https://nestdigital.com/wp-content/uploads/2023/05/Image2-768x308.png 768w" sizes="(max-width: 889px) 100vw, 889px" /></figure>
+
+
+
+<p class="has-text-color has-small-font-size" style="color:#808080">Table 1 : Data lake vs Data warehouse</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>The million-dollar question — Is there a way to combine data lake and data warehouse?</strong></p>
+
+
+
+<p>Obviously, someone would ask. “Can we have a platform which can serve both as data lake and data warehouse” ? <strong>The answer is “Data lakehouse”</strong></p>
+
+
+
+<p>Data lakehouse is a new architecture that emerged recently which combines the best of both data lake and data warehouse. In a nutshell, data lakehouse enables</p>
+
+
+
+<ol>
+<li>ACID compliance and full transactional update capabilities on data lake</li>
+
+
+
+<li>High performance query execution</li>
+
+
+
+<li>Data science and data engineering workloads</li>
+
+
+
+<li>Unified real-time and batch data processing</li>
+
+
+
+<li>Schema enforcement and data governance</li>
+</ol>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="814" height="604" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/05/Image3.png" alt="" class="wp-image-2643" srcset="https://nestdigital.com/wp-content/uploads/2023/05/Image3.png 814w, https://nestdigital.com/wp-content/uploads/2023/05/Image3-300x223.png 300w, https://nestdigital.com/wp-content/uploads/2023/05/Image3-768x570.png 768w" sizes="(max-width: 814px) 100vw, 814px" /></figure>
+
+
+
+<p class="has-text-color has-small-font-size" style="color:#808080">Image 2 : Simplified view of data lakehouse</p>
+
+
+
+<p>As you can see in the diagram, lake house storage acts as both data lake and data warehouse. This is a very simplified version of the architecture. We will now look at a few of the innovations and software products that made this architecture possible. They are quite interesting.</p>
+
+
+
+<p>As you can see in the diagram, lake house storage acts as both data lake and data warehouse. This is a very simplified version of the architecture. We will now look at a few of the innovations and software products that made this architecture possible. They are quite interesting.</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>Some popular early players (they are still very popular)</strong></p>
+
+
+
+<p><strong>Apache Presto:</strong> An open-source, distributed SQL querying platform that runs on a cluster of machines. Originated at Facebook, Presto is now one of the popular query engines out there. It enables analytics using ANSI SQL on large amounts of data stored in a variety of systems such as HDFS, cloud storage, NoSQL stores etc. Presto enables data warehouse like query performance for BI and reporting tools.</p>
+
+
+
+<p><strong>Apache Drill:</strong> Similar to Apache Presto, Drill is another open-source SQL query engine for Big Data exploration. Drill is designed from the ground up to support high-performance analysis on the semi-structured and rapidly evolving data coming from modern Big Data applications, using ANSI SQL. Drill originated at MapR (now acquired by HP Enterprise) and is based on Google’s Dremel.</p>
+
+
+
+<p>Both Presto and Drill are Apache top level projects</p>
+
+
+
+<p><strong>Amazon Athena:</strong> This is an AWS native version of Presto. It provides all functionalities of Presto but there is no need to install or manage the infrastructure. You will only have to pay for the queries fired and the data scanned. Even though Athena is meant to query data stored in AWS S3 data lake, federated queries along with source connectors can be used to query a large variety of data sources.</p>
+
+
+
+<p><strong>Amazon Redshift Spectrum:</strong> Another AWS product based on Amazon Redshift, popular data warehouse product offering from Amazon. Redshift spectrum leverages the parallel processing capabilities available in an already provisioned Redshift cluster to connect and query data available in Amazon S3 storage.</p>
+
+
+
+<p><strong>Google BigQuery:</strong> Based on Google’s Dremel, it is a data warehouse offering from Google cloud. Unlike a typical data warehouse solution, BigQuery supports machine learning workloads using BigQuery ML. It can also connect to external big data storage systems to query data using Federated queries.</p>
+
+
+
+<p>As you can see, there are a variety of products available. But none of them truly possess all the capabilities of a data lake house.</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p class="has-black-color has-text-color"><em>The capabilities of ACID transactions are limited to none. Most of these work on immutable storage and updating records is impossible. Also, it is difficult to achieve a unified real-time and batch data layer. Moreover, we require different storage solutions for meeting all our requirements and that deviates from the concept of single data storage for both data lake and data warehouse. players (they are still very popular)</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>Delta Lake, Apache Iceberg and Apache Hudi</strong></p>
+
+
+
+<p>These platforms implement data lakehouse using a metadata layer based on open table formats on top of the data lake storage solutions such as HDFS, AWS S3, Azure Blob, Google Cloud Storage etc.</p>
+
+
+
+<p><strong>Delta Lake:</strong> Delta lake was created by Databricks and then open sourced. It is based on the popular file format Apache Parquet and uses transaction logs created as JSON files to support ACID transactions on the data lake. Delta format is supported by many data processing frameworks which can now leverage this framework to enable data warehouse capabilities on the existing data lake storage systems. Other key features include</p>
+
+
+
+<p>Scalable metadata on billions of partitions and files with ease</p>
+
+
+
+<p>Time travel to old data for audit or rollback</p>
+
+
+
+<p>Unified batch/streaming with transaction capabilities</p>
+
+
+
+<p>Schema evolution/Enforcement — Prevent bad data</p>
+
+
+
+<p>Audit history using transaction logs for full audit trial</p>
+
+
+
+<p>DML operations — SQL, Scala/Java and Python APIs to merge, update and delete datasets</p>
+
+
+
+<p><strong>Apache Iceberg:</strong> Another open-source project which was initially developed at Netflix and currently an Apache top level project. Apache Iceberg is an open table format designed for huge, petabyte-scale tables. The function of a table format is to determine how you manage, organize and track all of the files that make up a table. It supports multiple file formats such as Apache Parquet, Apache Avro and Apache ORC. Using a combination of metadata, manifest and data files, ACID transactions are supported on data lake storage. Other capabilities include</p>
+
+
+
+<p>Full schema evolution to track changes to a table over time</p>
+
+
+
+<p>Time travel to query historical data and verify changes between updates</p>
+
+
+
+<p>Partition layout and evolution enabling updates to partition schemes as queries and data volumes change without relying on hidden partitions or physical directories</p>
+
+
+
+<p>Rollback to prior versions to quickly correct issues and return tables to a known good state</p>
+
+
+
+<p>Advanced planning and filtering capabilities for high performance on large data volumes</p>
+
+
+
+<p><strong>Apache Hudi:</strong> Open-source product initially developed at Uber. Hudi (Hadoop Upsert Delete and Incremental) initially started as a streaming data lake platform on top of Apache Hadoop. It has evolved a lot now to support incremental batch jobs on any cloud storage platform. Hudi uses Apache Parquet and Apache Avro and enables ACID transaction capabilities. Other features include</p>
+
+
+
+<p>Upserts, Deletes with fast, pluggable indexing</p>
+
+
+
+<p>Transactions, Rollbacks, Concurrency Control</p>
+
+
+
+<p>Automatic file sizing, data clustering, compactions, cleaning</p>
+
+
+
+<p>Built-in metadata tracking for scalable storage access</p>
+
+
+
+<p>Incremental queries, Record level change streams</p>
+
+
+
+<p>Backwards compatible schema evolution and enforcement</p>
+
+
+
+<p>SQL Read/Writes from data processing frameworks such as Spark, Presto, Trino, Hive &amp; more</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>Products for Enterprise</strong></p>
+
+
+
+<p>Now let’s look at some enterprise offerings:</p>
+
+
+
+<p><strong>Delta lakehouse by Databricks:</strong> Based on the delta lake and developed by Databricks which can run on popular cloud providers. The entire platform is powered by Apache Spark, the most popular data processing platform in the market now. By combining the capabilities of Delta lake and Apache Spark, delta lakehouse provides capabilities such as</p>
+
+
+
+<p>Lightning-fast performance for data processing with auto scaling and indexing</p>
+
+
+
+<p>Data science and machine learning workloads at scale using MLflow</p>
+
+
+
+<p>Databricks SQL, which is server less SQL query execution engine exclusively for ultra-fast BI and dashboarding requirements</p>
+
+
+
+<p>Unity catalog — A unified data catalog for all data in the delta lakehouse which also provides data governance and security capabilitiesBuilt-in dashboarding platform to create reports and visualizations</p>
+
+
+
+<p>Built-in dashboarding platform to create reports and visualizations</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="721" height="801" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/05/Image4.png" alt="" class="wp-image-2644" srcset="https://nestdigital.com/wp-content/uploads/2023/05/Image4.png 721w, https://nestdigital.com/wp-content/uploads/2023/05/Image4-270x300.png 270w" sizes="(max-width: 721px) 100vw, 721px" /></figure>
+
+
+
+<p class="has-text-color has-small-font-size" style="color:#808080">Image 3 : Delta lakehouse by Databriks</p>
+
+
+
+<p><strong>Dremio:</strong> Product offering based on Apache Iceberg. Unlike Databricks, Dremio can work both on cloud as well as on-premise. Unlike Databrick platform, Dremio does not provide bult-in machine learning or data science capabilities as the focus is mainly on data engineering, data warehousing and fast query performance. With high performance SQL query engine and data transfer capabilities, Dremio solves the problem of combining data lake and data warehouse. The two services that are powering Dremio platform are</p>
+
+
+
+<p>Dremio Sonar — A lakehouse engine built for SQLDremio Arctic — A metadata and data management service for Apache Iceberg that provides a unique Git-like experience for the lakehouse</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>Final thoughts</strong></p>
+
+
+
+<p>I have done my best to capture relevant details on each of these platforms. The ecosystem is always growing powered by more and more contributions to the open-source community. The beauty of these open-source platforms is that you can get all details on the internals and even more, you can check out the source code and start contributing. There is no limit for learning</p>
+
+
+
+<p class="has-text-color" style="color:#1f8bed"><strong>References</strong></p>
+
+
+
+<p><a href="https://database.guide/what-is-acid-in-databases/" target="_blank" rel="noreferrer noopener">ACID transactions</a><br><a href="https://prestodb.io" target="_blank" rel="noreferrer noopener">Apache Presto</a> <br><a href="https://drill.apache.org" target="_blank" rel="noreferrer noopener">Apache Druid</a><br><a href="https://aws.amazon.com/athena/" target="_blank" rel="noreferrer noopener">Amazon Athena</a><br><a href="https://docs.aws.amazon.com/redshift/latest/dg/c-using-spectrum.html" target="_blank" rel="noreferrer noopener">Amazon Reshift Spectrum</a> <br><a href="https://cloud.google.com/bigquery/" target="_blank" rel="noreferrer noopener">Google BigQuery </a><br><a href="https://delta.io" target="_blank" rel="noreferrer noopener">Delta lake</a> <br><a href="https://iceberg.apache.org" target="_blank" rel="noreferrer noopener">Apache Iceberg</a><br><a href="https://hudi.apache.org" target="_blank" rel="noreferrer noopener">Apache Hudi </a><br><a href="https://medium.com/tech-blogs-by-nest-digital/lakehouse-new-kid-in-data-town-acb3b3a944e0" target="_blank" rel="noreferrer noopener">Databricks lakehouse</a> <br><a href="https://www.dremio.com" target="_blank" rel="noreferrer noopener">Dremio</a></p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/lakehouse-new-kid-in-data-town/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

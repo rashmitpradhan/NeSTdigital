@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Atri Saxena | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/author/atri-saxena/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 12 Aug 2023 12:44:04 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>Atri Saxena | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Understanding Diffusion And Stable Diffusion in AI</title>
+		<link>https://nestdigital.com/blogs/understanding-diffusion-stable-diffusion-in-ai/</link>
+					<comments>https://nestdigital.com/blogs/understanding-diffusion-stable-diffusion-in-ai/#respond</comments>
+		
+		<dc:creator><![CDATA[Atri Saxena]]></dc:creator>
+		<pubDate>Tue, 25 Jul 2023 17:13:39 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Artificial Intelligence]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4531</guid>
+
+					<description><![CDATA[After the Generative Adversal Networks (GANs), Variational Auto Encoders (VAE), and Flow-based models, Diffusion Models are the latest research in generative models that can generate diverse high-resolution images. These models also attracted a lot of attention after OpenAI, Google, and Nvidia trained large-scale models. Some examples of pre-trained architecture on Diffusion are DALLE-2, GLIDE, Imagen, [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="a86e">After the Generative Adversal Networks (GANs), Variational Auto Encoders (VAE), and Flow-based models, Diffusion Models are the latest research in generative models that can generate diverse high-resolution images. These models also attracted a lot of attention after OpenAI, Google, and Nvidia trained large-scale models. Some examples of pre-trained architecture on Diffusion are DALLE-2, GLIDE, Imagen, etc.</p>
+
+
+
+<h1 class="wp-block-heading" id="9f7c">Main Principle behind Diffusion</h1>
+
+
+
+<p id="07d3">Diffusion model logic is inspired by non-equilibrium thermodynamics. They define a Markov chain process to add a Gaussian noise slowly to the data and then learn to reverse the diffusion steps to construct the desired data from the noise.</p>
+
+
+
+<p id="a657">For e.g.,&nbsp;<strong>A fixes noising process gradually noises the data x₀ to noise xₜ. We learn to reverse it from noise xₜ to data x₀.</strong></p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*ncZsbhWTW_BpHRaEAH2dlQ.png" alt=""/><figcaption class="wp-element-caption">Originally created by Author</figcaption></figure>
+
+
+
+<p id="759b">You can see the code for adding gaussian noise to the image at this&nbsp;<a href="https://gist.github.com/AtriSaxena/06aef7904f4aca9f5a6056c3a8fdd484" rel="noreferrer noopener" target="_blank">gist</a>.</p>
+
+
+
+<p id="73b7">The idea behind is we add a fixed gaussian noise in a very small amount for series of T steps this is called the&nbsp;<strong>Forward pass</strong>. Notably, this is unrelated to the forward pass of the neural network.</p>
+
+
+
+<p id="090b">After the neural network is trained to learn the reverse process, i.e., denoise the image to recover the original data. This is so-called the&nbsp;<strong>reverse diffusion process</strong>&nbsp;or sampling process of generative models.</p>
+
+
+
+<h2 class="wp-block-heading" id="3832">Forward process</h2>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:924/1*GpJs3IdvVAFMFCg7t4_HQg.png" alt=""/><figcaption class="wp-element-caption">Originally created by Author</figcaption></figure>
+
+
+
+<p id="b8e0">Now, a fixed Markov Chain is used to add a Gaussian noise with variance βₜ and q is the posterior probability of xₜ given xₜ₋₁. This process can be formulated as below:</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:900/1*MFpGkW8ZhXfLy2jiKqQcmA.png" alt=""/></figure>
+
+
+
+<p id="57cc">Since we are in the multi-dimensional scenario here&nbsp;<strong>I</strong>&nbsp;is the identity matrix, and it indicates that each dimension has the same standard deviation βₜ. Note that, q(xₜ | xₜ₋₁) is still a normal distribution with mean μₜ</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:434/1*2-6wKNNIckr8HJsJoj7f4g.png" alt=""/></figure>
+
+
+
+<p id="daff">and variance Σₜ = βₜI. Thus, we can now go from x₀, …, xₜ₋₁, xₜ, … x(T) in a tractable way. Mathematically this posterior probability will be defined as</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:748/1*PTmpyrzfreGTX6QCOWDJVQ.png" alt=""/></figure>
+
+
+
+<h2 class="wp-block-heading" id="06b8"><strong>Reverse Diffusion</strong></h2>
+
+
+
+<p id="fed8">Now, we need to learn the reverse process i.e, given xₜ learn to predict xₜ₋₁, there posterior probability of q(xₜ | xₜ₋₁). For that, we need to take a parameterized model such as a neural network. Since, we know q(xₜ | xₜ₋₁) will be Gaussian, for small βₜ, we can choose p₀ to be Gaussian and choose mean and variance as parameters.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:998/1*Lf0VPl2N3BZCVCy2f6dGog.png" alt=""/></figure>
+
+
+
+<p id="fca4">If we apply reverse diffusion to all the time steps T then the formula will become:</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:816/1*MCCzPA9qWDkr5JW2TkDbUw.png" alt=""/></figure>
+
+
+
+<p id="cdc6">Now, since we need model to learn the mean μₜ and Co-variance Σₜ to predict the Gaussian parameters for each time step.</p>
+
+
+
+<h1 class="wp-block-heading" id="af99">Model Architecture of Stable Diffusion Model</h1>
+
+
+
+<p id="e5bd">Since we are talking about the Stable Diffusion model which will be taking text or paragraph of text and trying to create image.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*0t4a3MoJPCUcFVmfeT5CkQ.png" alt=""/><figcaption class="wp-element-caption">Originally created by Author</figcaption></figure>
+
+
+
+<p id="55e7">Here, Convolutional UNet architecture is used which is having same output shape as input. UNet uses downsampling and Upsampling layers and various other components such as Residual connections, batch or group normalization layers. Now as we need to pass the description text also, this text is converted into tokens and run Transformer on them. Then attend these transformers into UNet.</p>
+
+
+
+<p id="4c99">Here the model will take noised image xₜ at time step t and try to predict the noise in the image because the variance is set fixed we will output only one value per pixel that means model learns the Mean of the Gaussian distribution of the images this is also called&nbsp;<strong>Denoising Score Matching.</strong></p>
+
+
+
+<h1 class="wp-block-heading" id="627b">Conditional Image Generation: Guided Diffusion</h1>
+
+
+
+<p id="4416">An important step of image generation is to add conditions in the sampling process to manipulate the generated samples. This is also referred to as Guided Diffusion.</p>
+
+
+
+<p id="82fd">There have been methods to guide the distribution using Image/Text embeddings into the diffusion in order to guide the generation. Mathematically we can say, the guidance refers to conditioning a prior distribution p(x) with a condition y as a class label or text embeddings resulting in p(x/y).</p>
+
+
+
+<p id="c1b3">For converting a diffusion model to a conditional diffusion model we can add conditioning information y at each diffusion step.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:922/1*4Z5Y4dFhEBlZ1Fqmk3PIYw.png" alt=""/></figure>
+
+
+
+<p id="4e2b">Adding conditioning at each time step may result in excellent samples generation from a text prompt.</p>
+
+
+
+<p id="d4b1">In general diffusion models aims to learn ∇logp₀(xₜ|y). Now adding the guidance scalar term ‘s’ we have</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1156/1*6Pzn-JP6iLHZPU48kh_zLw.png" alt=""/></figure>
+
+
+
+<p id="94ba">Using this guidance, let’s understand the distinction between classifier and classifier-free guidance.</p>
+
+
+
+<h2 class="wp-block-heading" id="536c">Classifier guidance</h2>
+
+
+
+<p id="f7b4"><a href="https://arxiv.org/abs/1503.03585" rel="noreferrer noopener" target="_blank">Sohl-Dickstein et al</a>. and later&nbsp;<a href="https://arxiv.org/abs/2105.05233" rel="noreferrer noopener" target="_blank">Dhariwal and Nichol</a>&nbsp;explained in their paper to use a second model, a classifier&nbsp;<em>fϕ</em>​(<em>y</em>∣xₜ​,<em>t</em>), to guide the diffusion towards target class y. For achieving that we can train a classifier&nbsp;<em>fϕ</em>​(<em>y</em>∣xₜ​,<em>t</em>) on the noise image xₜ to predict its class y. Then we can use gradient ∇logp₀(xₜ|y) to guide for diffusion.</p>
+
+
+
+<h2 class="wp-block-heading" id="eb4b">Class-free guidance</h2>
+
+
+
+<p id="6dbf">Here&nbsp;<a href="https://openreview.net/forum?id=qw8AKxfYbI" rel="noreferrer noopener" target="_blank">Ho &amp; Salimans</a>&nbsp;proposed a model without a second classifier model. Here author used a single neural network and train a conditional diffusion model together with the unconditional diffusion model. During training, they set y to class 0 randomly, so that model is exposed to both conditional and unconditional setups.</p>
+
+
+
+<h1 class="wp-block-heading" id="7c33">Scaling Up Diffusion Models</h1>
+
+
+
+<p id="3eab">The problem with the models we discussed is that these are computationally expensive. And for producing high-quality images, U-Net architecture will be very much expensive. Therefore for producing high-resolution images using diffusion there are two methods: cascade diffusion models and latent diffusion models.</p>
+
+
+
+<h2 class="wp-block-heading" id="cbe9">Cascade Diffusion Models</h2>
+
+
+
+<p id="4a5b"><a href="https://arxiv.org/abs/2106.15282" rel="noreferrer noopener" target="_blank">Ho et al. 2021</a>&nbsp;introduced cascaded models which consist of a pipeline of many sequential diffusion models that generates high-fidelity images. Each model generates a sample with a superior resolution than the previous model. Upsampling layers are used to increase the resolution with the diffusion layer.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*UwneEqNcyn1OslBYg5AxFg.png" alt=""/><figcaption class="wp-element-caption"><em>Cascade diffusion model pipeline. Source: Ho &amp; Saharia et al.</em></figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="7714">Stable Diffusion: Latent Diffusion Models</h2>
+
+
+
+<p id="198e">In Latent Diffusion Models instead of applying diffusion on high-dimensional data, we project the input to a smaller latent space and then apply diffusion</p>
+
+
+
+<p id="cd62"><a href="https://arxiv.org/abs/2112.10752" rel="noreferrer noopener" target="_blank">Rombach et al</a>. proposed the idea to use an encoder network to encode the input to a smaller latent representation i.e., zₜ = g(xₜ). The main purpose behind using an encoder is to reduce the computation requirement of the diffusion network by reducing the image to a small latent space. Later, diffusion model (U-Net) is applied to generate new data, and decoder network is used to upsample the image to the original resolution.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/0*TjpXniuya0R8BdOH.png" alt=""/><figcaption class="wp-element-caption"><em>Latent diffusion models. Source:&nbsp;</em><a href="https://arxiv.org/abs/2112.10752" rel="noreferrer noopener" target="_blank"><em>Rombach et al</em></a></figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="18e0">Results</h2>
+
+
+
+<p id="3aaa">Some results of the diffusion model generated from&nbsp;<a href="https://stablediffusionweb.com/#demo" rel="noreferrer noopener" target="_blank">here</a>:</p>
+
+
+
+<p id="cf44"><strong>Sample Input 1:</strong>&nbsp;“A small cabin on top of a snowy mountain in the style of Disney, artstation.”</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1398/1*bkH84HjDWOMBlqB5eTwwyg.png" alt=""/><figcaption class="wp-element-caption">Generated from&nbsp;<a href="https://stablediffusionweb.com/#demo" rel="noreferrer noopener" target="_blank">https://stablediffusionweb.com/#demo</a></figcaption></figure>
+
+
+
+<p id="c80b"><strong>Sample Input 2: “</strong>Mechanical robot on Indian road”</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1390/1*22TvJ3D1yKHYTHKlAir71Q.png" alt=""/><figcaption class="wp-element-caption">Generated from&nbsp;<a href="https://stablediffusionweb.com/#demo" rel="noreferrer noopener" target="_blank">https://stablediffusionweb.com/#demo</a></figcaption></figure>
+
+
+
+<p id="6ba4">You can try your own sentences also at&nbsp;<a href="https://stablediffusionweb.com/#demo" rel="noreferrer noopener" target="_blank">https://stablediffusionweb.com/#demo</a></p>
+
+
+
+<h2 class="wp-block-heading" id="a834">Summary</h2>
+
+
+
+<p id="9c61">Let’s summarize the points, we have learned from diffusion models:</p>
+
+
+
+<ul>
+<li>Diffusion models work on applying fixed Gaussian noise to the original image for T time steps this process is known as diffusion.</li>
+
+
+
+<li>It has two processes Forward and Reverse diffusion. In reverse diffusion, a model or neural network learns to denoise the image.</li>
+
+
+
+<li>We can use an image or text embedding to “guide” the diffusion process.</li>
+
+
+
+<li>Cascade and Latent diffusion are two approaches to scale-up models to high resolution.</li>
+
+
+
+<li>Cascaded diffusion is a sequential diffusion model that uses upscaling layers to create high-resolution images.</li>
+
+
+
+<li>Latent diffusion models apply diffusion in a latent space and are less computationally expensive by using variational autoencoders for upsampling and downsampling.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="a98f"><strong>References</strong></h2>
+
+
+
+<p id="5376">[1] Sohl-Dickstein, Jascha, et al.<a href="https://arxiv.org/abs/1503.03585" rel="noreferrer noopener" target="_blank">&nbsp;Deep Unsupervised Learning Using Nonequilibrium Thermodynamics</a>. arXiv:1503.03585, arXiv, 18 Nov. 2015</p>
+
+
+
+<p id="59fd">[2] Ho, Jonathan, et al.&nbsp;<a href="https://arxiv.org/abs/2006.11239" rel="noreferrer noopener" target="_blank">Denoising Diffusion Probabilistic Models</a>. arXiv:2006.11239, arXiv, 16 Dec. 2020</p>
+
+
+
+<p id="0f94">[3] Ho, Jonathan, and Tim Salimans.<a href="https://openreview.net/forum?id=qw8AKxfYbI" rel="noreferrer noopener" target="_blank">&nbsp;Classifier-Free Diffusion Guidance</a>. 2021. openreview.net</p>
+
+
+
+<p id="8009">[4] Nichol, Alex, et al.&nbsp;<a href="https://arxiv.org/abs/2112.10741" rel="noreferrer noopener" target="_blank">GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models</a>. arXiv:2112.10741, arXiv, 8 Mar. 2022</p>
+
+
+
+<p id="1536">[5] Rombach, Robin, et al.&nbsp;<a href="https://arxiv.org/abs/2112.10752" rel="noreferrer noopener" target="_blank">High-Resolution Image Synthesis with Latent Diffusion Models</a>. arXiv:2112.10752, arXiv, 13 Apr. 2022</p>
+
+
+
+<p id="6403">[6] Ho, Jonathan, et al.&nbsp;<a href="https://arxiv.org/abs/2106.15282" rel="noreferrer noopener" target="_blank">Cascaded Diffusion Models for High Fidelity Image Generation</a>. arXiv:2106.15282, arXiv, 17 Dec. 2021</p>
+
+
+
+<p id="7fb8">[7] Weng, Lilian.&nbsp;<a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/" rel="noreferrer noopener" target="_blank">What Are Diffusion Models?</a>&nbsp;11 July 2021</p>
+
+
+
+<p id="a5fc">[8] Das, Ayan. “<a href="https://ayandas.me/blog-tut/2021/12/04/diffusion-prob-models.html" rel="noreferrer noopener" target="_blank">An Introduction to Diffusion Probabilistic Models.</a>” Ayan Das, 4 Dec. 2021</p>
+
+
+
+<p id="13ed">[9] Prafulla Dhariwal. “<a href="https://www.youtube.com/watch?v=xYJEvihz3OI" rel="noreferrer noopener" target="_blank">Generative art using diffusion</a>.”</p>
+
+
+
+<p id="b7b5">[10] Saharia, Chitwan, et al.&nbsp;<a href="https://arxiv.org/abs/2205.11487" rel="noreferrer noopener" target="_blank">Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding</a>. arXiv:2205.11487, arXiv, 23 May 2022</p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/understanding-diffusion-stable-diffusion-in-ai/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Detecting Car Damage using YOLO</title>
+		<link>https://nestdigital.com/blogs/detecting-car-damage-using-yolo/</link>
+					<comments>https://nestdigital.com/blogs/detecting-car-damage-using-yolo/#respond</comments>
+		
+		<dc:creator><![CDATA[Atri Saxena]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 15:02:32 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Mobility]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4508</guid>
+
+					<description><![CDATA[You might have heard of ADAS (Advanced driver assistance systems) in many cars nowadays, which are smart enough to detect the human in front of the car and apply brakes automatically. Have you thought what is the technology behind that? Leading car Manufacturers have stepped in to integrate ADAS into their cars. Existing ADAS technologies [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="be2d">You might have heard of ADAS (Advanced driver assistance systems) in many cars nowadays, which are smart enough to detect the human in front of the car and apply brakes automatically. Have you thought what is the technology behind that? Leading car Manufacturers have stepped in to integrate ADAS into their cars. Existing ADAS technologies operate on visual cameras, RADARs, and LiDARs for the object detection. ADAS mainly depends on features such as high speed, high accuracy, low cost, and low power consumption.</p>
+
+
+
+<p id="8b38">In this blog, we will talk about the real-time Object Detection technique YOLO (You Look Only Once). Not only that, I will share how YOLO can help us detect damage in the Car.</p>
+
+
+
+<h2 class="wp-block-heading" id="0ecb">What is YOLO?</h2>
+
+
+
+<p id="b84a">YOLO or You Look Only Once is a popular Object Detection technique. That means, it performs two tasks&nbsp;<strong>Object Classification</strong>&nbsp;&amp;&nbsp;<strong>Object Localization.</strong>Since, there are two tasks many Object detection algorithms such as R-CNN, Fast RCNN, Faster RCNN are using two-step or two neural networks. But as the name itself defines, YOLO — looks at the entire image at once, and only once which allows it to capture the context of detected objects. Due to the single network, it is much faster than other object detection algorithms and can perform real-time detection at 45 frames per second.</p>
+
+
+
+<p id="4e73">There are various versions of YOLO you will find out, the first version was released in 2016, and version 3 which is discussed here was created in 2018. The official successors of YOLOv3 are YOLOv4, and the newly released YOLOv7, which is the current state-of-the-art object detector in 2022.</p>
+
+
+
+<h2 class="wp-block-heading" id="45cc">YOLOv1 Architecture</h2>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*9ZlcXLNrbm_3WRhq_vPqoA.png" alt=""/><figcaption class="wp-element-caption">YOLO architecture from&nbsp;<a href="https://arxiv.org/pdf/1506.02640.pdf" rel="noreferrer noopener" target="_blank">original paper&nbsp;</a>modified by Author</figcaption></figure>
+
+
+
+<p id="e348">The architecture works as follows:</p>
+
+
+
+<ul>
+<li>Resizing the Input image to 448 x 448 before going through the convolutional network.</li>
+
+
+
+<li>In total, it contains 24 convolutional layers followed by 2 fully connected layers.</li>
+
+
+
+<li>Uses 1&#215;1 convolution layers to reduce the channels, followed by 3&#215;3 convolutional.</li>
+
+
+
+<li>Softmax is used for class predictions.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="93b0">Difference between YOLOv1 and YOLOv3 Architecture</h2>
+
+
+
+<ul>
+<li>YOLOv3 uses 53 Convolutional layers and skip connections.</li>
+
+
+
+<li>YOLOv3 uses logistic regression with binary cross-entropy loss. Since, there is possibility two classes(men &amp; Person) are there for a single box and using softmax imposes that each box has exactly one class which is mostly not the case.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="aca7">How YOLO works?</h2>
+
+
+
+<p id="7c18">Now you have understood the architecture, let&#8217;s try to understand how the YOLO algorithm works actually.</p>
+
+
+
+<p id="6bf5">“<em>Let’s suppose we have built a YOLO Model to detect the damage in the car.</em></p>
+
+
+
+<p id="bb95"><em>You will understand the whole process of how YOLO performs object detection; how to get image (B) from image (A)”</em></p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1322/1*3USXPnvUlUvtm8iiUfxZjg.png" alt=""/></figure>
+
+
+
+<p id="c5ef">YOLO Algorithm works on the following four approaches:</p>
+
+
+
+<ul>
+<li><strong>Residual blocks</strong></li>
+
+
+
+<li><strong>Bonding box regression</strong></li>
+
+
+
+<li><strong>Intersection over Union (IoU)</strong></li>
+
+
+
+<li><strong>Non-Maximum supression</strong></li>
+</ul>
+
+
+
+<ol>
+<li><strong>Residual Blocks</strong></li>
+</ol>
+
+
+
+<p id="cc92">YOLO works on the idea of segmentation of the image into smaller parts. The image is divided into square grid of size SxS like:</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:908/1*0302JPOs_gq3CEERZL32Fg.png" alt=""/></figure>
+
+
+
+<p id="feb4">The cell in which the center of the object is the cell responsible for detecting that object.</p>
+
+
+
+<p id="11cf"><strong>2. Bonding box Regression</strong></p>
+
+
+
+<p id="97c9">The next step is to determine the bonding boxes, each cell can have B bounding boxes. The value of B can be determined while creating model architecture.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1032/1*ONX754OSnxCnBp-Yy_el8A.png" alt=""/></figure>
+
+
+
+<p id="a7e3">YOLO determines the values of these bonding boxes using a single regression module. Each of the bonding boxes are made up of 5 numbers + N class scores: confidence of box, x position, y position, width, height, and class score. Here confidence score will be between 0.0 and 1.0 with 0.0 means that there is no object in that cell and 1.0 means model is certain there is an object. x and y are the center of the predicted bounding box and width &amp; height are the fractions relative to the image size. Class score are confidence of particular class.</p>
+
+
+
+<p id="65ac"><strong>3. Intersection over Union (IoU)</strong></p>
+
+
+
+<p id="8ca6">Many times, a single image can have multiple boxes for a single object. IoU helps to find the most relevant box. IoU values lies between 0 and 1. IoU is the area of the Intersection of predicted and ground truth boxes divided by the area of the Union of predicted and ground truth boxes.</p>
+
+
+
+<ul>
+<li>The user can define the threshold value for IoU such as 0.5.</li>
+
+
+
+<li>Thereafter, it ignores boxes with IoU ≤ 0.5 and only considers boxes with IoU &gt; 0.5.</li>
+</ul>
+
+
+
+<p id="142e"><strong>4. Non-Max Supression</strong></p>
+
+
+
+<p id="ef13">Even after applying the IoU technique, there is a possibility that there are more than one boxes for an object. For dealing with that we choose the box with the highest value of confidence score of detection and suppress the Non-max values.</p>
+
+
+
+<p id="e5c2">Therefore, the model finally predicts&nbsp;<strong><em>S × S × (C + B&nbsp;</em>∗ 5<em>).</em></strong></p>
+
+
+
+<p id="cc48">S = No of grids</p>
+
+
+
+<p id="64ef">C = Number of classes</p>
+
+
+
+<p id="9ace">B= Number of bonding boxes per grid cell.</p>
+
+
+
+<h2 class="wp-block-heading" id="91fc">YOLO Training — Damage detection</h2>
+
+
+
+<p id="af52">For the training of damage detection in cars, we have used the dataset available on Kaggle:&nbsp;<a href="https://www.kaggle.com/datasets/lplenka/coco-car-damage-detection-dataset" rel="noreferrer noopener" target="_blank">MS COCO car damage detection.</a></p>
+
+
+
+<p id="92a7">This dataset contains 59 train images, 11 validation images, and 8 test images.</p>
+
+
+
+<p id="673c">As we can see data is too small. For that, we have used a pre-trained YOLO model on the MS COCO dataset which contains 80 categories. We have replaced the final layers and freezed the rest of the model. Then trained for 100 epochs with data augmentation.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*qNP3D8tHBPf-P3_RemLe4A.png" alt=""/></figure>
+
+
+
+<p id="69e2">Here in the results, we can there are many overlaps, and the probability is also low. Since training data was very low and the pre-trained model was trained on various 80 kinds of class images, therefore, Model was not able to learn much. We can collect more images and manually annotate them to get better accuracy and results.</p>
+
+
+
+<p id="c24b">We can use this damage detection model in Insurance Applications by detecting the damage to the car in an accident which can help users to claim insurance online. And Insurance companies also can save a lot of money since I believe if Machine Learning is not growing business value it is not useful to spend time and money on Machine Learning.</p>
+
+
+
+<h2 class="wp-block-heading" id="bb4d">Conclusion</h2>
+
+
+
+<p id="d5dc">In this blog, we have learned the architecture and working of YOLO algorithms and also seen how YOLO can be used in the industry of Automobiles with Car Damage detection dataset. There are various industries where object detection can be applied such as warehouses, Automated Industries, Healthcare, etc.</p>
+
+
+
+<p id="5867">As always, drop me a line in the comments if you have any doubts or can be helpful in any way! 😁</p>
+
+
+
+<h2 class="wp-block-heading" id="bfac">Further Reading</h2>
+
+
+
+<ol>
+<li><a href="https://pjreddie.com/media/files/papers/YOLOv3.pdf" rel="noreferrer noopener" target="_blank">YOLO v3: An incremental improvement</a></li>
+
+
+
+<li><a href="https://arxiv.org/pdf/1506.02640.pdf" rel="noreferrer noopener" target="_blank">You Only Look Once: Unified, Real-Time Object Detection</a></li>
+</ol>
+
+
+
+<p><a href="https://medium.com/tag/machine-learning?source=post_page-----7f677cc6ad74---------------machine_learning-----------------"></a></p>
+
+
+
+<p><a href="https://medium.com/tech-blogs-by-nest-digital/demystifying-data-mesh-9a34ad69108f?source=author_recirc-----7f677cc6ad74----1---------------------26e9a463_7e86_478c_b25a_ca475df1167f-------"></a></p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/detecting-car-damage-using-yolo/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

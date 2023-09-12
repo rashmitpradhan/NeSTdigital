@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Cloud Computing | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/tag/cloud-computing/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 05 Aug 2023 10:45:45 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>Cloud Computing | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Discover the Benefits of Knative for Serverless Applications</title>
+		<link>https://nestdigital.com/blogs/discover-the-benefits-of-knative-for-serverless-applications/</link>
+					<comments>https://nestdigital.com/blogs/discover-the-benefits-of-knative-for-serverless-applications/#respond</comments>
+		
+		<dc:creator><![CDATA[Dhanesh]]></dc:creator>
+		<pubDate>Tue, 25 Jul 2023 17:03:10 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Cloud Computing]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4522</guid>
+
+					<description><![CDATA[The focus of this blog is to provide an overview of serverless computing and the Knative platform, its features, and benefits. The goal is to explain how Knative can help organizations build and deploy serverless applications more efficiently and effectively. In the mid-2000s, there were a few developments that laid the foundation for what would [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="5b88">The focus of this blog is to provide an overview of serverless computing and the Knative platform, its features, and benefits. The goal is to explain how Knative can help organizations build and deploy serverless applications more efficiently and effectively.</p>
+
+
+
+<p id="4fef">In the mid-2000s, there were a few developments that laid the foundation for what would eventually become serverless computing. One key development was the emergence of cloud computing, which made it possible to provision computing resources on-demand and at scale, without the need for on-premises infrastructure. Another important development was the rise of event-driven computing, which allowed developers to trigger code execution in response to events such as changes to a database, a new file appearing in a storage bucket, or a new message being sent to a queue. This event-driven approach enabled developers to build highly responsive and scalable applications that could scale automatically based on demand.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*-5Mo2kgGFhlnejJ4wtmhmA.png" alt=""/><figcaption class="wp-element-caption">Sample Event Driven application</figcaption></figure>
+
+
+
+<p id="e772"><strong><em>What is Serverless Computing?</em></strong></p>
+
+
+
+<p id="91d1">Serverless computing allows organizations to focus on building and deploying their applications without having to worry about the underlying infrastructure. This can reduce the cost and complexity of managing and scaling applications and provide greater flexibility and scalability. Additionally, serverless computing can enable organizations to innovate faster and more efficiently, by allowing them to build and deploy new applications and features more quickly and at a lower cost. Furthermore, serverless computing can also improve the reliability and availability of applications, as the cloud provider typically manages the infrastructure and provides built-in availability and scalability features.</p>
+
+
+
+<p id="77b2">Serverless computing first emerged as a cloud computing model, in which the cloud provider manages the infrastructure and dynamically allocates machine resources to run users’ applications. This approach eliminates the need for users to provision or manage any servers. Instead, users are only charged for the precise amount of computing resources consumed by their application, which is typically measured in terms of invocations, execution time, and data processed.</p>
+
+
+
+<p id="2348">With serverless platforms like Knative built on top of Kubernetes, the platform can be deployed anywhere, and the dependency on cloud infrastructure is eliminated. This means that any organization can benefit from serverless features, regardless of whether they move to the cloud. For example, an organization with a shared infrastructure team can deploy a serverless platform using Kubernetes and Knative on their data center VMs (Virtual Machine). Alternatively, they can build the platform on top of a cloud platform like AWS, Azure, or GCP, or use a managed Knative-based serverless platform in the cloud, such as Google Cloud Run or IBM Cloud Code Engine.</p>
+
+
+
+<p id="e98d">The first widely adopted serverless computing platform, AWS Lambda, was introduced by Amazon Web Services in 2014. Since then, other cloud providers such as Microsoft Azure, Google Cloud Platform, and IBM Cloud have also introduced their own serverless computing offerings, further expanding the capabilities and options available to developers.</p>
+
+
+
+<p id="3789">One of the latest additions to the serverless ecosystem is Knative, an open-source project that provides a set of building blocks for deploying and managing serverless applications on Kubernetes. Knative abstracts away many of the complexities of deploying and managing serverless applications on Kubernetes, making it easier for developers to focus on writing code.</p>
+
+
+
+<p id="0b5b"><strong><em>What is Knative?</em></strong></p>
+
+
+
+<p id="69cd">Knative is a serverless application layer designed specifically for developers, and it works well alongside the existing Kubernetes application constructs. It is a CNCF (Cloud Native Computing Foundation) incubating project, which means it is backed by a community of experts and organizations committed to advancing cloud-native technologies.</p>
+
+
+
+<p id="e134">Knative provides an essential set of components for building and running serverless applications on Kubernetes. Created with contributions from over 50 different companies, Knative includes features like scale-to-zero, autoscaling, in-cluster builds, and an eventing framework for cloud-native applications. Knative can be used on-premises, in the cloud, or in a third-party data center. Most importantly, Knative enables developers to focus on writing code, without needing to worry about the challenging and mundane aspects of deploying and managing their applications.</p>
+
+
+
+<p id="7cad">Knative is made up of two components: “Knative Serving,” which is a container runtime that can automatically scale based on HTTP requests, and “Knative Eventing,” which is a routing layer for Events asynchronously sent over HTTP.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*wahZpVe9xRUri3uoD1S1FQ.png" alt=""/><figcaption class="wp-element-caption">*Reference: Knative home page</figcaption></figure>
+
+
+
+<p id="5663"><strong><em>Knative Serving:-</em></strong></p>
+
+
+
+<p id="5e30">Knative Serving is responsible for handling incoming requests and auto-scaling applications based on traffic. When a request is received, Knative Serving routes the request to the appropriate service, which then processes the request and returns a response. Knative Serving uses a routing mechanism to direct requests to the appropriate service based on the request URL or other criteria.</p>
+
+
+
+<p id="8f41"><strong>How does Knative Serving work behind the scene?</strong></p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1398/1*Bc4ZHiWcte2Zbc28JXtHyA.png" alt=""/><figcaption class="wp-element-caption">Knative Serving</figcaption></figure>
+
+
+
+<ol>
+<li>The developer deploys a serverless workload on Knative Serving by creating a Kubernetes Custom Resource Definition (CRD) object.</li>
+
+
+
+<li>Knative Serving automatically creates and manages a set of resources, including Services, Routes, Configurations, and Revisions.</li>
+
+
+
+<li>The&nbsp;<strong>Service&nbsp;</strong>resource manages the entire lifecycle of the workload and creates other objects such as Routes and Configurations.</li>
+
+
+
+<li><strong>Routes&nbsp;</strong>define the network endpoint that will be used to access the workload, and Configurations define the desired state of the workload deployment.</li>
+
+
+
+<li>When a&nbsp;<strong>Configuration&nbsp;</strong>is modified, it generates a new Revision, which represents a snapshot of the code and configuration at that specific time.</li>
+
+
+
+<li><strong>Revisions&nbsp;</strong>are immutable objects that can be scaled up or down automatically based on incoming traffic. Knative Serving uses the Knative Pod Autoscaler (KPA), which is built on top of Kubernetes Horizontal Pod Autoscaler (HPA), to manage the scaling of Revisions based on the configured scaling rules and observed resource utilization, including request throughput and concurrency.</li>
+
+
+
+<li>KPA provides a more responsive and dynamic scaling experience by automatically scaling to zero when there is no incoming traffic, and quickly scaling up when there is a sudden increase in traffic.</li>
+
+
+
+<li>The Serverless Workload is accessed by sending requests to the network endpoint defined by the Route resource.</li>
+</ol>
+
+
+
+<p id="4a85"><em>Knative Eventing:-</em></p>
+
+
+
+<p id="8f84">Knative Eventing is a set of APIs that enable an event-driven architecture for the applications. With these APIs, we can build components that route events from event producers to event consumers, known as sinks. Sinks can receive events or respond to HTTP requests by sending a response event.</p>
+
+
+
+<p id="73d6">The communication between event producers and sinks in Knative Eventing is based on standard HTTP POST requests. The events themselves follow the CloudEvents specifications, which allows for easy creation, parsing, sending, and receiving of events in any programming language.</p>
+
+
+
+<p id="928b">Knative Eventing components are loosely coupled, which means that they can be developed and deployed independently of each other. This flexibility allows event producers to generate events before active event consumers are listening for them. Similarly, event consumers can express interest in a particular class of events before any producers are creating those events.</p>
+
+
+
+<p id="83e4"><strong><em>Use cases for Knative:-</em></strong></p>
+
+
+
+<p id="156d">Knative is a platform for building, deploying, and managing modern, cloud-native applications, and is commonly used for a variety of use cases, including:</p>
+
+
+
+<ol>
+<li><strong>Web Applications:</strong>&nbsp;Knative can be used to build and deploy web applications, providing a scalable and flexible platform for delivering dynamic, interactive web experiences.</li>
+
+
+
+<li><strong>Backend Services</strong>: Knative can be used to build and deploy backend services, such as APIs and data processing pipelines, providing a scalable and flexible platform for processing enormous amounts of data.</li>
+
+
+
+<li><strong>Microservices</strong>: Knative can be used to build and deploy microservices, providing a scalable and flexible platform for building complex, highly distributed applications.</li>
+</ol>
+
+
+
+<p id="ad0b"><strong>The benefits of using Knative in these use cases include:-</strong></p>
+
+
+
+<ol>
+<li>Increased Agility: Knative provides a flexible and scalable platform for building, deploying, and managing modern, cloud-native applications, making it possible to quickly respond to changing business needs and bring new features and capabilities to market more quickly.</li>
+
+
+
+<li>Reduced Costs: Knative provides a cost-effective platform for building and deploying applications, by making it possible to allocate resources only when they are needed, reducing the cost of running your applications.</li>
+
+
+
+<li>Improved Scalability: Knative provides a scalable platform for building and deploying applications, making it possible to handle large numbers of users and enormous amounts of data, without provisioning additional resources.</li>
+</ol>
+
+
+
+<p id="6880"><strong><em>Conclusion</em></strong></p>
+
+
+
+<p id="308d">Knative provides a powerful and flexible platform for building and deploying modern, cloud-native applications with the benefits of autoscaling and event-driven capabilities. By leveraging the power of Kubernetes and Kourier, Knative allows you to deploy and manage your serverless applications and functions with ease, all within a familiar and established environment. Whether you are looking to build an event-driven architecture or simply need a more efficient way to run your applications at scale, Knative can help.</p>
+
+
+
+<p id="be2e">In terms of the future of serverless computing, we will see continued growth and adoption in the coming years, as more organizations look for ways to reduce costs, increase agility, and improve scalability. Knative is well-positioned to play a key role in this future, by providing a flexible and scalable platform for building, deploying, and managing serverless applications.</p>
+
+
+
+<p id="c42b"><strong><em>Links</em></strong></p>
+
+
+
+<ol>
+<li><a href="https://knative.dev/docs/getting-started/" rel="noreferrer noopener" target="_blank">https://knative.dev/docs/getting-started/</a></li>
+
+
+
+<li><a href="https://knative.dev/docs/install/" rel="noreferrer noopener" target="_blank">About installing Knative — Knative</a></li>
+
+
+
+<li><a href="https://tekton.dev/" rel="noreferrer noopener" target="_blank">https://tekton.dev/</a></li>
+</ol>
+
+
+
+<p id="e237"><strong><em>FAQ</em></strong></p>
+
+
+
+<p id="d3e7">Q1,&nbsp;<em>What is Knative Building?</em></p>
+
+
+
+<p id="c4f6">Knative Building wasa component of the Knative platform that enables you to automatically build container images from source code. It provides a simple and flexible way to build, test, and deploy container images without having to manage complex build pipelines or infrastructure.</p>
+
+
+
+<p id="3da7">Knative Building has been deprecated in favor of Tekton Pipelines, and Tekton Pipelines is a standalone project not a component of Knative.</p>
+
+
+
+<p id="55dd">Tekton Pipelines is a powerful and flexible platform for building, testing, and deploying container images in a Kubernetes-native way. It provides a rich set of building blocks that can be combined to create complex CI/CD pipelines, and it supports a wide range of programming languages and software-build systems.</p>
+
+
+
+<p id="44b8">While Knative Building is still supported in some Knative distributions, users are encouraged to use Tekton Pipelines for building and deploying container images in a Kubernetes environment. Tekton Pipelines is also widely used in other Kubernetes platforms such as OpenShift and Google Cloud Build.</p>
+
+
+
+<p id="e83c">Q2,&nbsp;<em>What are some managed KNative options?</em></p>
+
+
+
+<p id="faa1">There are a few managed Knative options available that provide a fully managed platform for building, deploying, and managing serverless workloads on Kubernetes. All the below options provide you a platform to deploy containerized applications and functions on a fully managed Knative environment and scale up or down based on demand</p>
+
+
+
+<p id="2a4c"><em>Google Cloud Run</em>: Google Cloud Run is a fully managed Knative-based platform on Google Cloud Platform (GCP). Cloud Run also provides integration with other GCP services, such as Cloud Build and Cloud Logging.</p>
+
+
+
+<p id="6812"><em>Red Hat OpenShift Serverless</em>: Red Hat OpenShift Serverless is a fully managed Knative-based platform on Red Hat OpenShift. OpenShift Serverless also provides integration with other Red Hat OpenShift services, such as Build and Tekton.</p>
+
+
+
+<p id="1f20"><em>IBM Cloud Code Engine</em>: IBM Cloud Code Engine is built on top of Knative and provides a simplified experience for deploying containerized workloads to a fully managed Knative environment. Code Engine also provides integration with other IBM Cloud services, such as IBM Cloud Object Storage and IBM Cloud Databases.</p>
+
+
+
+<p id="b031">Q3,&nbsp;<em>What are other serverless solutions work on top of Kubernetes?</em></p>
+
+
+
+<p id="c5ee">Several serverless solutions work on top of Kubernetes. Some of the popular ones are:</p>
+
+
+
+<p id="b34c"><em>Kubeless</em>: Kubeless is a Kubernetes-native serverless framework that allows you to deploy small bits of code (functions) without having to worry about the underlying infrastructure. It supports several languages such as Python, NodeJS, and Go, and can be used to build event-driven applications.</p>
+
+
+
+<p id="364a"><em>OpenFaaS</em>: OpenFaaS (Function as a Service) is a popular open source serverless framework that can be deployed on top of Kubernetes. It supports several programming languages such as Python, Node.js, and Go, and provides features such as auto-scaling, metrics, and a CLI for deploying and managing functions.</p>
+
+
+
+<p id="9d67"><em>Fission</em>: Fission is a Kubernetes-native serverless framework that allows you to deploy functions quickly and easily. It supports several programming languages such as Python, Node.js, and Go, and provides features such as auto-scaling, in-cluster builds, and a CLI for deploying and managing functions.</p>
+
+
+
+<p id="7ea2"><em>Kube9s</em>: Kube9s is a Kubernetes-native serverless framework that provides an event-driven architecture for building applications. It supports several programming languages such as Python, Node.js, and Go, and provides features such as auto-scaling, event-driven workflows, and a CLI for deploying and managing functions.</p>
+
+
+
+<p id="c008"><em>KEDA</em>: KEDA acts as a Kubernetes operator, allowing you to deploy it to your Kubernetes cluster and configure it to scale your workloads based on the number of incoming events. KEDA is designed to work with any event source that can emit messages in response to events, such as Kafka, RabbitMQ, Azure Service Bus, and more.</p>
+
+
+
+<p id="eed7">These are just a few examples of serverless solutions that work on top of Kubernetes. There are many other options available in the market, each with its own set of features and capabilities.</p>
+
+
+
+<p id="9f65">Q4,<em>&nbsp;Can we use Knative with AWS Lambda or with Azure Functions?</em></p>
+
+
+
+<p id="7b5b">AWS Lambda is a serverless computing service provided by Amazon Web Services (AWS). Similarly, Azure Functions is a serverless computing service provided by Microsoft Azure.</p>
+
+
+
+<p id="1962">Knative is a platform that abstracts away the underlying infrastructure and provides a higher-level interface for developers to deploy their serverless workloads. Knative can work with any containerized workload, including AWS Lambda functions and Azure functions that have been packaged as Docker containers</p>
+
+
+
+<p id="5e25">To use AWS Lambda or Azure Functions with Knative, you need to package your Lambda function as a Docker container and deploy it to a Kubernetes cluster using Knative Serving. You can also use Knative Eventing to integrate your Lambda functions with external event sources.</p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/discover-the-benefits-of-knative-for-serverless-applications/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

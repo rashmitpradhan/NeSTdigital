@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Appu V | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/author/appu-v/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 05 Aug 2023 10:54:22 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>Appu V | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Realtime Temperature Analytics using Kafka Streams</title>
+		<link>https://nestdigital.com/blogs/realtime-temperature-analytics-using-kafka-streams/</link>
+					<comments>https://nestdigital.com/blogs/realtime-temperature-analytics-using-kafka-streams/#respond</comments>
+		
+		<dc:creator><![CDATA[Appu V]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 04:28:12 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=3992</guid>
+
+					<description><![CDATA[Life is a series of natural and spontaneous changes. Don’t resist them -that only creates sorrow. Let reality be reality. Let things flow naturally forward. — Lao-Tzu, 6th–5th century BCE Was playing around with&#160;Kafka&#160;and an interesting use case for tracking and storing temperature readings from electronic sensor devices at real time came through. After evaluating [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<blockquote class="wp-block-quote">
+<p><em>Life is a series of natural and spontaneous changes. Don’t resist them -that only creates sorrow. Let reality be reality. Let things flow naturally forward.</em></p>
+<cite><em>— Lao-Tzu, 6th–5th century BCE</em></cite></blockquote>
+
+
+
+<p></p>
+
+
+
+<p>Was playing around with&nbsp;<a rel="noreferrer noopener" href="https://kafka.apache.org/" target="_blank">Kafka</a>&nbsp;and an interesting use case for tracking and storing temperature readings from electronic sensor devices at real time came through. After evaluating a couple of different approaches and directions,&nbsp;<a rel="noreferrer noopener" href="https://kafka.apache.org/21/javadoc/org/apache/kafka/streams/kstream/KStream.html" target="_blank"><strong>Kafka Streams</strong></a><strong>&nbsp;</strong>emerged as the most suitable framework.</p>
+
+
+
+<p>Even with Kafka, leveraging Apache Kafka, deploying zookeeper, maintaining&nbsp;<a rel="noreferrer noopener" href="https://docs.confluent.io/platform/current/schema-registry/index.html" target="_blank"><strong>schema registry</strong></a>&nbsp;etc. proved to be a hazzle. The better alternative was&nbsp;<a rel="noreferrer noopener" href="https://www.confluent.io/" target="_blank">Confluent Kafka</a>, as they had a subscription based model in all the major cloud providers. With&nbsp;<a rel="noreferrer noopener" href="https://www.confluent.io/blog/enabling-exactly-once-kafka-streams/" target="_blank"><em>Exactly-once semantics</em></a><em>&nbsp;</em>provided by Kstremas, it turned out to be the defacto choice in server side, while&nbsp;<a rel="noreferrer noopener" href="https://spring.io/projects/spring-boot" target="_blank"><strong>Spring boot</strong></a>&nbsp;was leveraged to support the user interface.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" fetchpriority="high" width="927" height="694" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1WOzXcITKVVF7G-m2tjsHxA.webp" alt="" class="wp-image-3993" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1WOzXcITKVVF7G-m2tjsHxA.webp 927w, https://nestdigital.com/wp-content/uploads/2023/07/1WOzXcITKVVF7G-m2tjsHxA-300x225.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1WOzXcITKVVF7G-m2tjsHxA-768x575.webp 768w" sizes="(max-width: 927px) 100vw, 927px" /></figure>
+
+
+
+<p class="has-text-align-center">Architecture Diagram</p>
+
+
+
+<p>Sensors deployed in the devices will be generating temeperature reading in&nbsp;<a rel="noreferrer noopener" href="https://avro.apache.org/docs/1.2.0/" target="_blank">avro</a>&nbsp;format and will be pushed to kafka topic. Multiple sensors will be sending these readings. We wanted to maintain metadata for these. Schema registry is an excellent tool for solving this challenge. It wil act as a service layer for metadata, which would act as a centralized repository for schemas. Leveraging schema registry, we have more flexibility to interact and exchange data without the challenge of managing and sharing schemas between them.In future, the sensors would be changed and the corresponding schemas would be evolved(<a rel="noreferrer noopener" href="https://docs.confluent.io/platform/current/schema-registry/avro.html" target="_blank"><strong>Schema evolution</strong></a><strong>).&nbsp;</strong>This could be easily carried out using schema reigistry.</p>
+
+
+
+<pre class="wp-block-code"><code>{
+  "namespace": "com.appu",
+  "type": "record",
+  "name": "equipmentvalue",
+  "fields": &#91;
+    {
+      "name": "serial",
+      "type": "string",
+      "doc": "Serial Number of the equipment"
+
+    },
+    {
+      "name": "owner",
+      "type": "string",
+      "doc": "Owner name of the equipment"
+
+    },
+    {
+      "name": "temp",
+      "type": "string",
+      "doc": "Temperature in degree celsius of the equipment"
+
+    }
+  ]
+}</code></pre>
+
+
+
+<p id="80be">These streams of data will be saved as a&nbsp;<a href="https://kafka.apache.org/24/javadoc/org/apache/kafka/streams/kstream/KTable.html" rel="noreferrer noopener" target="_blank">Ktable</a>. It represents the latest state of the data at a particular point in time. This data will be tracked in the Web UI.</p>
+
+
+
+<p id="1826">There are static datas such as name, phone number etc., that are not real time values. These datas usually reside in databases or file systems. We need implement a&nbsp;<strong>Change Data Capture (CDC)</strong>&nbsp;to capture changes in these fields.&nbsp;<a href="https://docs.confluent.io/platform/current/connect/index.html" rel="noreferrer noopener" target="_blank"><strong>Kafka connect</strong></a>&nbsp;helps us to tackle this. Kafka source connector could pull the data from file/table to a topic. It reduces the overhead of writing a producer/consumer duo to do the same. A Ktable join based on the key will capture this static change.</p>
+
+
+
+<p id="b2a9">One of the challenges was to write&nbsp;<strong>unit test case</strong>&nbsp;for the application. We did not want to touch the existing cluster and wanted a solution that could run the tests without the need of kafka installation.&nbsp;<a rel="noreferrer noopener" href="https://kafka.apache.org/documentation/streams/developer-guide/testing.html" target="_blank">kafka-streams-test-utils</a>&nbsp;helps us to achieve that.</p>
+
+
+
+<pre class="wp-block-code"><code> public void setup ()
+    {
+        Properties props = new Properties();
+        EquipmentAnalytics.runAnalytics(builder);
+
+        Topology topology = builder.build();
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "device-temperature-analytics-test-001");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "dummy:1234");
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+        topologyTestDriver = new TopologyTestDriver(topology,props);
+       }</code></pre>
+
+
+
+<p>As we were only dealing with the server side for now, we have developed a python based framework for producing mock data from both sensor and connect. The framework can be configured to simulate various scenarios such as metadata update, schema evolution etc.</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;kafka]=
+bootstrap.servers = localhost:9092
+schema.registry.url = http://localhost:8081
+topic = equipment
+equipment_topic_json = equipmentJson
+equipment_meta_json = equipmentMeta
+mock_data = resources/data/equipment/equipment-mock
+equipment_json_mock_data = resources/data/equipment/equipment-json-mock
+equipment_meta_mock_data = resources/data/equipment/equipment-meta-mock
+
+
+&#91;avro]=
+equipment-key-schema = resources/schemas/avro/equipment/equipment-key.avsc
+equipment-value-schema = resources/schemas/avro/equipment/equipment-value.avsc</code></pre>
+
+
+
+<p>The latest flow of temeperature readings is displayed in the web ui using websocket and springboot using a line graph. It also displays the latest temperature readings.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1r5Gt0LWj3xz0_ZhfH2i_2g-1.gif" alt="" class="wp-image-3995"/></figure>
+
+
+
+<p class="has-text-align-center">Live Web Ui</p>
+
+
+
+<p id="8996">In future this framework could be expanded to do various use cases such as finding the average temeperature in a window period, to store reading in a database or to send alerts when temeprate is above/below a threshold and much much more.</p>
+
+
+
+<p id="d1ff"><strong>Links :</strong></p>
+
+
+
+<p id="a613"><strong>Data Generation :</strong>&nbsp;<a rel="noreferrer noopener" href="https://github.com/appuv/KafkaDataGen" target="_blank">https://github.com/appuv/KafkaDataGen</a></p>
+
+
+
+<p id="8961"><strong>Temperature Analytics :</strong>&nbsp;<a rel="noreferrer noopener" href="https://github.com/appuv/KafkaTemperatureAnalytics" target="_blank">https://github.com/appuv/KafkaTemperatureAnalytics</a></p>
+
+
+
+<p id="b360"><strong>Web UI :</strong>&nbsp;<a rel="noreferrer noopener" href="https://github.com/appuv/Live-Dashboard-using-Kafka-and-Spring-Websocket" target="_blank">https://github.com/appuv/Live-Dashboard-using-Kafka-and-Spring-Websocket</a></p>
+
+
+
+<p id="7aca">There is a recording of the working in my&nbsp;<a href="https://www.youtube.com/channel/UCSMeGTVvGIFpBP9BhT_89Aw" rel="noreferrer noopener" target="_blank">YouTube channel</a>&nbsp;:&nbsp;<a href="https://youtu.be/Cj3BeA4bV1c" rel="noreferrer noopener" target="_blank">https://youtu.be/Cj3BeA4bV1c</a></p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/realtime-temperature-analytics-using-kafka-streams/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Data Transfer in Edge</title>
+		<link>https://nestdigital.com/blogs/data-transfer-in-edge/</link>
+					<comments>https://nestdigital.com/blogs/data-transfer-in-edge/#respond</comments>
+		
+		<dc:creator><![CDATA[Appu V]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 04:22:53 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Data Services]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4002</guid>
+
+					<description><![CDATA[Problem Statement:&#160;To transfer data from a device log in real time for analytics. Approach: There are multiple streaming/batch platforms for real-time analytics and batch analytics. One of the challenges that most industry face is the data transfer from their edge devices to the streaming platform. Fluentd [1] helps us solve this challenge. Fluentd is a [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="39fb"><strong><em>Problem Statement:</em></strong>&nbsp;To transfer data from a device log in real time for analytics.</p>
+
+
+
+<p id="067f"><strong>Approach:</strong></p>
+
+
+
+<p id="5209">There are multiple streaming/batch platforms for real-time analytics and batch analytics. One of the challenges that most industry face is the data transfer from their edge devices to the streaming platform. Fluentd [1] helps us solve this challenge. Fluentd is a cross platform open-source data collection software project originally developed at Treasure Data. It is written primarily in the Ruby programming language. There are multiple architecture patterns in fluentd to solve this challenge [2]. As edge devices are resource constraint, we would like to look at a lightweight forwarder aggregator architecture pattern in fluent.</p>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="937" height="341" src="https://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1wMMV-NnNQzgLTU7gTfLB4w.webp" alt="" class="wp-image-4005" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1wMMV-NnNQzgLTU7gTfLB4w.webp 937w, https://nestdigital.com/wp-content/uploads/2023/07/1wMMV-NnNQzgLTU7gTfLB4w-300x109.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1wMMV-NnNQzgLTU7gTfLB4w-768x279.webp 768w" sizes="(max-width: 937px) 100vw, 937px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluent forwarder aggregator architecture</p>
+
+
+
+<p id="5a18">Before we dive deep into this architecture, we can start trying by installing a fluentd locally and tailing [3] log file. Fluentd can be installed as docker containers. As a prerequisite, the docker must be installed in the system [4].</p>
+
+
+
+<p id="58ae">To run fluentd in docker, you need to create a docker compose file named&nbsp;<em>docker-compose.yaml&nbsp;</em>and copy the following lines.</p>
+
+
+
+<pre class="wp-block-code"><code>version: "3"
+services:
+  data-forwarder:
+    container_name: data-forwarder
+    user: root
+    build:
+      context: .
+    image: fluent/fluentd:latest
+    ports:
+      - 24224:24224
+    volumes:
+    - ./Configuration:/fluentd/etc/
+    - ./input/:/fluentd/log/files/</code></pre>
+
+
+
+<p class="has-text-align-center">forwarder docker-compose.yaml</p>
+
+
+
+<p id="296b">Here you can see that two volume mappings are being done. The configuration folder which we have created should be mapped to&nbsp;<em>/fluentd/etc/</em>and our log file could be mapped to any location, but the location in fluent should be the one which we give in the configuration file.</p>
+
+
+
+<p id="2187">Now we need to create a configuration file for tailing a log file. For better maintainability we will create separate configuration files. We need to create a folder named as Configuration. This could be anywhere, for convenience we will create in the same folder where docker file is existing. Then we need two configuration files. The first one is&nbsp;<em>fluent.conf</em>&nbsp;and the second one is&nbsp;<em>fluent_tail.conf</em>. We will do all our configurations in the&nbsp;<em>fluent_tail.conf&nbsp;</em>file.</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;source&gt;
+  @type tail
+  path /fluentd/log/files/device.log
+  pos_file /fluentd/log/files/device.pos
+  tag device.log
+  &lt;parse&gt;
+    @type none
+  &lt;/parse&gt;
+  &lt;/source&gt;
+  
+&lt;match device.log&gt;
+  @type stdout 
+&lt;/match&gt;</code></pre>
+
+
+
+<p class="has-text-align-center">Sample Configuration</p>
+
+
+
+<p>The above configuration is to tail a file named device.log present at&nbsp;<em>fluentd/log/files/device.log.</em>&nbsp;There is also a position file. The position file is used by fluentd to know about last tailed location. We then tag the data as device.log. We have a match tag where the corresponding tag is provided, and it will be printed to the system. Now we need to include this configuration in our&nbsp;<em>fluent.conf</em>.</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p><em>Sample Configuration:</em></p>
+
+
+
+<p><em>@include fluent_tail_.conf</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>Now we are all set to tail the log files. We can now start the container by the following command</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p><em>docker-compose up</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>Once you start the container, you would be seeing the configuration which we have given above.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="940" height="345" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/108pYVcpp38__fTdDtuzpWg.webp" alt="" class="wp-image-4007" srcset="https://nestdigital.com/wp-content/uploads/2023/07/108pYVcpp38__fTdDtuzpWg.webp 940w, https://nestdigital.com/wp-content/uploads/2023/07/108pYVcpp38__fTdDtuzpWg-300x110.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/108pYVcpp38__fTdDtuzpWg-768x282.webp 768w" sizes="(max-width: 940px) 100vw, 940px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluentd Forwarder Docker Log</p>
+
+
+
+<p>As the forwarder is eagerly waiting to tail the log files, we need to have a mechanism to write log files. The following python [5] code helps us to write a sample json record as log files to the location.</p>
+
+
+
+<pre class="wp-block-code"><code>import json
+logfile= open("&lt;device.log location&gt;","a")
+for x in range(100):
+  data {"temperature_sensor1": x,"temperature_sensor1": x*x,"serial":"033_appu"}  logfile.write(json.dumps(data))
+  logfile.write('\n')
+  logfile.flush()</code></pre>
+
+
+
+<p class="has-text-align-center">Python script for data generation</p>
+
+
+
+<p><strong>Sample Data in File:</strong></p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="f910">{“temperature_sensor1”: 0, “temperature_sensor2”: 0, “serial”: “033_appu”}</p>
+
+
+
+<p id="a091">{“temperature_sensor1”: 1, “temperature_sensor2”: 1, “serial”: “033_appu”}</p>
+
+
+
+<p id="ad46">{“temperature_sensor1”: 2, “temperature_sensor2”: 4, “serial”: “033_appu”}</p>
+
+
+
+<p id="7734">{“temperature_sensor1”: 3, “temperature_sensor2”: 9, “serial”: “033_appu”}</p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>Now you should be able to see the same data in the terminal where fluentd forwarder is running.</p>
+
+
+
+<p><strong>Sample Data in terminal:</strong></p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" loading="lazy" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1uugITyyeV648-WvmBDEHkg.webp" alt="" class="wp-image-4008" width="670" height="166" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1uugITyyeV648-WvmBDEHkg.webp 940w, https://nestdigital.com/wp-content/uploads/2023/07/1uugITyyeV648-WvmBDEHkg-300x75.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1uugITyyeV648-WvmBDEHkg-768x191.webp 768w" sizes="(max-width: 670px) 100vw, 670px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluentd Forwarder docker log tail stdout</p>
+
+
+
+<p>We will stop the container by</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p><em>docker-compose down</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>We will now try to calculate the sum of both sensors. A filter needs to be added before the match tag for doing the same. The&nbsp;<em>fluent_tail_.conf&nbsp;</em>needs to be modified as follows :</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;filter device.log&gt;
+  @type parser
+  format json
+  key_name message
+&lt;/filter&gt;
+&lt;filter device.log&gt;
+ @type record_transformer
+  enable_ruby true
+  &lt;record&gt;
+ total_temperature  ${record&#91;"temperature_sensor1"]+record&#91;"temperature_sensor2"]}  &lt;/record&gt;
+&lt;/filter&gt;</code></pre>
+
+
+
+<p class="has-text-align-center">Fluentd data transoformation filters</p>
+
+
+
+<p id="5030">Here the data is passed to two filters. The first one will parse the incoming string as a json, and the record_transformer [6] filter plugin calculate the total temperature based on existing fields. enable_ruby is to enable ruby functions when we transform the data. There are various plugins [7][8] in fluentd which include input, output, filter etc. We can also write our own custom plugins in ruby</p>
+
+
+
+<p id="ca8d">We can start both our forwarder and data generator. The data which we see in terminal will have an additional json field</p>
+
+
+
+<p><strong>Sample Data:</strong></p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="5182">{“temperature_sensor1”:0,”temperature_sensor2&#8243;:0,”serial”:”033_appu”,”total_temperature”:0}</p>
+
+
+
+<p id="7592">{“temperature_sensor1”:1,”temperature_sensor2&#8243;:1,”serial”:”033_appu”,”total_temperature”:2}</p>
+
+
+
+<p id="8eac">{“temperature_sensor1”:2,”temperature_sensor2&#8243;:4,”serial”:”033_appu”,”total_temperature”:6}</p>
+
+
+
+<p id="c008">{“temperature_sensor1”:3,”temperature_sensor2&#8243;:9,”serial”:”033_appu”,”total_temperature”:12}</p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="940" height="234" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1cSyyquLEJXZXmN3h4qM2Og.webp" alt="" class="wp-image-4009" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1cSyyquLEJXZXmN3h4qM2Og.webp 940w, https://nestdigital.com/wp-content/uploads/2023/07/1cSyyquLEJXZXmN3h4qM2Og-300x75.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1cSyyquLEJXZXmN3h4qM2Og-768x191.webp 768w" sizes="(max-width: 940px) 100vw, 940px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluentd Forwarder docker log transformation</p>
+
+
+
+<p>We have successfully tailed a log file and a small transformation. Now we need to send this data to another fluentd instance, which we call as an aggregator. Like forwarder, we can create a docker container for the same.</p>
+
+
+
+<pre class="wp-block-code"><code>version: "3"
+services:
+  data-aggregator:
+    container_name: data-aggregator
+    user: root
+    build:
+      context: .
+    image: fluent/fluentd:latest
+    ports:
+      - 24225:24225
+    volumes:
+    - ./Configuration:/fluentd/etc/
+    - ./output/:/tmp/output/</code></pre>
+
+
+
+<p class="has-text-align-center">aggregator docker-compose.yaml</p>
+
+
+
+<p id="9307">Like forwarder we have volume mapped the configuration folder. We need to create configuration files for the aggregator. We can name it as&nbsp;<em>fluent.conf</em>and&nbsp;<em>fluent_agg.conf</em></p>
+
+
+
+<p id="d7c8">Sample Configuration of&nbsp;<em>fluent_agg.conf</em>&nbsp;is as follows:</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;source&gt;
+ @type forward
+  port 24225
+  bind 0.0.0.0
+&lt;/source&gt;
+&lt;match device.log&gt;
+  @type stdout 
+&lt;/match&gt;</code></pre>
+
+
+
+<p class="has-text-align-center">Sample Configutation</p>
+
+
+
+<p id="f3ea">Like forwarder, we will include the same in fluent.conf</p>
+
+
+
+<p id="4217">Here we can see that the source is forward [9] and we have used the same tag for stdout. We can start the aggregator container by the following command:</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p><em>docker compose up</em></p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="940" height="284" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1v0qfDw-mN-6g_CABFq6JHg.webp" alt="" class="wp-image-4014" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1v0qfDw-mN-6g_CABFq6JHg.webp 940w, https://nestdigital.com/wp-content/uploads/2023/07/1v0qfDw-mN-6g_CABFq6JHg-300x91.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1v0qfDw-mN-6g_CABFq6JHg-768x232.webp 768w" sizes="(max-width: 940px) 100vw, 940px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluentd Aggregator docker log</p>
+
+
+
+<p>Now we need to configure our forwarder to send the data to aggregator. The match pattern must be modified as follows:</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;match device.log&gt;
+@type forward
+    send_timeout 60s
+    recover_wait 10s
+    hard_timeout 60s
+    require_ack_response true
+  &lt;server&gt;
+    host &lt;your_ip&gt;
+    port 24225
+  &lt;/server&gt;
+&lt;/match&gt;</code></pre>
+
+
+
+<p class="has-text-align-center">Sample forward configuration</p>
+
+
+
+<p>With this configuration, fluentd will send data from forwarder to aggregator. Here the type used is forward [10]. Once the setup is complete, the data forwarder and python scripts must be started as mentioned earlier. The output which we saw in the data forwarder will be now seen in the data aggregator.</p>
+
+
+
+<p><strong>Sample Data:</strong></p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="975b">{“temperature_sensor1”:0,”temperature_sensor2&#8243;:0,”serial”:”033_appu”,”total_temperature”:0}</p>
+
+
+
+<p id="89b4">{“temperature_sensor1”:1,”temperature_sensor2&#8243;:1,”serial”:”033_appu”,”total_temperature”:2}</p>
+
+
+
+<p id="d8cc">{“temperature_sensor1”:2,”temperature_sensor2&#8243;:4,”serial”:”033_appu”,”total_temperature”:6}</p>
+
+
+
+<p id="c7ab">{“temperature_sensor1”:3,”temperature_sensor2&#8243;:9,”serial”:”033_appu”,”total_temperature”:12}</p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="940" height="201" src="http://newwebsite.nestdigital.com/wp-content/uploads/2023/07/1sgKniWn6C1V98Vv9cuQrMw.webp" alt="" class="wp-image-4015" srcset="https://nestdigital.com/wp-content/uploads/2023/07/1sgKniWn6C1V98Vv9cuQrMw.webp 940w, https://nestdigital.com/wp-content/uploads/2023/07/1sgKniWn6C1V98Vv9cuQrMw-300x64.webp 300w, https://nestdigital.com/wp-content/uploads/2023/07/1sgKniWn6C1V98Vv9cuQrMw-768x164.webp 768w" sizes="(max-width: 940px) 100vw, 940px" /></figure>
+
+
+
+<p class="has-text-align-center">Fluentd Aggregator docker log stdout</p>
+
+
+
+<p>Now we will send the output of the aggregator to a file. The match pattern must be modified as follows:</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="b663">&lt;match device.log&gt;</p>
+
+
+
+<p id="f102">@type file</p>
+
+
+
+<p id="c5f5">path /tmp/output/</p>
+
+
+
+<p id="2b6b">&lt;/match&gt;</p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p>The data will be present inside the output folder inside the aggregator folder once the data generator and data forwarder are started. The file name of the output will be in the following pattern buffer.&lt;hashstring&gt;.log</p>
+
+
+
+<p><strong>Sample data :</strong></p>
+
+
+
+<blockquote class="wp-block-quote">
+<p id="65f1">2022–05–30T10:19:56+00:00 device.log {“temperature_sensor1”:0,”temperature_sensor2&#8243;:0,”serial”:”033_appu”,”total_temperature”:0}</p>
+
+
+
+<p id="5e2f">2022–05–30T10:19:56+00:00 device.log {“temperature_sensor1”:1,”temperature_sensor2&#8243;:1,”serial”:”033_appu”,”total_temperature”:2}</p>
+
+
+
+<p id="9b36">2022–05–30T10:19:56+00:00 device.log {“temperature_sensor1”:2,”temperature_sensor2&#8243;:4,”serial”:”033_appu”,”total_temperature”:6}</p>
+
+
+
+<p id="7fde">2022–05–30T10:19:56+00:00 device.log {“temperature_sensor1”:3,”temperature_sensor2&#8243;:9,”serial”:”033_appu”,”total_temperature”:12}</p>
+</blockquote>
+
+
+
+<p></p>
+
+
+
+<p id="0c4a">The data is successfully transferred from device log to aggregator. The data transfer can be secured via mlts. Also, fluentd forward supports high availability [11] and we can configure buffers [12].</p>
+
+
+
+<p id="af93">Here in this example, we have configured the output of aggregator to a stdout and file. This can be configured to various outputs like Kafka, S3, Azure blob, elastic etc…</p>
+
+
+
+<p id="6835"><strong>Advantages</strong></p>
+
+
+
+<ul>
+<li>Less resource utilization on the edge devices (maximize throughput)</li>
+
+
+
+<li>Allow processing to scale independently on the aggregator tier.</li>
+
+
+
+<li>Easy to add more backends (configuration change in aggregator vs. all forwarders)</li>
+</ul>
+
+
+
+<p id="f685"><strong>Disadvantages</strong></p>
+
+
+
+<ul>
+<li>Dedicated resources required for an aggregation instance</li>
+</ul>
+
+
+
+<p id="e7d2">Complete Code is available in&nbsp;<a href="https://github.com/appuv/fluent_example" rel="noreferrer noopener" target="_blank">Git</a>.</p>
+
+
+
+<p id="3474"><strong>References</strong></p>
+
+
+
+<p id="c0f9">1.&nbsp;<a href="https://www.fluentd.org/" rel="noreferrer noopener" target="_blank">https://www.fluentd.org/</a></p>
+
+
+
+<p id="a021">2.&nbsp;<a href="https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/" rel="noreferrer noopener" target="_blank">https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/</a></p>
+
+
+
+<p id="95f0">3.&nbsp;<a href="https://docs.docker.com/engine/install/ubuntu/" rel="noreferrer noopener" target="_blank">https://docs.docker.com/engine/install/ubuntu/</a></p>
+
+
+
+<p id="abc8">4.&nbsp;<a href="https://docs.fluentd.org/input/tail" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/input/tail</a></p>
+
+
+
+<p id="830e">5.&nbsp;<a href="https://www.python.org/" rel="noreferrer noopener" target="_blank">https://www.python.org/</a></p>
+
+
+
+<p id="1f06">6.&nbsp;<a href="https://docs.fluentd.org/filter/record_transformer" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/filter/record_transformer</a></p>
+
+
+
+<p id="ed05">7.&nbsp;<a href="https://docs.fluentd.org/plugin-development" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/plugin-development</a></p>
+
+
+
+<p id="f5ed">8.&nbsp;<a href="https://www.fluentd.org/plugins" rel="noreferrer noopener" target="_blank">https://www.fluentd.org/plugins</a></p>
+
+
+
+<p id="c1b6">9.&nbsp;<a href="https://docs.fluentd.org/input/forward" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/input/forward</a></p>
+
+
+
+<p id="ff3c">10.&nbsp;<a href="https://docs.fluentd.org/output/forward" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/output/forward</a></p>
+
+
+
+<p id="dcd1">11.&nbsp;<a href="https://docs.fluentd.org/deployment/high-availability" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/deployment/high-availability</a></p>
+
+
+
+<p id="f644">12.&nbsp;<a href="https://docs.fluentd.org/configuration/buffer-section" rel="noreferrer noopener" target="_blank">https://docs.fluentd.org/configuration/buffer-section</a></p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/data-transfer-in-edge/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

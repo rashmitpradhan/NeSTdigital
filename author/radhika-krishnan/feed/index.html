@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Radhika Krishnan | NeST Digital</title>
+	<atom:link href="https://nestdigital.com/author/radhika-krishnan/feed/" rel="self" type="application/rss+xml" />
+	<link>https://nestdigital.com</link>
+	<description>Exponential value creation by transforming your legacy Business, Customer and Operation models through Innovative Digital Technologies</description>
+	<lastBuildDate>Sat, 05 Aug 2023 10:55:14 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://nestdigital.com/wp-content/uploads/2023/08/Group-221.png</url>
+	<title>Radhika Krishnan | NeST Digital</title>
+	<link>https://nestdigital.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Time Sensitive Networks — Audio Video Bridging</title>
+		<link>https://nestdigital.com/blogs/time-sensitive-networks-audio-video-bridging/</link>
+					<comments>https://nestdigital.com/blogs/time-sensitive-networks-audio-video-bridging/#respond</comments>
+		
+		<dc:creator><![CDATA[Radhika Krishnan]]></dc:creator>
+		<pubDate>Tue, 25 Jul 2023 17:08:12 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Mobility]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4527</guid>
+
+					<description><![CDATA[Have you ever noticed how the live streaming of an event becomes uninteresting when the video and audio of the event are played on big screens without synchronization? It is generally termed as lack of lip sync. Audio Video Bridging (AVB) is a technology developed to address the streaming issues in industrial events, where live [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="8264">Have you ever noticed how the live streaming of an event becomes uninteresting when the video and audio of the event are played on big screens without synchronization? It is generally termed as lack of lip sync.</p>
+
+
+
+<p id="5c4f">Audio Video Bridging (AVB) is a technology developed to address the streaming issues in industrial events, where live streaming events faced issues due to loss of synchronization between audio and video data, played at different points. AVB is presented as a protocol enhancement to the Ethernet network, which is the cheapest and most commonly available networking technology available.</p>
+
+
+
+<p id="5381"><strong>AVB in automotive network:</strong></p>
+
+
+
+<p id="c647">Over the past few years, multimedia technologies used in automobiles have increased considerably, owing to the consumer demands and evolving technologies. Features such as media playback from multiple sources (USB / Bluetooth / Wi-Fi / YouTube / Radio), surround view cameras, and built in navigation support have become commonplace options in many mainstream automobiles. Rear Seat Entertainment (RSE) units are growing in sophistication with more sources and choices at your fingertips. Each of these options has added to the need and desire for a common networking architecture in the automobile.</p>
+
+
+
+<p id="7c25">Even though CAN is the universally accepted networking technology in automobiles, the varied requirements of multimedia usage like scalability, QoS, cost, bandwidth requirements provides an open door to other technologies as well.</p>
+
+
+
+<p id="9945">The networking solutions used in automobiles have different constraints ranging from the deterministic nature of network to the temperature sensitivity of the cabling materials used. The IEEE 802.1 Audio Video Bridging (AVB) task group and the IEEE 1722 AVTP working group offers a standards-based approach for highly reliable networked transmission for low-latency applications like those found within an automobile. Wired Ethernet networks employing AVB protocols are very well suited to automotive deployment due to both simplified cabling and reliability of a hard-wired solution.</p>
+
+
+
+<p id="1439">Initially, AVB was used in automotive networks for infotainment systems to distribute media data and also for transmitting control data among other components in the cockpit domain.</p>
+
+
+
+<h1 class="wp-block-heading" id="1224"><strong>How AVB works</strong></h1>
+
+
+
+<p id="13d4">AVB is an enhancement to the Ethernet suite of open standards. It provides quality of service (QoS) guarantees, a network time synchronization service, and a related transport protocol for transmission of time-sensitive traffic that together allow a network to handle audio-visual (AV) data. In the automotive environment, it can also satisfy more generalized time-sensitive networking requirements, opening up the possibility of a single network that handles infotainment, body control, driver assistance and even safety-critical functions.</p>
+
+
+
+<p id="e756">AVB uses different concepts to meet its requirements, which are defined in different Ethernet standards as amendments. The major concepts are network time synchronization, data priority, stream reservation and traffic shaping and queueing. To enhance the feature sets, there is dynamic device discovery and enumeration and control features, but this is rarely used in automobiles.</p>
+
+
+
+<p id="6512">AVB network consists of Talker — the component that streams the media (camera, media player, mobile phone), Listeners — component that renders the received media (display module, speakers) and AVB switches and bridges — connecting the different AVB and non-AVB components in the network.</p>
+
+
+
+<p id="80d8">An ethernet network becomes AVB enabled, when the clock of all the AVB enabled devices becomes synchronized with a Grand Master clock. The grand master clock is provided by one of the network components and all other devices will accept the master clock as their clock. Without synchronizing, AVB communication does not happen. When a talker is ready to do the streaming (a user selects play button), it sends out a&nbsp;<em>Talker Ready</em>message, with the stream information and the switch will send this packet to all the connected devices. The listeners, who are capable of rendering the talker’s stream responds with&nbsp;<em>Listener Ready</em>&nbsp;message. The stream is reserved by MRP packets, where the talkers and listeners join a VLAN with&nbsp;<em>MRP Join</em>message. The talker will start streaming, as soon as it receives at least one&nbsp;<em>Listener Ready</em>&nbsp;message. Once the streaming is completed, the devices leave the VLAN using&nbsp;<em>MRP Leave</em>&nbsp;message and the stream reservation ends.</p>
+
+
+
+<p id="9020">All the AVB packets will contain a time, presentation time, which specifies the time on which the data should be played back. This time is based on the synchronized clock and is calculated based on the listener who is farthest from the talker. All the listeners will be able to recreate the media data and the presentation time from the received packet and will be played at the presentation time specified. This is how AVB achieves synchronized play back at all the listeners.</p>
+
+
+
+<h2 class="wp-block-heading" id="fcf4"><strong>AVB Network Components:</strong></h2>
+
+
+
+<p id="6720">AVB Network consists of AVB enabled bridge and AVB enabled end points. The network limit stops when a non-AVB bridge comes in between.</p>
+
+
+
+<p id="2942">AVB Switch / Bridge — Identifies AVB messages, routes it to the right devices.</p>
+
+
+
+<p id="bcf2">End points — Talkers and listeners.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1050/1*CoCPYlKqtR-RmTmt6Rld9g.png" alt=""/><figcaption class="wp-element-caption">AVB Network components (Image credit: AVnu alliance)</figcaption></figure>
+
+
+
+<p id="906c">In an AVB network, upto 7 hops (bridges) are supported. The maximum network delay between a talker and a listener in an AVB network is 2 ms. This means that even if there are 7 bridges between a talker and a listener, a packet will reach from the talker to the listener within 2 ms. This is ensured by creating and communicating the presentation time of each frame by the talker. The presentation time is calculated based on the link delay to each node in the network.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1062/1*Xjh2yNZwepM7Gvxk3ZP1Yw.png" alt=""/><figcaption class="wp-element-caption">Data transmission (Image credit:AVnu alliance)</figcaption></figure>
+
+
+
+<h1 class="wp-block-heading" id="d8a0"><strong>Technology Overview</strong></h1>
+
+
+
+<p id="8fe2">The IEEE 802.1 AVB and IEEE 1722 standards form the foundation for the technology promoted by AVnu alliance, along with the enhancements to other 802.1 technologies for bridges and switches.</p>
+
+
+
+<p id="2f50">The foundational standards for AVB are explained in the below sections.</p>
+
+
+
+<p id="bed2"><strong>IEEE 802.1AS (PTP) based on IEEE 1588:</strong></p>
+
+
+
+<p id="0f7c">PTP is Precision Time Protocol, which ensures that all AVB capable devices in a network uses a single clock provided by a common Grand Master. There can be multiple devices in the network capable of providing master clock. The Grand master is selected from these devices by running the Best Master Clock Algorithm (BMCA). The devices with the same grand master shall be able to communicate with each other directly. The messages that are used in time synchronization mechanism are:&nbsp;<em>Announce, Sync and Follow up.&nbsp;</em>The devices in the network calculate the delay from each other by sending&nbsp;<em>Path Delay Request</em>&nbsp;and from the&nbsp;<em>Path Delay Response</em>. The synchronization message flow is:</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1050/1*f2z1V5H4ZE7IPF8p0nQwiw.png" alt=""/><figcaption class="wp-element-caption">PTP Message flow (Image credit:AVnu alliance)</figcaption></figure>
+
+
+
+<p id="0816"><strong>IEEE 802.1Qat — Stream Reservation:</strong></p>
+
+
+
+<p id="17ba">AVB has two classes of data — class A (every 125 micro seconds) and class B (every 250 micro seconds). The media data (audio and video) are normally sent using class B. To achieve this transmission timing requirement, the available bandwidth has to be reserved when there is an AVB data is ready to send. The bandwidth reservation shall also be teared down when the transmission is completed. A maximum of 75% of available bandwidth shall be reserved for AVB transmission. This stream reservation is defined by 802.1Qat specification. This is normally implemented by talkers and AVB switches.</p>
+
+
+
+<p id="c8de">When a talker is ready to transmit data, it will send a&nbsp;<em>Talker Advertise</em>&nbsp;with the stream information — type of stream, media type, etc. When a listener who is ready to accept and play back this stream receives the advertisement, it will respond with&nbsp;<em>Listener Ready</em>&nbsp;message. There can be more than one listeners sending the&nbsp;<em>Listener Ready</em>, accepting all or partial media announced by the talker. The talker will start the transmission only if it receives at least one&nbsp;<em>Listener Ready</em>&nbsp;message. If there is error,&nbsp;<em>Talker Advertise failed / Listener Ready failed</em>&nbsp;are the messages transmitted.</p>
+
+
+
+<p id="4c97">Before starting the transmission, the bandwidth will be reserved by sending&nbsp;<em>MRP request</em>&nbsp;and the talker and listeners can join a VLAN announced in the MRP using&nbsp;<em>MRP Join</em>&nbsp;request and can leave the network using&nbsp;<em>MRP Leave</em>request. This will also tear down the bandwidth allocation.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:896/1*wJv2cThTdiYZKlQIiRUSag.png" alt=""/><figcaption class="wp-element-caption">Stream Reservation Message flow</figcaption></figure>
+
+
+
+<p id="63cc"><strong>IEEE 802.1Qav — Forwarding and Queuing</strong></p>
+
+
+
+<p id="916d">Along with stream reservation, a forwarding and queuing mechanism is also implemented in AVB to ensure that the packets are not dropped. Like SRP, talkers and bridges implement FQTSS and this is mostly implemented in the hardware. Credit shaped algorithm is used for the queuing mechanism and the credit is given if at least one frame is available in the queue and the&nbsp;<em>transmitAllowed</em>&nbsp;signal is True for the queue. The packet is launched when the credit reaches a maximum value. It ensures that if a frame is queued in the priority class, it will get the transmission bandwidth at regular intervals, which will not be more than 125 micro seconds for class A and 250 micro seconds for class B.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1050/1*Eo4SeWzi0W8yc0VmvcArog.png" alt=""/><figcaption class="wp-element-caption">Credit shaped queueing (Image Credit: AVnu alliance)</figcaption></figure>
+
+
+
+<p id="bd1c"><strong>IEEE 1722 — AVB Transmission Protocol (AVTP)</strong></p>
+
+
+
+<p id="057d">AVTP specifies the packet format and the requirements to transmit an AVB packet through network. Talkers start the transmission and listeners receives and recreates the packets. The bridges ensures that the packets are sent at proper time and stream reservation is created and removed according to the transmission .</p>
+
+
+
+<p id="4de2">One important point to notice in AVTP is that the packets are transmitted to pre-defined&nbsp;<em>multicast addresses</em>. Point-to-point transmission is not done in AVB. This is because there can be multiple listeners, waiting to receive the packets and all of them need to play back the data at the same time. Point-to-point transmission will need more bandwidth and the timing issues will occur.</p>
+
+
+
+<p id="83d9">Each AVTP packet will contain the streaming data, along with a timing information that mentions when to play back the received data. This&nbsp;<em>presentation time</em>&nbsp;is provided by the talker and is calculated based on the listener node that is farthest from the talker. All listeners recreate the presentation time and it will be aligned with the synchronized global time, hence the time for the packets at all listeners will be same. This is&nbsp;<em>media clock recovery</em>.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1050/1*r5H0kA4mk5gl02AuSOyfyw.png" alt=""/><figcaption class="wp-element-caption">AVB Software modules (Image credit: AVnu Alliance)</figcaption></figure>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1080/1*2Qsf7GUlRMEqSCH-ieBfIA.png" alt=""/><figcaption class="wp-element-caption">AVTP frame format (Image credit: AVnu alliance)</figcaption></figure>
+
+
+
+<p id="9735"><strong>IEEE 1722.1 — Discovery, Enumeration and Control (AVDECC)</strong></p>
+
+
+
+<p id="370a">In networks, where nodes (talkers and listeners) are dynamically added and removed, device discovery protocol is used. A control module is needed to handle the AVDECC protocol, which can be a stand alone module or part of any other node.</p>
+
+
+
+<p id="91d9">The AVDECC protocol lets the nodes identify the stream ID and verify if it is suitable for the node configurations. It also allows control data flow — like volume control dynamically without the use of a parallel communication path. The features of a stream will be announced by the talker and it will be enumerated in a standard way so that the listeners and bridges will be able to decode and understand.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1050/1*uCycAaJayVvkGXaguq1WDg.png" alt=""/><figcaption class="wp-element-caption">AVDECC flow (Image credit: AVnu alliance)</figcaption></figure>
+
+
+
+<h1 class="wp-block-heading" id="5d3b"><strong>Open AVnu</strong></h1>
+
+
+
+<p id="e69d">OpenAvnu is an AVnu sponsored repository for Time Sensitive Network (TSN and AVB) technology. The code is in C programming language, works in Linux operating system and is primarily created for Intel’s i210 Ethernet card as the hardware platform.</p>
+
+
+
+<p id="cf07">The openAvnu source code is used by most of the AVB / TSN stack developers to customize their own stack since it provides a base for directory structure, build mechanisms and source code arrangement.</p>
+
+
+
+<p id="d324">It supports different media mapping schemes and also provides sample applications to use the stack.</p>
+
+
+
+<h1 class="wp-block-heading" id="8e40"><strong>TSN (Time Sensitive Network)</strong></h1>
+
+
+
+<p id="2ca1">AVB and TSN are more or less same technology, where TSN offers more deterministic services through ethernet. Currently, the AVB task group is renamed as TSN and the OpenAVnu stack supports TSN.</p>
+
+
+
+<p id="32c7">The summary of TSN components are given below. Most of the components are same as AVB, providing more reliability, low latency, better resource management and better synchronization.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*3jrP8czIRUqwzAfa5AmMqw.png" alt=""/><figcaption class="wp-element-caption">TSN components (source credit —<a href="https://medium.com/tech-blogs-by-nest-digital/www.ieee802.org" rel="noreferrer noopener" target="_blank">&nbsp;</a><a href="http://www.ieee802.org/" rel="noreferrer noopener" target="_blank">www.ieee802.org</a>)</figcaption></figure>
+
+
+
+<h1 class="wp-block-heading" id="033f"><strong>AVB stack customization:</strong></h1>
+
+
+
+<p id="cddf">At NeST Digital, we have customized OpenAVnu AVB stack in different phases for developing talker and listener on various embedded platforms like i.mx6Q and i.mx8M for automotive applications, in infotainment area. The customized stack is verified with OpenAvnu stack (original version), NXP AVB stack, Renesas AVB camera module and AVB switches from NXP, Marvell and Renesas. The pre-certification testing is done with Spirent tool.</p>
+
+
+
+<p id="f4b5">The media types used for custom AVB stack are: MP3 audio, H264 video, Raw audio from AM/FM tuner, Miracast stream from Android phone.</p>
+
+
+
+<h1 class="wp-block-heading" id="8e3d"><strong>Issues faced:</strong></h1>
+
+
+
+<p id="cfa6">Some of the issues that we faced during the OpenAvnu AVB stack customization are:</p>
+
+
+
+<ol>
+<li>MRP daemon was sending all frames, regardless of talker / listener and packet received or not.</li>
+
+
+
+<li>gPTP daemon was hardcoded for many parameters. Hence not able to execute for features like automotive profile.</li>
+
+
+
+<li>NXP stack expected the listener simulated a fast connect, even though it was not connected to the NXP talker earlier.</li>
+
+
+
+<li>OpenAvnu Listener was connecting only to one stream — audio or video at a time.</li>
+
+
+
+<li>gPTP daemon was not connecting to other gPTP domains to execute BMCA algoritm</li>
+
+
+
+<li>In i.mx8M listener, ~1 sec jump observed while playing video</li>
+
+
+
+<li>Stack had to stop and start every time a stream is completed.</li>
+
+
+
+<li>H264 camera data was unable to process by the OpenAVnu listener</li>
+
+
+
+<li>After reboot, delay was observed from i.mx8M talker to transmit data.</li>
+
+
+
+<li>i.mx8M talker was always sending the data through one queue, the FQTSS was not getting effective and standard data packets were suffering packet loss</li>
+</ol>
+
+
+
+<h1 class="wp-block-heading" id="b3aa"><strong>Summary:</strong></h1>
+
+
+
+<p id="a888">The blog is expected to give an overview of Audio Video Bridging, the key technologies behind the feature and the details of how an open source AVB code, sponsored by AVnu alliance was used to develop a custom AVB software stack for multiple hardware platforms with added feature sets.</p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/time-sensitive-networks-audio-video-bridging/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>eCall</title>
+		<link>https://nestdigital.com/blogs/ecall/</link>
+					<comments>https://nestdigital.com/blogs/ecall/#respond</comments>
+		
+		<dc:creator><![CDATA[Radhika Krishnan]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2023 11:53:59 +0000</pubDate>
+				<category><![CDATA[BLOGS]]></category>
+		<category><![CDATA[Mobility]]></category>
+		<guid isPermaLink="false">https://newwebsite.nestdigital.com/?p=4501</guid>
+
+					<description><![CDATA[Have you ever noticed the SoS button in the new generation cars? Have you thought about the benefits of the “internet-enabled” cars apart from the integrated maps and the fancy features explained by executives? Here is a feature or technology that comes helpful for a passenger — eCall or Emergency Call. For any vehicle, if [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="bsf_rt_marker">
+<p id="9b40">Have you ever noticed the SoS button in the new generation cars? Have you thought about the benefits of the “internet-enabled” cars apart from the integrated maps and the fancy features explained by executives? Here is a feature or technology that comes helpful for a passenger — eCall or Emergency Call.</p>
+
+
+
+<p id="cd52">For any vehicle, if it is in running condition, we should think about the possibility of an emergency. If there is an emergency, be it an accident or an intruder or a medical condition, or any possibility you can think about, where the passengers are unable to get the vehicle to a safe place, it will be of great relief if a supporting team can reach the place with the required help. eCall is developed to handle such situations.</p>
+
+
+
+<p id="56d2">The cellular connectivity to place the eCall and GPS connectivity to access the vehicle location are the main requirements for a vehicle to implement eCall. This is a mandatory feature for vehicles in many countries and there are specifications defined for eCall.</p>
+
+
+
+<p id="7065">eCall is designed in such a way that it can be triggered automatically when there is an accident, by sensing the deployment of airbags or by pressing the SoS button manually if the emergency is of any other sort. Other than the trigger initiation, both eCall work in the same way.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="https://miro.medium.com/v2/resize:fit:1400/1*Z1Uor9DWm8rZJZWTSpyOGw.png" alt=""/><figcaption class="wp-element-caption">eCall overview (Source: European Commission)</figcaption></figure>
+
+
+
+<p id="f28a">The participants of an eCall are a vehicle, a circuit-switched cellular network, and a Public Safety Answering Point (PSAP).</p>
+
+
+
+<p id="54d7">In the event of an emergency, the eCall system manually or automatically triggers an emergency voice call between the passenger and the Public Safety Answering Point(PSAP) accessible through widely spread emergency numbers and often accessible through fixed and mobile telephone — 112 in Europe, 911 in the United States. Apart from this the system also transfers a data message from the Vehicle to PSAP which is denoted as eCall Minimum Set of Data(MSD). The MSD includes location information, time stamp, number of passengers (with reference to number of engaged seat belts), driving direction, vehicle Identification Number (VIN), and other relevant information.</p>
+
+
+
+<p id="37e1">The operator at the PSAP will be able to set up a voice call with the vehicle and talk to the passengers and verify the exact problems so that the appropriate measures can be taken to inform the ambulance or police.</p>
+
+
+
+<h2 class="wp-block-heading" id="e705"><strong>Technical aspects of eCall implementation:</strong></h2>
+
+
+
+<p id="be91">The major specifications that are to be considered when developing an eCall solution are:</p>
+
+
+
+<ol>
+<li>EN 16072 (Pan-European eCall operating requirements)</li>
+
+
+
+<li>EN 16062 (eCall high-level application requirements (HLAP) using GSM/UMTS circuit-switched networks)</li>
+
+
+
+<li>EN 15722 (ECall minimum set of data)</li>
+
+
+
+<li>EN 16454 (End-to-End Conformance Testing requirements)</li>
+</ol>
+
+
+
+<p id="187b">You can derive the requirements and validate them against these specifications so that it will be easier when the conformance testing is done.</p>
+
+
+
+<p id="3933">The challenge in developing an eCall application is that there are very strict timing requirements for communicating with PSAP and all these requirements shall be met to get the solution certified. Both hardware and software-integrated solution is the best way to achieve this.</p>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://nestdigital.com/blogs/ecall/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
